@@ -40,7 +40,10 @@ function WhoAmI {
 }
 
 function Write-Lock($data) {
-  $data | ConvertTo-Json -Depth 4 | Set-Content $LockFile -Encoding UTF8
+  # 使用 UTF8NoBOM 避免 Linux 上 Python json 解析报错
+  $json = $data | ConvertTo-Json -Depth 4
+  $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+  [System.IO.File]::WriteAllLines($LockFile, $json, $utf8NoBom)
 }
 
 # -- status --
