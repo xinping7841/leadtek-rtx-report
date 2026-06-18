@@ -1,0 +1,2665 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>丽台 NVIDIA RTX 专业图形卡近五年对比</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1d2430;
+      --muted: #5c6878;
+      --line: #d9dee7;
+      --head: #202a37;
+      --accent: #0a7a43;
+      --accent-soft: #e8f5ee;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      background: var(--head);
+      color: white;
+      padding: 28px 32px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 28px 0 12px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    p { margin: 8px 0; }
+    a { color: #075fbc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    main {
+      width: min(100%, 3840px);
+      max-width: none;
+      margin: 0 auto;
+      padding: 24px 32px 40px;
+    }
+    .note {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      margin-bottom: 18px;
+    }
+    .sync-panel {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #f8fbff;
+      border: 1px solid #cfe0f5;
+      border-left: 4px solid #2b74c8;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      color: #1d3557;
+      font-size: 13px;
+    }
+    .sync-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+    .sync-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #8a94a6;
+    }
+    .sync-panel.is-ok .sync-dot { background: #0a7a43; }
+    .sync-panel.is-warn .sync-dot { background: #b7791f; }
+    .sync-panel.is-error .sync-dot { background: #b42318; }
+    .external-test-result {
+      display: grid;
+      gap: 4px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #c6d4e6;
+      color: #1d3557;
+      font-size: 12px;
+      max-height: 220px;
+      overflow: auto;
+    }
+    .external-test-result strong {
+      font-size: 12px;
+      color: #0b4f8a;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .chip {
+      background: var(--accent-soft);
+      color: #075f39;
+      border: 1px solid #c6e7d7;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .table-wrap {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      overflow-x: auto;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      scrollbar-gutter: stable;
+    }
+    table {
+      width: 100%;
+      min-width: 2500px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      padding: 10px 10px;
+      vertical-align: top;
+    }
+    th:last-child, td:last-child { border-right: 0; }
+    thead th {
+      position: sticky;
+      top: 0;
+      background: #eef1f5;
+      color: #18202c;
+      z-index: 1;
+      text-align: left;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    tbody tr:nth-child(even) { background: #fbfcfd; }
+    .product-img {
+      width: 132px;
+      height: 86px;
+      object-fit: contain;
+      display: block;
+      background: #fff;
+      border: 1px solid #e6e9ef;
+    }
+    .model {
+      font-weight: 700;
+      min-width: 178px;
+    }
+    .muted { color: var(--muted); }
+    .price {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .term-cell {
+      display: grid;
+      gap: 4px;
+    }
+    .term-main {
+      display: block;
+      font-weight: 700;
+      color: #1d2430;
+    }
+    .term-cn {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .codec-engine { font-weight: 700; color: #183b6b; }
+    .codec-hevc, .codec-av1 { min-width: 250px; }
+    .codec-block {
+      display: grid;
+      gap: 3px;
+      line-height: 1.45;
+    }
+    .codec-title {
+      color: #183b6b;
+      font-weight: 700;
+    }
+    .codec-detail { color: #1d2430; }
+    .codec-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .codec-limited .codec-title { color: #8a4b00; }
+    .feature-strip,
+    .cell-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .feature-pill {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border: 1px solid #cdd9ff;
+      border-radius: 4px;
+      background: #edf2ff;
+      color: #244c9a;
+      padding: 1px 6px;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+    .feature-pill.memory {
+      background: #e8f5ee;
+      border-color: #c6e7d7;
+      color: #075f39;
+    }
+    .feature-pill.engine {
+      background: #eaf3ff;
+      border-color: #bed9ff;
+      color: #0b4f8a;
+    }
+    .feature-pill.codec {
+      background: #f1efff;
+      border-color: #d8d0ff;
+      color: #47358f;
+    }
+    .feature-pill.power {
+      background: #fff6e6;
+      border-color: #efd49a;
+      color: #7a4c00;
+    }
+    .feature-pill.form {
+      background: #edf7f7;
+      border-color: #c8e4e4;
+      color: #0d5961;
+    }
+    .feature-pill.warn {
+      background: #fff0ea;
+      border-color: #f2c5b2;
+      color: #9a3a13;
+    }
+    .memory-cell,
+    .power-cell,
+    .engine-cell,
+    .bandwidth-cell,
+    .form-cell {
+      display: grid;
+      gap: 4px;
+    }
+    .memory-main,
+    .power-main,
+    .engine-main,
+    .bandwidth-main {
+      color: #102a43;
+      font-weight: 800;
+    }
+    .memory-main.memory-xl { color: #08733f; }
+    .memory-main.memory-lg { color: #075fbc; }
+    .memory-main.memory-mid { color: #183b6b; }
+    .cell-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: #edf2ff;
+      color: #244c9a;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+    .compare-bar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 12px 0;
+      padding: 12px 14px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .compare-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .compare-count {
+      font-weight: 700;
+      color: #0d5532;
+    }
+    button {
+      border: 1px solid #bfc8d6;
+      background: #ffffff;
+      color: var(--text);
+      padding: 7px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+    }
+    button:hover { background: #f1f4f8; }
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+    button.primary:hover { background: #086b3b; }
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    .select-cell {
+      text-align: center;
+      width: 54px;
+    }
+    .compare-check {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+    tr.is-selected {
+      background: #f0fbf5 !important;
+      outline: 2px solid #8fd5ae;
+      outline-offset: -2px;
+    }
+    tr.is-hidden-by-compare {
+      display: none;
+    }
+    tr.is-hidden-by-level {
+      display: none;
+    }
+    .compare-panel {
+      display: none;
+      margin: 14px 0 24px;
+    }
+    .compare-panel.is-visible {
+      display: block;
+    }
+    .compare-panel table {
+      min-width: 960px;
+    }
+    .empty-compare {
+      background: #fff9e8;
+      border: 1px solid #efd489;
+      color: #665011;
+      padding: 10px 12px;
+    }
+    .hevc-shop {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 16px;
+      margin: 12px 0 22px;
+    }
+    .hevc-shop-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .hevc-shop-head p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .hevc-shop-result {
+      min-width: 132px;
+      text-align: right;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hevc-shop-result strong {
+      display: block;
+      color: #0d5532;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+    .hevc-controls {
+      display: grid;
+      grid-template-columns: minmax(220px, 1.4fr) repeat(6, minmax(138px, 1fr));
+      gap: 10px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+    .hevc-control {
+      display: grid;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .hevc-control input,
+    .hevc-control select {
+      width: 100%;
+      min-height: 34px;
+      border: 1px solid #bfc8d6;
+      border-radius: 4px;
+      background: #ffffff;
+      color: var(--text);
+      padding: 6px 8px;
+      font: inherit;
+      font-size: 13px;
+    }
+    .hevc-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 4px 0 14px;
+    }
+    .hevc-checks label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 32px;
+      border: 1px solid var(--line);
+      background: #fbfcfd;
+      padding: 5px 9px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .hevc-shelf-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .hevc-shelf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 12px;
+    }
+    .hevc-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 124px minmax(0, 1fr);
+      gap: 12px;
+      min-height: 230px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 12px;
+    }
+    .hevc-card.is-compared {
+      border-color: #79c99a;
+      box-shadow: inset 0 0 0 1px #79c99a;
+    }
+    .hevc-rank {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1;
+      background: #202a37;
+      color: #ffffff;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .hevc-media {
+      display: grid;
+      align-content: center;
+      min-height: 116px;
+      border: 1px solid #e6e9ef;
+      background: #ffffff;
+      padding: 8px;
+    }
+    .hevc-media img {
+      width: 100%;
+      height: 92px;
+      object-fit: contain;
+      display: block;
+    }
+    .hevc-title {
+      min-height: 42px;
+      font-weight: 800;
+      line-height: 1.35;
+      color: #122033;
+    }
+    .hevc-price {
+      margin-top: 4px;
+      color: #a03c10;
+      font-weight: 800;
+    }
+    .hevc-score {
+      display: grid;
+      gap: 5px;
+      margin: 9px 0;
+    }
+    .hevc-score-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .hevc-score-top strong {
+      color: #0d5532;
+      font-size: 18px;
+    }
+    .hevc-score-bar {
+      height: 6px;
+      background: #e7ebf2;
+      overflow: hidden;
+    }
+    .hevc-score-bar span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+    }
+    .hevc-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .hevc-spec {
+      border: 1px solid #e2e7ef;
+      background: #fbfcfd;
+      padding: 6px 7px;
+      min-height: 47px;
+    }
+    .hevc-spec span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.2;
+    }
+    .hevc-spec strong {
+      display: block;
+      color: #18202c;
+      font-size: 13px;
+      line-height: 1.25;
+      margin-top: 2px;
+    }
+    .hevc-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin: 9px 0;
+    }
+    .hevc-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .hevc-card-actions a,
+    .hevc-card-actions button {
+      min-height: 32px;
+    }
+    .hevc-card-actions a {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #bfc8d6;
+      padding: 6px 10px;
+      color: var(--text);
+      font-size: 13px;
+    }
+    .hevc-card-advice {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .hevc-card-test-summary {
+      margin: 6px 0 0;
+      color: #0b4f8a;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .hevc-empty {
+      grid-column: 1 / -1;
+      border: 1px solid #efd489;
+      background: #fff9e8;
+      color: #665011;
+      padding: 14px;
+    }
+    .view-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+    .view-btn.is-active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+    body.compact-view #gpuTable {
+      min-width: 0;
+      table-layout: fixed;
+      font-size: 12px;
+    }
+    body.compact-view #gpuTable th,
+    body.compact-view #gpuTable td {
+      padding: 8px 7px;
+    }
+    body.compact-view #gpuTable th:nth-child(1),
+    body.compact-view #gpuTable td:nth-child(1) { width: 42px; }
+    body.compact-view #gpuTable th:nth-child(2),
+    body.compact-view #gpuTable td:nth-child(2) { width: 96px; }
+    body.compact-view #gpuTable th:nth-child(3),
+    body.compact-view #gpuTable td:nth-child(3) { width: 185px; }
+    body.compact-view #gpuTable th:nth-child(4),
+    body.compact-view #gpuTable td:nth-child(4) { width: 76px; }
+    body.compact-view #gpuTable th:nth-child(7),
+    body.compact-view #gpuTable td:nth-child(7) { width: 108px; }
+    body.compact-view #gpuTable th:nth-child(9),
+    body.compact-view #gpuTable td:nth-child(9) { width: 62px; }
+    body.compact-view #gpuTable th:nth-child(10),
+    body.compact-view #gpuTable td:nth-child(10) { width: 130px; }
+    body.compact-view #gpuTable th:nth-child(11),
+    body.compact-view #gpuTable td:nth-child(11) { width: 210px; }
+    body.compact-view #gpuTable th:nth-child(12),
+    body.compact-view #gpuTable td:nth-child(12) { width: 180px; }
+    body.compact-view #gpuTable th:nth-child(16),
+    body.compact-view #gpuTable td:nth-child(16) { width: 122px; }
+    body.compact-view #gpuTable th:nth-child(17),
+    body.compact-view #gpuTable td:nth-child(17) { width: auto; }
+    body.compact-view #gpuTable th:nth-child(5),
+    body.compact-view #gpuTable td:nth-child(5),
+    body.compact-view #gpuTable th:nth-child(6),
+    body.compact-view #gpuTable td:nth-child(6),
+    body.compact-view #gpuTable th:nth-child(8),
+    body.compact-view #gpuTable td:nth-child(8),
+    body.compact-view #gpuTable th:nth-child(13),
+    body.compact-view #gpuTable td:nth-child(13),
+    body.compact-view #gpuTable th:nth-child(14),
+    body.compact-view #gpuTable td:nth-child(14),
+    body.compact-view #gpuTable th:nth-child(15),
+    body.compact-view #gpuTable td:nth-child(15) {
+      display: none;
+    }
+    body.compact-view .product-img {
+      width: 82px;
+      height: 58px;
+    }
+    body.compact-view .model {
+      min-width: 0;
+    }
+    body.compact-view .memory-cell .cell-highlights,
+    body.compact-view .engine-cell .cell-highlights,
+    body.compact-view .power-cell .cell-highlights,
+    body.compact-view .bandwidth-cell .cell-highlights {
+      display: none;
+    }
+    body.compact-view .table-wrap {
+      overflow-x: visible;
+    }
+    @media (min-width: 2200px) {
+      header { padding: 32px 48px; }
+      main { padding-left: 48px; padding-right: 48px; }
+      table { font-size: 14px; min-width: 0; }
+      th, td { padding: 11px 12px; }
+      .product-img { width: 150px; height: 96px; }
+      .model { min-width: 210px; }
+      .summary-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .level-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .hevc-controls { grid-template-columns: minmax(260px, 1.4fr) repeat(7, minmax(150px, 1fr)); }
+      .hevc-shelf-grid { grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); }
+    }
+    @media (max-width: 1500px) {
+      body:not(.full-view) #gpuTable {
+        min-width: 0;
+        table-layout: fixed;
+        font-size: 12px;
+      }
+      body:not(.full-view) #gpuTable th,
+      body:not(.full-view) #gpuTable td {
+        padding: 8px 7px;
+      }
+      body:not(.full-view) #gpuTable th:nth-child(1),
+      body:not(.full-view) #gpuTable td:nth-child(1) { width: 42px; }
+      body:not(.full-view) #gpuTable th:nth-child(2),
+      body:not(.full-view) #gpuTable td:nth-child(2) { width: 96px; }
+      body:not(.full-view) #gpuTable th:nth-child(3),
+      body:not(.full-view) #gpuTable td:nth-child(3) { width: 185px; }
+      body:not(.full-view) #gpuTable th:nth-child(4),
+      body:not(.full-view) #gpuTable td:nth-child(4) { width: 76px; }
+      body:not(.full-view) #gpuTable th:nth-child(7),
+      body:not(.full-view) #gpuTable td:nth-child(7) { width: 108px; }
+      body:not(.full-view) #gpuTable th:nth-child(9),
+      body:not(.full-view) #gpuTable td:nth-child(9) { width: 62px; }
+      body:not(.full-view) #gpuTable th:nth-child(10),
+      body:not(.full-view) #gpuTable td:nth-child(10) { width: 130px; }
+      body:not(.full-view) #gpuTable th:nth-child(11),
+      body:not(.full-view) #gpuTable td:nth-child(11) { width: 210px; }
+      body:not(.full-view) #gpuTable th:nth-child(12),
+      body:not(.full-view) #gpuTable td:nth-child(12) { width: 180px; }
+      body:not(.full-view) #gpuTable th:nth-child(16),
+      body:not(.full-view) #gpuTable td:nth-child(16) { width: 122px; }
+      body:not(.full-view) #gpuTable th:nth-child(17),
+      body:not(.full-view) #gpuTable td:nth-child(17) { width: auto; }
+      body:not(.full-view) #gpuTable th:nth-child(5),
+      body:not(.full-view) #gpuTable td:nth-child(5),
+      body:not(.full-view) #gpuTable th:nth-child(6),
+      body:not(.full-view) #gpuTable td:nth-child(6),
+      body:not(.full-view) #gpuTable th:nth-child(8),
+      body:not(.full-view) #gpuTable td:nth-child(8),
+      body:not(.full-view) #gpuTable th:nth-child(13),
+      body:not(.full-view) #gpuTable td:nth-child(13),
+      body:not(.full-view) #gpuTable th:nth-child(14),
+      body:not(.full-view) #gpuTable td:nth-child(14),
+      body:not(.full-view) #gpuTable th:nth-child(15),
+      body:not(.full-view) #gpuTable td:nth-child(15) {
+        display: none;
+      }
+      body:not(.full-view) .product-img {
+        width: 82px;
+        height: 58px;
+      }
+      body:not(.full-view) .model {
+        min-width: 0;
+      }
+      body:not(.full-view) .memory-cell .cell-highlights,
+      body:not(.full-view) .engine-cell .cell-highlights,
+      body:not(.full-view) .power-cell .cell-highlights,
+      body:not(.full-view) .bandwidth-cell .cell-highlights {
+        display: none;
+      }
+      body:not(.full-view) .table-wrap {
+        overflow-x: visible;
+      }
+      .hevc-controls {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    .level-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 16px;
+      margin: 16px 0 22px;
+    }
+    .level-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .level-btn.is-active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+    .level-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .level-card {
+      border: 1px solid var(--line);
+      background: #fbfcfd;
+      padding: 12px;
+    }
+    .level-card h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+    .level-card p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0 22px;
+    }
+    .summary-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+    }
+    .summary-card strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    ul { margin: 8px 0 0 20px; padding: 0; }
+    @media (max-width: 900px) {
+      header { padding: 22px 18px; }
+      main { padding: 18px 14px 32px; }
+      .summary-grid { grid-template-columns: 1fr; }
+      .level-grid { grid-template-columns: 1fr; }
+      .hevc-shop-head,
+      .hevc-shelf-summary {
+        display: block;
+      }
+      .hevc-shop-result {
+        margin-top: 10px;
+        text-align: left;
+      }
+      .hevc-controls {
+        grid-template-columns: 1fr;
+      }
+      .hevc-card {
+        grid-template-columns: 104px minmax(0, 1fr);
+      }
+      .hevc-spec-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 { font-size: 23px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>丽台 NVIDIA RTX 专业图形卡近五年对比</h1>
+    <p>范围：以 2021-2026 年丽台官网 RTX A / RTX Ada / RTX PRO Blackwell 专业图形卡为主，并补入 RTX A6000 作为 RTX A 系列起点参考。</p>
+  </header>
+
+  <main>
+    <section class="sync-panel is-warn" id="syncPanel" aria-live="polite">
+      <div class="sync-status"><span class="sync-dot"></span><span id="syncStatusText">企业文档同步未连接</span></div>
+      <div id="syncStatusMeta">等待 data/gpu-test-results.json 生成后自动读取。</div>
+    </section>
+
+    <section class="note">
+      <p><strong>口径说明：</strong>型号参数只读取丽台官网产品页，包括 CUDA / Tensor / RT、显存、带宽、功耗、总线、显示接口和外形规格。市场价格来自 2026-04-29 前后公开电商与报价站样本，丽台官网不公开零售价，因此价格仅作预算参考。</p>
+      <div class="chips">
+        <span class="chip">规格来源：Leadtek / Leadtek 中国官网</span>
+        <span class="chip">价格口径：公开市场参考价</span>
+        <span class="chip">货源差异：行货/工包/含税/保修会明显影响成交价</span>
+      </div>
+    </section>
+
+    <section class="summary-grid" aria-label="采购摘要">
+      <div class="summary-card">
+        <strong>AI / 大模型优先</strong>
+        <span class="muted">RTX PRO 6000 Blackwell、RTX PRO 5000 48GB / 72GB、RTX 6000 Ada、RTX 5880 Ada。</span>
+      </div>
+      <div class="summary-card">
+        <strong>渲染 / 高端设计</strong>
+        <span class="muted">RTX PRO 4500 Blackwell、RTX PRO 4000 Blackwell、RTX 5000 Ada、RTX 4500 Ada。</span>
+      </div>
+      <div class="summary-card">
+        <strong>小机箱 / 低功耗</strong>
+        <span class="muted">RTX PRO 4000 Blackwell SFF、RTX PRO 2000 Blackwell、RTX 4000 SFF Ada、RTX 2000 Ada。</span>
+      </div>
+      <div class="summary-card">
+        <strong>入门专业卡</strong>
+        <span class="muted">RTX A1000、RTX A400、RTX A2000 6GB / 12GB，适合 CAD、多屏和轻量 3D。</span>
+      </div>
+    </section>
+
+    <h2>视频编解码服务器选型</h2>
+    <section class="note">
+      <p><strong>针对视频服务器：</strong>不要只按 CUDA 核心或显存买卡。转码、直播、多路解码、云剪辑、代理文件生成这类场景，第一优先级是 NVENC/NVDEC 引擎数量和编解码格式支持，其次才是显存和 CUDA 性能。</p>
+      <p><strong>关键结论：</strong>新采购优先 Blackwell。NVIDIA 官方 Video Encode/Decode Support Matrix 显示，Blackwell 专业卡的 H.265/HEVC 硬解覆盖 4:2:0 / 4:2:2 / 4:4:4 8/10/12-bit；Ada 与 Ampere 支持 HEVC 4:2:0 / 4:4:4 8/10/12-bit，但不支持 HEVC 4:2:2 硬解。做视频服务器时，4:2:2 源优先 Blackwell。</p>
+      <p><strong>视频格式来源：</strong>编解码格式支持以 <a href="https://developer.nvidia.com/video-encode-decode-support-matrix">NVIDIA Video Encode/Decode Support Matrix</a> 为准；H.265 分辨率上限参考 <a href="https://docs.nvidia.com/video-technologies/video-codec-sdk/13.0/nvdec-video-decoder-api-prog-guide/index.html">NVIDIA NVDEC Video Decoder API Programming Guide</a>；单卡基础硬件参数仍以丽台官网产品页为准。</p>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>推荐级别</th>
+            <th>型号</th>
+            <th>NVENC / NVDEC / JPEG</th>
+            <th>视频能力判断</th>
+            <th>功耗/形态</th>
+            <th>适合场景</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>旗舰高密度</strong></td>
+            <td class="model">RTX PRO 6000 Blackwell Workstation / Max-Q</td>
+            <td>4x / 4x / 4x</td>
+            <td>Blackwell，适合 H.264 / HEVC / AV1 以及 4:2:2 工作流；Max-Q 用 300W 换更好的机箱密度。</td>
+            <td>600W 或 300W，双槽</td>
+            <td>多路 4K/8K 转码、云剪辑、视频 AI 混合负载、预算充足的主服务器。</td>
+          </tr>
+          <tr>
+            <td><strong>优先推荐</strong></td>
+            <td class="model">RTX PRO 5000 Blackwell 48GB / 72GB</td>
+            <td>3x / 3x / 1x</td>
+            <td>48GB / 72GB 显存版本均为 3 组编解码引擎；纯视频吞吐主要看 NVENC/NVDEC 数量，72GB 更偏大模型和大数据集。</td>
+            <td>300W，全高全长双槽</td>
+            <td>大多数专业视频服务器的首选位：多路转码、AV1 输出、4:2:2 素材处理。</td>
+          </tr>
+          <tr>
+            <td><strong>性价比主力</strong></td>
+            <td class="model">RTX PRO 4500 / 4000 Blackwell</td>
+            <td>2x / 2x / 1x</td>
+            <td>同样具备 Blackwell 视频新特性，吞吐低于 5000，但单卡价格明显低。</td>
+            <td>200W 或 140W；4500 双槽，4000 单槽</td>
+            <td>中等规模转码节点；RTX PRO 4000 Blackwell 单槽适合多卡密度。</td>
+          </tr>
+          <tr>
+            <td><strong>低功耗多卡</strong></td>
+            <td class="model">RTX PRO 4000 Blackwell SFF</td>
+            <td>2x / 2x / 1x</td>
+            <td>70W 级别保留 2 组 NVENC，单瓦编解码密度非常好。</td>
+            <td>70W，半高双槽</td>
+            <td>1U/2U 小机箱、多卡低功耗转码、边缘视频节点。</td>
+          </tr>
+          <tr>
+            <td><strong>入门 Blackwell</strong></td>
+            <td class="model">RTX PRO 2000 Blackwell</td>
+            <td>1x / 1x / 1x</td>
+            <td>支持 Blackwell 的 4:2:2 与 AV1 能力，但编码引擎数量只有 1 组，适合轻量节点。</td>
+            <td>70W，半高双槽</td>
+            <td>轻量转码、少路数视频节点、需要 4:2:2 但预算有限的项目。</td>
+          </tr>
+          <tr>
+            <td><strong>可用但非新购首选</strong></td>
+            <td class="model">RTX 6000 / 5880 Ada</td>
+            <td>3x / 3x / -</td>
+            <td>Ada 支持 AV1 编码/解码，适合 4:2:0 主流视频；4:2:2 工作流不如 Blackwell。</td>
+            <td>300W / 285W，双槽</td>
+            <td>已有 Ada 库存、以 H.264/HEVC/AV1 4:2:0 为主的转码服务器。</td>
+          </tr>
+          <tr>
+            <td><strong>预算方案</strong></td>
+            <td class="model">RTX 5000 / 4500 / 4000 Ada，RTX 4000 SFF Ada</td>
+            <td>2x / 2x / -</td>
+            <td>Ada 的 2 组 NVENC/NVDEC 适合常规转码；新项目要对比 RTX PRO 4000 Blackwell 报价。</td>
+            <td>250W / 210W / 130W / 70W</td>
+            <td>常规 1080p/4K 转码、代理生成、轻量云剪辑节点。</td>
+          </tr>
+          <tr>
+            <td><strong>不建议做主力</strong></td>
+            <td class="model">RTX A 系列 / RTX 2000 Ada / RTX A1000 / RTX A400</td>
+            <td>多为 1x 编码级别</td>
+            <td>适合显示、CAD 或轻量视频任务；RTX A1000/A400 的编码并发限制更明显，高并发转码会很快受限。</td>
+            <td>50W-300W，型号差异大</td>
+            <td>少量转码、预览、办公多屏、存量设备复用。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>按你们用途的建议</h2>
+    <ul>
+      <li><strong>如果要新采购视频服务器：</strong>优先问 RTX PRO 5000 Blackwell、RTX PRO 4000 Blackwell、RTX PRO 4000 Blackwell SFF。它们在编解码能力、功耗、价格之间最容易做平衡。</li>
+      <li><strong>如果并发路数很多：</strong>不要默认买一张最贵卡。多张 RTX PRO 4000 Blackwell 或 RTX PRO 4000 Blackwell SFF 可能在 NVENC 数量、散热和冗余上更合适。</li>
+      <li><strong>如果素材有广播/专业相机 10-bit 4:2:2：</strong>优先 Blackwell；Ada/Ampere 不作为新主力。</li>
+      <li><strong>如果只是 H.264/H.265/AV1 4:2:0 转码：</strong>Ada 仍可用，库存价足够低时可以考虑；但新购仍建议优先 Blackwell。</li>
+    </ul>
+
+    <h2>视频解码排障与选型参数清单</h2>
+    <section class="note">
+      <p><strong>现场判断口径：</strong>不要只看“支持 HEVC”。专业卡做视频解码时，要同时看编解码单元、Profile / 位深 / 色度格式、最大分辨率、实际 API 路径、输出 surface、多显卡显示环境、驱动版本和并发稳定性。</p>
+      <p><strong>本次案例：</strong>测试视频为 HEVC Main、8-bit、4:2:0、7020x1800@25fps。现场 Ada 专业卡上 NVDEC / CUDA / D3D11VA 全片通过；DXVA2 在远程 SSH 会话里报 <code>Failed to create Direct3D device</code>，更像是 DXVA2/D3D9 设备创建或显示适配器选择问题，不是视频码流问题。</p>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>参数维度</th>
+            <th>需要记录/确认的项目</th>
+            <th>为什么重要</th>
+            <th>常见排查方法</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>解码器代际与数量</strong></td>
+            <td>NVDEC / Video Decode Engine 代际、数量；必要时同时看 NVENC 数量。</td>
+            <td>多路解码吞吐主要受独立视频解码单元影响，不等同于 CUDA 核心数或显存容量。</td>
+            <td>查 NVIDIA Video Encode/Decode Support Matrix；运行 <code>nvidia-smi dmon -s u</code> 观察 decoder 占用。</td>
+          </tr>
+          <tr>
+            <td><strong>Codec 细分能力</strong></td>
+            <td>H.264、HEVC、AV1、VP9；HEVC Main / Main10 / Main12；8/10/12-bit；4:2:0 / 4:2:2 / 4:4:4。</td>
+            <td>“支持 HEVC”不代表所有 HEVC 都能硬解。Ada/Ampere 通常不支持 HEVC 4:2:2 硬解，Blackwell 才适合新建 4:2:2 工作流。</td>
+            <td>用 <code>ffprobe</code> 看 <code>profile</code>、<code>pix_fmt</code>、<code>level</code>；用官方矩阵核对色度和位深。</td>
+          </tr>
+          <tr>
+            <td><strong>最大分辨率与吞吐</strong></td>
+            <td>最大宽高、最大 luma samples、目标帧率、码率、并发路数。</td>
+            <td>单路 8K 可解不代表多路 4K/8K 稳定；非常规宽高也可能触发软件白名单或 API 兼容问题。</td>
+            <td>用真实素材跑全片测试；记录 <code>width</code>、<code>height</code>、<code>coded_width</code>、<code>coded_height</code>、<code>fps</code>。</td>
+          </tr>
+          <tr>
+            <td><strong>实际 API 路径</strong></td>
+            <td>NVDEC / CUVID、CUDA hwaccel、D3D11VA、DXVA2、Media Foundation、DirectShow。</td>
+            <td>同一张卡可能 NVDEC、CUDA、D3D11VA 都通过，但 DXVA2 失败。软件实际调用哪条路径决定现场结果。</td>
+            <td>分别跑 <code>hevc_cuvid</code>、<code>-hwaccel cuda</code>、<code>-hwaccel d3d11va</code>、<code>-hwaccel dxva2</code> 对照。</td>
+          </tr>
+          <tr>
+            <td><strong>输出 surface 格式</strong></td>
+            <td>NV12、P010、P016、YUV444、D3D11 surface、CUDA surface、是否回读 CPU 内存。</td>
+            <td>解码成功只是第一步。后续渲染、合成、转码是否零拷贝，会明显影响性能和延迟。</td>
+            <td>测试 <code>-hwaccel_output_format d3d11</code> 或 <code>-hwaccel_output_format cuda</code>，确认硬件帧路径能跑通。</td>
+          </tr>
+          <tr>
+            <td><strong>多显卡与显示环境</strong></td>
+            <td>独显、核显、远控虚拟显示器、HDMI 虚拟头、Windows 图形设置里的高性能 GPU 指定。</td>
+            <td>DXVA2/D3D9 特别容易受显示设备影响；远控软件和虚拟显示驱动可能导致 Direct3D 设备创建失败或选错 adapter。</td>
+            <td>用 <code>Get-CimInstance Win32_VideoController</code> 看所有显示适配器；本地显示器/虚拟头环境下复测。</td>
+          </tr>
+          <tr>
+            <td><strong>驱动与软件版本</strong></td>
+            <td>NVIDIA Studio / Production 驱动、WDDM、软件内置 FFmpeg/SDK/DirectShow/Media Foundation 版本。</td>
+            <td>旧驱动、旧 SDK 或软件硬编码白名单，会让硬件明明支持却不走硬解。</td>
+            <td>记录 <code>nvidia-smi</code> 驱动版本；升级驱动后复测；向软件方提供 FFmpeg 对照结果。</td>
+          </tr>
+          <tr>
+            <td><strong>并发、延迟与稳定性</strong></td>
+            <td>decoder utilization、显存占用、PCIe 传输、温度功耗、长时间播放、切片/GOP 跳转。</td>
+            <td>短样本能打开不代表生产稳定。多路、长时间、频繁 seek 更容易暴露吞吐和资源回收问题。</td>
+            <td>用全片和多路样本压测；同时看 <code>nvidia-smi dmon</code>、任务管理器 GPU Video Decode、应用日志。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>不同架构视频能力差异</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>架构</th>
+            <th>代表型号</th>
+            <th>视频编码定位</th>
+            <th>H.265/HEVC 硬解规格</th>
+            <th>AV1 能力</th>
+            <th>4:2:2 能力</th>
+            <th>视频服务器建议</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Blackwell</strong><br><span class="muted">布莱克韦尔架构</span></td>
+            <td>RTX PRO 6000 / 5000 / 4500 / 4000 / 2000 Blackwell</td>
+            <td>第 9 代 NVENC，适合新建转码和云剪辑服务器。</td>
+            <td>第 6 代 NVDEC；HEVC 4:2:0 / 4:2:2 / 4:4:4 的 8/10/12-bit 均支持硬解。</td>
+            <td>支持 AV1 编码和解码，适合新一代低码率分发。</td>
+            <td>支持 H.264 / HEVC 4:2:2 硬件编解码，适合广播、专业相机、后期制作素材。</td>
+            <td>新采购首选。优先按 NVENC/NVDEC 数量、功耗和槽位密度选型号。</td>
+          </tr>
+          <tr>
+            <td><strong>Ada Lovelace</strong><br><span class="muted">艾达·洛夫莱斯架构</span></td>
+            <td>RTX 6000 Ada / 5880 Ada / 5000 Ada / 4500 Ada / 4000 Ada / 2000 Ada</td>
+            <td>第 8 代 NVENC，常规 H.264 / HEVC / AV1 转码表现好。</td>
+            <td>第 5 代 NVDEC；HEVC 4:2:0 / 4:4:4 的 8/10/12-bit 支持硬解；HEVC 4:2:2 不支持硬解。</td>
+            <td>支持 AV1 编码和解码。</td>
+            <td>不支持 Blackwell 级别的 H.264 / HEVC 4:2:2 硬件编解码能力。</td>
+            <td>已有库存或报价明显低时可用；新项目建议对比 Blackwell。</td>
+          </tr>
+          <tr>
+            <td><strong>Ampere</strong><br><span class="muted">安培架构</span></td>
+            <td>RTX A6000 / A5500 / A5000 / A4500 / A4000 / A2000 6GB / 12GB / A1000 / A400</td>
+            <td>较老一代 NVENC；适合存量项目和轻量转码。</td>
+            <td>第 5 代 NVDEC；HEVC 4:2:0 / 4:4:4 的 8/10/12-bit 支持硬解；HEVC 4:2:2 不支持硬解。</td>
+            <td>RTX A 系列可做 AV1 8/10-bit 硬解，但不支持 AV1 硬件编码。</td>
+            <td>不支持 H.264 / HEVC 4:2:2 硬件编解码。</td>
+            <td>只建议低价库存、显示/CAD 兼用、少路数视频任务。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>视频服务器专项对比</h2>
+    <section class="hevc-shop" aria-label="视频服务器专项筛选排序">
+      <div class="hevc-shop-head">
+        <div>
+          <strong>按视频编解码综合能力默认排序</strong>
+          <p>类似电商筛选：先看 H.265/HEVC、AV1、NVENC/NVDEC、显存、功耗和预算，再跳回完整表格核对丽台官网规格。</p>
+        </div>
+        <div class="hevc-shop-result">
+          <strong id="hevcResultCount">0</strong>
+          <span>款符合条件</span>
+        </div>
+      </div>
+      <div class="hevc-controls">
+        <label class="hevc-control">
+          搜索型号
+          <input id="hevcSearch" type="search" placeholder="例如 4000 / Blackwell / A2000">
+        </label>
+        <label class="hevc-control">
+          排序
+          <select id="hevcSort">
+            <option value="score">综合能力优先</option>
+            <option value="nvdec">NVDEC 解码多优先</option>
+            <option value="nvenc">NVENC 编码多优先</option>
+            <option value="memory">显存容量高优先</option>
+            <option value="power">低功耗优先</option>
+            <option value="price">预算价低优先</option>
+            <option value="year">发布时间新优先</option>
+          </select>
+        </label>
+        <label class="hevc-control">
+          级别
+          <select id="hevcLevel">
+            <option value="all">全部级别</option>
+            <option value="6000">6000 级</option>
+            <option value="5000">5000 级</option>
+            <option value="4000">4000/4500 级</option>
+            <option value="2000">2000 级</option>
+            <option value="1000">1000 / A400</option>
+          </select>
+        </label>
+        <label class="hevc-control">
+          架构
+          <select id="hevcArch">
+            <option value="all">全部架构</option>
+            <option value="Blackwell">Blackwell</option>
+            <option value="Ada">Ada Lovelace</option>
+            <option value="Ampere">Ampere</option>
+          </select>
+        </label>
+        <label class="hevc-control">
+          最少 NVDEC
+          <select id="hevcMinNvdec">
+            <option value="0">不限</option>
+            <option value="1">1 组以上</option>
+            <option value="2">2 组以上</option>
+            <option value="3">3 组以上</option>
+            <option value="4">4 组以上</option>
+          </select>
+        </label>
+        <label class="hevc-control">
+          最少显存
+          <select id="hevcMinMemory">
+            <option value="0">不限</option>
+            <option value="12">12GB 以上</option>
+            <option value="16">16GB 以上</option>
+            <option value="24">24GB 以上</option>
+            <option value="48">48GB 以上</option>
+            <option value="72">72GB 以上</option>
+          </select>
+        </label>
+        <label class="hevc-control">
+          最高功耗
+          <select id="hevcMaxPower">
+            <option value="999">不限</option>
+            <option value="75">75W 以内</option>
+            <option value="150">150W 以内</option>
+            <option value="250">250W 以内</option>
+            <option value="300">300W 以内</option>
+          </select>
+        </label>
+      </div>
+      <div class="hevc-checks">
+        <label><input id="hevcNeed422" type="checkbox"> 需要 H.265 4:2:2 硬解</label>
+        <label><input id="hevcNeedAv1" type="checkbox"> 需要 AV1 硬件编码输出</label>
+        <label><input id="hevcLowPower" type="checkbox"> 优先低功耗/小机箱</label>
+        <label><input id="hevcHideWeak" type="checkbox"> 隐藏不建议做主力</label>
+      </div>
+      <div class="hevc-shelf-summary">
+        <span id="hevcSortNote">当前按视频服务器综合能力排序。</span>
+        <button type="button" id="hevcReset">重置筛选</button>
+      </div>
+      <div class="hevc-shelf-grid" id="hevcShelf"></div>
+    </section>
+
+    <h2>HEVC 解码与并发关注点</h2>
+    <section class="note">
+      <p><strong>HEVC 解码不是只看“支持/不支持”。</strong>视频服务器还要看 NVDEC 引擎数量、HEVC 位深、色度采样、目标分辨率、帧率、码率、是否同时做缩放/滤镜/AI 处理。本表每个型号的 H.265 硬解规格按 NVIDIA 官方专业卡 NVDEC 矩阵整理。</p>
+      <p><strong>H.265 分辨率限制：</strong>本表这些 RTX A / RTX Ada / RTX PRO Blackwell 专业卡，H.265/HEVC 单路最大解码尺寸按 8192x8192 理解；同型号不同显存版本不会改变这个上限。实际能同时解几路 4K/8K，主要看 NVDEC 数量、码流复杂度、帧率、码率和后处理链路。</p>
+      <p><strong>你们如果有 10-bit 或 12-bit 4:2:2 HEVC 源：</strong>优先 Blackwell。若主要是 8/10-bit 4:2:0 HEVC，Ada 仍然可用；Ampere 适合低价或存量。</p>
+      <p class="muted">注：RTX PRO 2000 Blackwell 的 NVENC/NVDEC 数量在丽台页面与 NVIDIA 产品页存在差异，本表按 NVIDIA 产品页列 1x/1x，采购前建议向代理确认。</p>
+    </section>
+
+    <h2>同型号不同显存版本</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>型号系列</th>
+            <th>已拆分显存版本</th>
+            <th>H.265 硬解是否变化</th>
+            <th>采购判断</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="model">RTX PRO 5000 48GB Blackwell</td>
+            <td>48GB GDDR7 ECC / 72GB GDDR7 ECC</td>
+            <td>不变：均为 3x NVENC / 3x NVDEC / 1x JPEG；H.265 硬解规格相同。</td>
+            <td>视频服务器纯编解码吞吐差异不大；72GB 主要给本地大模型、大数据集、超大场景和多任务留余量。</td>
+          </tr>
+          <tr>
+            <td class="model">RTX A2000</td>
+            <td>6GB GDDR6 ECC / 12GB GDDR6 ECC</td>
+            <td>不变：均为 1x NVENC / 1x NVDEC；H.265 4:2:0 / 4:4:4 硬解规格相同，不支持 HEVC 4:2:2 硬解。</td>
+            <td>12GB 版更适合多应用、较重时间线和更大的帧缓存；如果只是少路数解码/显示，6GB 版可作为低成本方案。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>英文/缩写速查</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>英文/缩写</th>
+            <th>中文理解</th>
+            <th>选型时怎么看</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Blackwell</strong></td>
+            <td>布莱克韦尔架构</td>
+            <td>新一代 RTX PRO 专业卡架构；视频服务器重点看 H.265 4:2:2、AV1 与 NVENC/NVDEC 数量。</td>
+          </tr>
+          <tr>
+            <td><strong>Ada Lovelace</strong></td>
+            <td>艾达·洛夫莱斯架构</td>
+            <td>上一代 RTX Ada 专业卡架构；适合常规 H.264/H.265/AV1 4:2:0 转码。</td>
+          </tr>
+          <tr>
+            <td><strong>Ampere</strong></td>
+            <td>安培架构</td>
+            <td>RTX A 系列常见架构；适合存量项目、显示/CAD 和轻量视频任务。</td>
+          </tr>
+          <tr>
+            <td><strong>CUDA</strong></td>
+            <td>通用计算核心</td>
+            <td>影响渲染、AI 推理、滤镜、后处理等计算能力；纯编解码不要只看 CUDA。</td>
+          </tr>
+          <tr>
+            <td><strong>Tensor</strong></td>
+            <td>AI 矩阵计算核心</td>
+            <td>影响 AI 超分、识别、推理、生成类负载；视频转码本身主要看 NVENC/NVDEC。</td>
+          </tr>
+          <tr>
+            <td><strong>RT</strong></td>
+            <td>光线追踪核心</td>
+            <td>主要影响 3D 渲染/实时光追，对普通视频解码不是核心指标。</td>
+          </tr>
+          <tr>
+            <td><strong>NVENC</strong></td>
+            <td>NVIDIA 硬件编码引擎</td>
+            <td>决定 H.264/H.265/AV1 等视频输出编码能力，多路转码重点看数量和格式支持。</td>
+          </tr>
+          <tr>
+            <td><strong>NVDEC</strong></td>
+            <td>NVIDIA 硬件解码引擎</td>
+            <td>决定 H.264/H.265/AV1 等视频输入解码能力，多路拉流/转码重点看数量。</td>
+          </tr>
+          <tr>
+            <td><strong>JPEG</strong></td>
+            <td>图片编解码引擎</td>
+            <td>对图片流、缩略图、媒体处理链路有帮助；普通视频转码仍主要看 NVENC/NVDEC。</td>
+          </tr>
+          <tr>
+            <td><strong>HEVC / H.265</strong></td>
+            <td>H.265 视频编码格式</td>
+            <td>常见于 4K/8K、监控、直播和专业视频素材；要同时看位深、色度采样和 NVDEC 数量。</td>
+          </tr>
+          <tr>
+            <td><strong>AV1</strong></td>
+            <td>新一代视频编码格式</td>
+            <td>同画质下通常更省码率；如果要输出 AV1 码流，优先 Ada 或 Blackwell。</td>
+          </tr>
+          <tr>
+            <td><strong>4:2:0 / 4:2:2 / 4:4:4</strong></td>
+            <td>色度采样格式</td>
+            <td>4:2:2 常见于广播和专业相机素材；本表新购优先 Blackwell 的关键原因之一。</td>
+          </tr>
+          <tr>
+            <td><strong>GDDR6 / GDDR7</strong></td>
+            <td>显存代际</td>
+            <td>GDDR7 更新，带宽通常更高；同型号不同显存容量不会改变 H.265 硬解规格。</td>
+          </tr>
+          <tr>
+            <td><strong>bit / GB/s</strong></td>
+            <td>显存位宽 / 显存带宽</td>
+            <td>影响渲染、AI、后处理吞吐；纯视频硬编解码首先看 NVENC/NVDEC。</td>
+          </tr>
+          <tr>
+            <td><strong>PCIe</strong></td>
+            <td>主板扩展总线</td>
+            <td>看主板插槽和带宽兼容性；多卡服务器尤其要关注 x16/x8 和机箱空间。</td>
+          </tr>
+          <tr>
+            <td><strong>DP / mDP</strong></td>
+            <td>DisplayPort / Mini DisplayPort 显示接口</td>
+            <td>主要影响接显示器；视频服务器无显示输出需求时不是主要瓶颈。</td>
+          </tr>
+          <tr>
+            <td><strong>SFF</strong></td>
+            <td>小机箱版</td>
+            <td>半高/短卡形态，适合小机箱和低功耗节点，但要确认散热与槽位。</td>
+          </tr>
+          <tr>
+            <td><strong>Max-Q</strong></td>
+            <td>低功耗版本</td>
+            <td>同级别里用更低功耗换机箱密度和供电压力，性能释放通常低于满功耗版。</td>
+          </tr>
+          <tr>
+            <td><strong>Workstation / Edition / Generation</strong></td>
+            <td>工作站版 / 版本 / 代</td>
+            <td>多为官方型号命名的一部分；选型时重点仍看显存、功耗、NVENC/NVDEC 和价格。</td>
+          </tr>
+          <tr>
+            <td><strong>H / L / XHFL</strong></td>
+            <td>高度 / 长度 / 超高全长规格</td>
+            <td>用于判断机箱兼容性；多卡服务器要同时看槽位宽度、供电和风道。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>完整对比表</h2>
+    <section class="level-panel" aria-label="同级别分类筛选">
+      <h2>同级别分类显示</h2>
+      <p class="muted">按产品数字级别筛选，适合横向比较同档位里的 Blackwell / Ada / Ampere。6000 级偏旗舰，5000 级偏高端，4000/4500 级偏主流专业，2000 级偏入门到主流，1000/A400 属轻量入门。4500 不单独拆类，它是 4000 级里的高配型号。</p>
+      <div class="level-actions">
+        <button type="button" class="level-btn is-active" data-level-filter="all">全部级别</button>
+        <button type="button" class="level-btn" data-level-filter="6000">6000 级</button>
+        <button type="button" class="level-btn" data-level-filter="5000">5000 级</button>
+        <button type="button" class="level-btn" data-level-filter="4000">4000/4500 级</button>
+        <button type="button" class="level-btn" data-level-filter="2000">2000 级</button>
+        <button type="button" class="level-btn" data-level-filter="1000">1000 / A400 入门</button>
+      </div>
+      <div class="level-grid">
+        <div class="level-card">
+          <h3>6000 级</h3>
+          <p>RTX PRO 6000、RTX 6000 Ada、RTX A6000。适合最高并发、大显存和旗舰视频/AI 混合服务器。</p>
+        </div>
+        <div class="level-card">
+          <h3>5000 级</h3>
+          <p>RTX PRO 5000、RTX 5000 Ada、RTX A5000/A5500。高端主力，通常是价格和吞吐的核心比较档。</p>
+        </div>
+        <div class="level-card">
+          <h3>4000/4500 级</h3>
+          <p>RTX PRO 4500/4000、RTX 4500/4000 Ada、RTX A4500/A4000。4500 作为高配款放在同一档，主流专业工作站和转码节点常用。</p>
+        </div>
+        <div class="level-card">
+          <h3>2000 级</h3>
+          <p>RTX PRO 2000、RTX 2000 Ada、RTX A2000 6GB / 12GB。低功耗、轻量转码、边缘节点和基础专业应用。</p>
+        </div>
+        <div class="level-card">
+          <h3>1000 / A400</h3>
+          <p>RTX A1000、RTX A400。偏显示和轻量 CAD，多路视频服务器不建议作为主力。</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="compare-bar" aria-label="勾选对比工具">
+      <div>
+        <span class="compare-count" id="compareCount">已选 0 款</span>
+        <span class="muted">勾选型号后可生成精简对比。</span>
+      </div>
+      <div class="compare-actions">
+        <button type="button" class="view-btn is-active" id="fullViewBtn">完整视图</button>
+        <button type="button" class="view-btn" id="compactViewBtn">紧凑视图</button>
+        <button type="button" class="primary" id="buildCompare" disabled>生成对比</button>
+        <button type="button" id="toggleSelectedOnly" disabled>仅显示已选</button>
+        <button type="button" id="clearCompare" disabled>清空选择</button>
+      </div>
+    </div>
+
+    <section class="compare-panel" id="comparePanel" aria-live="polite">
+      <h2>已选型号精简对比</h2>
+      <div id="compareOutput"></div>
+    </section>
+
+    <div class="table-wrap">
+      <table id="gpuTable">
+        <thead>
+          <tr>
+            <th>对比</th>
+            <th>图片</th>
+            <th>型号</th>
+            <th>代际/时间</th>
+            <th>架构</th>
+            <th>CUDA / Tensor / RT<br><span class="muted">计算 / AI / 光追</span></th>
+            <th>显存</th>
+            <th>位宽 / 带宽</th>
+            <th>功耗</th>
+            <th>NVENC / NVDEC<br><span class="muted">编码 / 解码</span></th>
+            <th>H.265 硬解规格</th>
+            <th>AV1 输出能力</th>
+            <th>总线 / 显示接口</th>
+            <th>外形规格</th>
+            <th>丽台官网规格</th>
+            <th>市场参考价</th>
+            <th>定位建议</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-level="6000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX PRO 6000 Blackwell Workstation Edition"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51028_1M.jpg?V=0" alt="RTX PRO 6000 Blackwell Workstation"></td>
+            <td class="model">RTX PRO 6000 Blackwell Workstation Edition</td>
+            <td><span class="tag">Blackwell</span><br>2025</td>
+            <td>NVIDIA Blackwell</td>
+            <td>24064 / 752 / 188</td>
+            <td>96GB GDDR7 ECC</td>
+            <td>512-bit / 1792GB/s</td>
+            <td>600W</td>
+            <td class="codec-engine">4x NVENC / 4x NVDEC / 4x JPEG</td>
+            <td class="codec-hevc"><div class="codec-block"><span class="codec-title">H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4</span><span class="codec-detail">HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。</span><span class="codec-note">多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 9 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合新建低码率分发和高质量转码。</span></div></td>
+            <td>PCIe 5.0 x16<br>4x DP 2.1</td>
+            <td>5.4" H x 12" L，XHFL 双槽</td>
+            <td><a href="https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_6000_Blackwell_Workstation_Edition%2851028%29/detail">官网页</a></td>
+            <td class="price">约 ￥7.6万-9.3万</td>
+            <td>旗舰工作站、本地大模型、超大场景渲染。</td>
+          </tr>
+          <tr data-level="6000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX PRO 6000 Blackwell Max-Q Workstation Edition"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51029_1M.jpg?V=0" alt="RTX PRO 6000 Blackwell Max-Q"></td>
+            <td class="model">RTX PRO 6000 Blackwell Max-Q Workstation Edition</td>
+            <td><span class="tag">Blackwell</span><br>2025</td>
+            <td>NVIDIA Blackwell</td>
+            <td>24064 / 752 / 188</td>
+            <td>96GB GDDR7 ECC</td>
+            <td>512-bit / 1792GB/s</td>
+            <td>300W</td>
+            <td class="codec-engine">4x NVENC / 4x NVDEC / 4x JPEG</td>
+            <td class="codec-hevc"><div class="codec-block"><span class="codec-title">H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4</span><span class="codec-detail">HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。</span><span class="codec-note">多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 9 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合新建低码率分发和高质量转码。</span></div></td>
+            <td>PCIe 5.0 x16<br>4x DP 2.1</td>
+            <td>4.4" H x 10.5" L，全高全长双槽</td>
+            <td><a href="https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_6000_Blackwell_Max_Q_Workstation_Edition%2851029%29/detail">官网页</a></td>
+            <td class="price">需询价，通常接近旗舰款</td>
+            <td>96GB 显存但功耗受限，更适合多卡/供电受限工作站。</td>
+          </tr>
+          <tr data-level="5000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX PRO 5000 48GB Blackwell"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51049_1M.jpg?V=0" alt="RTX PRO 5000 48GB Blackwell"></td>
+            <td class="model">RTX PRO 5000 48GB Blackwell</td>
+            <td><span class="tag">Blackwell</span><br>2025</td>
+            <td>NVIDIA Blackwell</td>
+            <td>14080 / 440 / 110</td>
+            <td>48GB GDDR7 ECC</td>
+            <td>384-bit / 1344GB/s</td>
+            <td>300W</td>
+            <td class="codec-engine">3x NVENC / 3x NVDEC / 1x JPEG</td>
+            <td class="codec-hevc"><div class="codec-block"><span class="codec-title">H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4</span><span class="codec-detail">HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。</span><span class="codec-note">多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 9 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合新建低码率分发和高质量转码。</span></div></td>
+            <td>PCIe 5.0 x16<br>4x DP 2.1</td>
+            <td>4.4" H x 10.5" L，全高全长双槽</td>
+            <td><a href="https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_5000_Blackwell%2851030%29/detail">官网页</a></td>
+            <td class="price">约 ￥3.5万-4.0万</td>
+            <td>48GB 标准版，视频服务器/云剪辑/AV1 输出更均衡；显存不够再看 72GB。</td>
+          </tr>
+          <tr data-level="5000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX PRO 5000 72GB Blackwell"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51049_1M.jpg?V=0" alt="RTX PRO 5000 72GB Blackwell"></td>
+            <td class="model">RTX PRO 5000 72GB Blackwell</td>
+            <td><span class="tag">Blackwell</span><br>2025-2026</td>
+            <td>NVIDIA Blackwell</td>
+            <td>14080 / 440 / 110</td>
+            <td>72GB GDDR7 ECC</td>
+            <td>384-bit / 1344GB/s</td>
+            <td>300W</td>
+            <td class="codec-engine">3x NVENC / 3x NVDEC / 1x JPEG</td>
+            <td class="codec-hevc"><div class="codec-block"><span class="codec-title">H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4</span><span class="codec-detail">HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。</span><span class="codec-note">多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 9 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合新建低码率分发和高质量转码。</span></div></td>
+            <td>PCIe 5.0 x16<br>4x DP 2.1</td>
+            <td>4.4" H x 10.5" L，全高全长双槽</td>
+            <td><a href="https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_5000_Blackwell%2851030%29/detail">官网页</a></td>
+            <td class="price">国内公开价少，建议询价</td>
+            <td>比 48GB 更偏本地大模型和大数据集，需看实际到货价。</td>
+          </tr>
+          <tr data-level="4000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX PRO 4500 Blackwell"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51031_1M.jpg?V=0" alt="RTX PRO 4500 Blackwell"></td>
+            <td class="model">RTX PRO 4500 Blackwell</td>
+            <td><span class="tag">Blackwell</span><br>2025</td>
+            <td>NVIDIA Blackwell</td>
+            <td>10496 / 328 / 82</td>
+            <td>32GB GDDR7 ECC</td>
+            <td>256-bit / 896GB/s</td>
+            <td>200W</td>
+            <td class="codec-engine">2x NVENC / 2x NVDEC / 1x JPEG</td>
+            <td class="codec-hevc"><div class="codec-block"><span class="codec-title">H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4</span><span class="codec-detail">HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。</span><span class="codec-note">多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 9 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合新建低码率分发和高质量转码。</span></div></td>
+            <td>PCIe 5.0 x16<br>4x DP 2.1</td>
+            <td>4.4" H x 10.5" L，全高全长双槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_4500_Blackwell%2851031%29/detail">官网页</a></td>
+            <td class="price">约 ￥1.75万-1.85万</td>
+            <td>32GB 显存价位甜点，适合设计/渲染/中型 AI。</td>
+          </tr>
+          <tr data-level="4000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX PRO 4000 Blackwell"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51032_1M.jpg?V=0" alt="RTX PRO 4000 Blackwell"></td>
+            <td class="model">RTX PRO 4000 Blackwell</td>
+            <td><span class="tag">Blackwell</span><br>2025</td>
+            <td>NVIDIA Blackwell</td>
+            <td>8960 / 280 / 70</td>
+            <td>24GB GDDR7 ECC</td>
+            <td>192-bit / 672GB/s</td>
+            <td>140W</td>
+            <td class="codec-engine">2x NVENC / 2x NVDEC / 1x JPEG</td>
+            <td class="codec-hevc"><div class="codec-block"><span class="codec-title">H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4</span><span class="codec-detail">HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。</span><span class="codec-note">多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 9 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合新建低码率分发和高质量转码。</span></div></td>
+            <td>PCIe 5.0 x16<br>4x DP 2.1</td>
+            <td>4.4" H x 9.5" L，全高中长单槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_4000_Blackwell%2851032%29/detail">官网页</a></td>
+            <td class="price">约 ￥1.16万-1.5万</td>
+            <td>单槽高性能工作站，兼顾 24GB 显存和装机兼容性。</td>
+          </tr>
+          <tr data-level="4000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX PRO 4000 Blackwell SFF Edition"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51043_1M.jpg?V=0" alt="RTX PRO 4000 Blackwell SFF"></td>
+            <td class="model">RTX PRO 4000 Blackwell SFF Edition</td>
+            <td><span class="tag">Blackwell</span><br>2025</td>
+            <td>NVIDIA Blackwell</td>
+            <td>8960 / 280 / 70</td>
+            <td>24GB GDDR7 ECC</td>
+            <td>192-bit / 432GB/s</td>
+            <td>70W</td>
+            <td class="codec-engine">2x NVENC / 2x NVDEC / 1x JPEG</td>
+            <td class="codec-hevc"><div class="codec-block"><span class="codec-title">H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4</span><span class="codec-detail">HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。</span><span class="codec-note">多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 9 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合新建低码率分发和高质量转码。</span></div></td>
+            <td>PCIe 5.0 x8<br>4x mDP 2.1b</td>
+            <td>2.7" H x 6.6" L，半高半长双槽</td>
+            <td><a href="https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_4000_Blackwell_SFF_Edition%2851043%29/detail">官网页</a></td>
+            <td class="price">公开价少，需询价</td>
+            <td>小机箱、低功耗、24GB 显存刚需。</td>
+          </tr>
+          <tr data-level="2000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX PRO 2000 Blackwell"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51042_1M.jpg?V=0" alt="RTX PRO 2000 Blackwell"></td>
+            <td class="model">RTX PRO 2000 Blackwell</td>
+            <td><span class="tag">Blackwell</span><br>2025</td>
+            <td>NVIDIA Blackwell</td>
+            <td>4352 / 136 / 34</td>
+            <td>16GB GDDR7 ECC</td>
+            <td>128-bit / 288GB/s</td>
+            <td>70W</td>
+            <td class="codec-engine">1x NVENC / 1x NVDEC / 1x JPEG*</td>
+            <td class="codec-hevc"><div class="codec-block"><span class="codec-title">H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4</span><span class="codec-detail">HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。</span><span class="codec-note">多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 9 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合新建低码率分发和高质量转码。</span></div></td>
+            <td>PCIe 5.0 x8<br>4x mDP 2.1b</td>
+            <td>2.7" H x 6.6" L，半高半长双槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_2000_Blackwell%2851042%29/detail">官网页</a></td>
+            <td class="price">约 ￥4999-6800</td>
+            <td>入门 Blackwell 专业卡，适合 CAD、多屏、轻 AI。</td>
+          </tr>
+          <tr data-level="6000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX 6000 Ada Generation"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40949_1M.jpg?V=0" alt="RTX 6000 Ada"></td>
+            <td class="model">RTX 6000 Ada Generation</td>
+            <td><span class="tag">Ada</span><br>2022</td>
+            <td>NVIDIA Ada Lovelace</td>
+            <td>18176 / 568 / 142</td>
+            <td>48GB GDDR6 ECC</td>
+            <td>384-bit / 960GB/s</td>
+            <td>300W</td>
+            <td class="codec-engine">3x NVENC / 3x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 8 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 10.5" L，双宽度</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/nvidia_rtx_6000_ada_generation%2840949%29/detail/search">官网页</a></td>
+            <td class="price">约 ￥5.6万-6.5万</td>
+            <td>上代旗舰，传统图形/渲染稳定，AI 新特性不如 Blackwell。</td>
+          </tr>
+          <tr data-level="5000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX 5880 Ada Generation"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51003_1M.jpg?V=0" alt="RTX 5880 Ada"></td>
+            <td class="model">RTX 5880 Ada Generation</td>
+            <td><span class="tag">Ada</span><br>2024</td>
+            <td>NVIDIA Ada Lovelace</td>
+            <td>14080 / 440 / 110</td>
+            <td>48GB GDDR6 ECC</td>
+            <td>384-bit / 960GB/s</td>
+            <td>285W</td>
+            <td class="codec-engine">3x NVENC / 3x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 8 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 10.5" L，双槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_5880_Ada_Generation%2851003%29/detail">官网页</a></td>
+            <td class="price">约 ￥3.1万-4.2万</td>
+            <td>48GB 显存预算位，适合不追 Blackwell 的大显存需求。</td>
+          </tr>
+          <tr data-level="5000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX 5000 Ada Generation"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40989_1M.jpg?V=0" alt="RTX 5000 Ada"></td>
+            <td class="model">RTX 5000 Ada Generation</td>
+            <td><span class="tag">Ada</span><br>2023</td>
+            <td>NVIDIA Ada Lovelace</td>
+            <td>12800 / 400 / 100</td>
+            <td>32GB GDDR6 ECC</td>
+            <td>256-bit / 576GB/s</td>
+            <td>250W</td>
+            <td class="codec-engine">2x NVENC / 2x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 8 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 10.5" L，双宽度</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_5000_Ada_Generation%2840989%29/detail">官网页</a></td>
+            <td class="price">约 ￥2.45万-3.5万</td>
+            <td>32GB Ada 高端卡，适合成熟软件生态和渲染流程。</td>
+          </tr>
+          <tr data-level="4000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX 4500 Ada Generation"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40990_1M.jpg?V=0" alt="RTX 4500 Ada"></td>
+            <td class="model">RTX 4500 Ada Generation</td>
+            <td><span class="tag">Ada</span><br>2023</td>
+            <td>NVIDIA Ada Lovelace</td>
+            <td>7680 / 240 / 60</td>
+            <td>24GB GDDR6 ECC</td>
+            <td>192-bit / 432GB/s</td>
+            <td>210W</td>
+            <td class="codec-engine">2x NVENC / 2x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 8 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 10.5" L，双槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_4500_Ada_Generation%2840990%29/detail">官网页</a></td>
+            <td class="price">约 ￥1.69万-2.0万</td>
+            <td>24GB 显存的专业设计/渲染卡。</td>
+          </tr>
+          <tr data-level="4000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX 4000 Ada Generation"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40988_1M.jpg?V=0" alt="RTX 4000 Ada"></td>
+            <td class="model">RTX 4000 Ada Generation</td>
+            <td><span class="tag">Ada</span><br>2023</td>
+            <td>NVIDIA Ada Lovelace</td>
+            <td>6144 / 192 / 48</td>
+            <td>20GB GDDR6 ECC</td>
+            <td>160-bit / 360GB/s</td>
+            <td>130W</td>
+            <td class="codec-engine">2x NVENC / 2x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 8 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 9.5" L，单槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_4000_Ada_Generation%2840988%29/detail">官网页</a></td>
+            <td class="price">约 ￥9999-11100</td>
+            <td>单槽设计工作站，兼顾 20GB 显存和装机密度。</td>
+          </tr>
+          <tr data-level="4000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX 4000 SFF Ada Generation"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40974_1M.jpg?V=0" alt="RTX 4000 SFF Ada"></td>
+            <td class="model">RTX 4000 SFF Ada Generation</td>
+            <td><span class="tag">Ada</span><br>2023</td>
+            <td>NVIDIA Ada Lovelace</td>
+            <td>6144 / 192 / 48</td>
+            <td>20GB GDDR6 ECC</td>
+            <td>160-bit / 280GB/s</td>
+            <td>70W</td>
+            <td class="codec-engine">2x NVENC / 2x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 8 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x mDP 1.4</td>
+            <td>2.7" H x 6.6" L，双宽度</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_4000_SFF_Ada_Generation%2840974%29/detail">官网页</a></td>
+            <td class="price">约 ￥9999-10800</td>
+            <td>SFF 机箱、70W 低功耗、多屏设计工作流。</td>
+          </tr>
+          <tr data-level="2000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX 2000 Ada Generation"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51006_1M.jpg?V=0" alt="RTX 2000 Ada"></td>
+            <td class="model">RTX 2000 Ada Generation</td>
+            <td><span class="tag">Ada</span><br>2024</td>
+            <td>NVIDIA Ada Lovelace</td>
+            <td>2816 / 88 / 22</td>
+            <td>16GB GDDR6 ECC</td>
+            <td>128-bit / 224GB/s</td>
+            <td>70W</td>
+            <td class="codec-engine">1x NVENC / 1x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。</span></div></td>
+            <td class="codec-av1"><div class="codec-block"><span class="codec-title">AV1 输出：支持</span><span class="codec-detail">第 8 代 NVENC，支持硬件编码+解码。</span><span class="codec-note">适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x8<br>4x mDP 1.4</td>
+            <td>2.7" H x 6.6" L，双槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_2000_Ada_Generation%2851006%29/detail">官网页</a></td>
+            <td class="price">约 ￥5099-5599</td>
+            <td>入门到主流专业卡，16GB 显存比 A1000/A400 余量更好。</td>
+          </tr>
+          <tr data-level="1000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A1000"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51012_1M.jpg?V=0" alt="RTX A1000"></td>
+            <td class="model">RTX A1000</td>
+            <td><span class="tag">Ampere</span><br>2024</td>
+            <td>NVIDIA Ampere</td>
+            <td>2304 / 72 / 18</td>
+            <td>8GB GDDR6</td>
+            <td>128-bit / 192GB/s</td>
+            <td>50W</td>
+            <td class="codec-engine">1x NVENC / 2x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x8<br>4x mDP 1.4</td>
+            <td>2.7" H x 6.4" L，单槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A1000%2851012%29/detail">官网页</a></td>
+            <td class="price">约 ￥2999-3839</td>
+            <td>低功耗入门 RTX 专业卡，多屏/CAD/轻 3D。</td>
+          </tr>
+          <tr data-level="1000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A400"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/51013_1M.jpg?V=0" alt="RTX A400"></td>
+            <td class="model">RTX A400</td>
+            <td><span class="tag">Ampere</span><br>2024</td>
+            <td>NVIDIA Ampere</td>
+            <td>768 / 24 / 6</td>
+            <td>4GB GDDR6</td>
+            <td>64-bit / 96GB/s</td>
+            <td>50W</td>
+            <td class="codec-engine">1x NVENC / 1x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x8<br>4x mDP 1.4</td>
+            <td>2.7" H x 6.4" L，单槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A400%2851013%29/detail">官网页</a></td>
+            <td class="price">约 ￥1239-1389</td>
+            <td>基础多屏、2D/CAD 入门，不建议承担重 3D 或 AI。</td>
+          </tr>
+          <tr data-level="5000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A5500"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40943_1M.jpg?V=0" alt="RTX A5500"></td>
+            <td class="model">RTX A5500</td>
+            <td><span class="tag">Ampere</span><br>2022</td>
+            <td>NVIDIA Ampere</td>
+            <td>10240 / 320 / 80</td>
+            <td>24GB GDDR6 ECC</td>
+            <td>384-bit / 768GB/s</td>
+            <td>230W</td>
+            <td class="codec-engine">1x NVENC / 2x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 10.5" L，双槽宽度</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A5500%2840943%29/detail">官网页</a></td>
+            <td class="price">约 ￥1.8万-2.6万</td>
+            <td>老款高端 Ampere，除非价格明显低，否则优先看 Ada/Blackwell。</td>
+          </tr>
+          <tr data-level="4000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A4500"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40937_1M.jpg?V=0" alt="RTX A4500"></td>
+            <td class="model">RTX A4500</td>
+            <td><span class="tag">Ampere</span><br>2021</td>
+            <td>NVIDIA Ampere</td>
+            <td>7168 / 224 / 56</td>
+            <td>20GB GDDR6 ECC</td>
+            <td>320-bit / 640GB/s</td>
+            <td>200W</td>
+            <td class="codec-engine">1x NVENC / 1x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 10.5" L，双槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A4500%2840937%29/detail">官网页</a></td>
+            <td class="price">约 ￥1.1万-1.7万</td>
+            <td>20GB Ampere，适合低价库存项目。</td>
+          </tr>
+          <tr data-level="5000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A5000"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40914_1M.jpg?V=0" alt="RTX A5000"></td>
+            <td class="model">RTX A5000</td>
+            <td><span class="tag">Ampere</span><br>2021</td>
+            <td>NVIDIA Ampere</td>
+            <td>8192 / 256 / 64</td>
+            <td>24GB GDDR6 ECC</td>
+            <td>384-bit / 768GB/s</td>
+            <td>230W</td>
+            <td class="codec-engine">1x NVENC / 2x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 10.5" L</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A5000%2840914%29/detail">官网页</a></td>
+            <td class="price">约 ￥1.5万-2.6万</td>
+            <td>老款 24GB，高价时不如 RTX 4500/5000 Ada。</td>
+          </tr>
+          <tr data-level="4000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A4000"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40915_1M.jpg?V=0" alt="RTX A4000"></td>
+            <td class="model">RTX A4000</td>
+            <td><span class="tag">Ampere</span><br>2021</td>
+            <td>NVIDIA Ampere</td>
+            <td>6144 / 192 / 48</td>
+            <td>16GB GDDR6 ECC</td>
+            <td>256-bit / 448GB/s</td>
+            <td>140W</td>
+            <td class="codec-engine">1x NVENC / 1x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 9.5" L，单槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A4000%2840915%29/detail">官网页</a></td>
+            <td class="price">约 ￥5500-9000</td>
+            <td>16GB 单槽老款，预算项目可考虑。</td>
+          </tr>
+          <tr data-level="2000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A2000 6GB"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40931_1M.jpg?V=0" alt="RTX A2000 6GB"></td>
+            <td class="model">RTX A2000 6GB</td>
+            <td><span class="tag">Ampere</span><br>2021</td>
+            <td>NVIDIA Ampere</td>
+            <td>3328 / 104 / 26</td>
+            <td>6GB GDDR6 ECC</td>
+            <td>192-bit / 288GB/s</td>
+            <td>70W</td>
+            <td class="codec-engine">1x NVENC / 1x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">与 12GB 版硬解规格相同；差异主要在显存余量。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x mDP 1.4</td>
+            <td>2.713" H x 6.6" L，双槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A2000%EF%B8%B1A2000_12GB%2840931%29/detail">官网页</a></td>
+            <td class="price">约 ￥2500-3300</td>
+            <td>低成本小卡；少路数 H.265 解码/显示可用，不建议承担较重云剪辑或多任务。</td>
+          </tr>
+          <tr data-level="2000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A2000 12GB"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/40931_1M.jpg?V=0" alt="RTX A2000 12GB"></td>
+            <td class="model">RTX A2000 12GB</td>
+            <td><span class="tag">Ampere</span><br>2021</td>
+            <td>NVIDIA Ampere</td>
+            <td>3328 / 104 / 26</td>
+            <td>12GB GDDR6 ECC</td>
+            <td>192-bit / 288GB/s</td>
+            <td>70W</td>
+            <td class="codec-engine">1x NVENC / 1x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">与 6GB 版硬解规格相同；12GB 更适合多应用和较大帧缓存。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x mDP 1.4</td>
+            <td>2.713" H x 6.6" L，双槽</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A2000%EF%B8%B1A2000_12GB%2840931%29/detail">官网页</a></td>
+            <td class="price">约 ￥3500-4500</td>
+            <td>小卡里更推荐的版本；12GB 显存余量更好，适合轻量专业工作流和存量节点。</td>
+          </tr>
+          <tr data-level="6000">
+            <td class="select-cell"><input class="compare-check" type="checkbox" aria-label="选择 RTX A6000"></td>
+            <td><img class="product-img" src="https://www.leadtek.com.cn/p_images/zoom/30893_1M.jpg?V=0" alt="RTX A6000"></td>
+            <td class="model">RTX A6000</td>
+            <td><span class="tag">RTX A 起点参考</span><br>2020/2021 周期</td>
+            <td>NVIDIA Ampere</td>
+            <td>10752 / 336 / 84</td>
+            <td>48GB GDDR6 ECC</td>
+            <td>384-bit / 768GB/s</td>
+            <td>300W</td>
+            <td class="codec-engine">1x NVENC / 2x NVDEC</td>
+            <td class="codec-hevc"><div class="codec-block codec-limited"><span class="codec-title">H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主</span><span class="codec-detail">HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。</span><span class="codec-note">可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。</span></div></td>
+            <td class="codec-av1"><div class="codec-block codec-limited"><span class="codec-title">AV1 输出：不支持</span><span class="codec-detail">可做 AV1 硬件解码/播放，不能硬件编码 AV1。</span><span class="codec-note">若要 AV1 转码输出，优先 Ada 或 Blackwell。</span></div></td>
+            <td>PCIe 4.0 x16<br>4x DP 1.4</td>
+            <td>4.4" H x 10.5" L，双宽度</td>
+            <td><a href="https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A6000%2830893%29/detail">官网页</a></td>
+            <td class="price">约 ￥2.7万-4.5万，库存差异大</td>
+            <td>48GB 老旗舰；除非价格合适，否则优先 RTX 5880 Ada / RTX PRO 5000。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>采购判断</h2>
+    <ul>
+      <li><strong>新购优先级：</strong>同预算下优先看 Blackwell，尤其是 RTX PRO 4500 / 4000 / 2000；需要 48GB 以上显存再看 RTX PRO 5000 / 6000。</li>
+      <li><strong>大显存预算型：</strong>RTX 5880 Ada 现在比 RTX 6000 Ada 更容易形成价格优势；如果 RTX PRO 5000 48GB 报价接近 4 万以内，优先级通常更高。</li>
+      <li><strong>老款 Ampere：</strong>RTX A 系列适合存量项目、软件认证延续或低价库存。若报价接近 Ada/Blackwell，同价不建议优先采购。</li>
+      <li><strong>报价核验：</strong>采购前需要确认是否丽台行货、是否含税、质保年限、是否工包、是否附转接线/挡板、是否支持企业采购发票。</li>
+    </ul>
+
+    <h2>价格来源说明</h2>
+    <p>市场价为公开报价样本的人工整理，主要参考京东公开商品/搜索页、ZOL 中关村在线报价页、IT 中国/中国数码网等公开渠道。由于这些页面会随库存、地区和活动动态变化，本报告只保留预算区间，不把第三方页面中的硬件参数作为规格依据。</p>
+  </main>
+  <script>
+    (() => {
+      const table = document.getElementById("gpuTable");
+      const checks = Array.from(table.querySelectorAll(".compare-check"));
+      const compareCount = document.getElementById("compareCount");
+      const buildCompare = document.getElementById("buildCompare");
+      const clearCompare = document.getElementById("clearCompare");
+      const toggleSelectedOnly = document.getElementById("toggleSelectedOnly");
+      const comparePanel = document.getElementById("comparePanel");
+      const compareOutput = document.getElementById("compareOutput");
+      const levelButtons = Array.from(document.querySelectorAll(".level-btn"));
+      const fullViewBtn = document.getElementById("fullViewBtn");
+      const compactViewBtn = document.getElementById("compactViewBtn");
+      const hevcShelf = document.getElementById("hevcShelf");
+      const hevcResultCount = document.getElementById("hevcResultCount");
+      const hevcSearch = document.getElementById("hevcSearch");
+      const hevcSort = document.getElementById("hevcSort");
+      const hevcLevel = document.getElementById("hevcLevel");
+      const hevcArch = document.getElementById("hevcArch");
+      const hevcMinNvdec = document.getElementById("hevcMinNvdec");
+      const hevcMinMemory = document.getElementById("hevcMinMemory");
+      const hevcMaxPower = document.getElementById("hevcMaxPower");
+      const hevcNeed422 = document.getElementById("hevcNeed422");
+      const hevcNeedAv1 = document.getElementById("hevcNeedAv1");
+      const hevcLowPower = document.getElementById("hevcLowPower");
+      const hevcHideWeak = document.getElementById("hevcHideWeak");
+      const hevcReset = document.getElementById("hevcReset");
+      const hevcSortNote = document.getElementById("hevcSortNote");
+      const syncPanel = document.getElementById("syncPanel");
+      const syncStatusText = document.getElementById("syncStatusText");
+      const syncStatusMeta = document.getElementById("syncStatusMeta");
+      const externalResultsUrl = "data/gpu-test-results.json";
+      let selectedOnly = false;
+      let activeLevel = "all";
+      let lastExternalSyncAt = "";
+
+      const columns = [
+        { label: "型号", index: 2 },
+        { label: "代际/时间", index: 3 },
+        { label: "架构", index: 4 },
+        { label: "CUDA / Tensor / RT", index: 5 },
+        { label: "显存", index: 6 },
+        { label: "位宽 / 带宽", index: 7 },
+        { label: "功耗", index: 8 },
+        { label: "NVENC / NVDEC", index: 9 },
+        { label: "H.265 硬解规格", index: 10 },
+        { label: "AV1 输出能力", index: 11 },
+        { label: "总线 / 显示接口", index: 12 },
+        { label: "外形规格", index: 13 },
+        { label: "市场参考价", index: 15 },
+        { label: "定位建议", index: 16 }
+      ];
+
+      function selectedRows() {
+        return checks
+          .filter((check) => check.checked)
+          .map((check) => check.closest("tr"));
+      }
+
+      function textFromCell(row, index) {
+        const cell = row.cells[index];
+        if (!cell) return "";
+        return cell.innerText.replace(/\s+/g, " ").trim();
+      }
+
+      function htmlFromCell(row, index) {
+        const cell = row.cells[index];
+        if (!cell) return "";
+        return cell.innerHTML.trim();
+      }
+
+      function pill(text, type = "") {
+        return `<span class="feature-pill ${type}">${text}</span>`;
+      }
+
+      function baseText(cell) {
+        if (!cell) return "";
+        if (!cell.dataset.baseText) {
+          cell.dataset.baseText = cell.innerText.replace(/\s+/g, " ").trim();
+        }
+        return cell.dataset.baseText;
+      }
+
+      function baseHtml(cell) {
+        if (!cell) return "";
+        if (!cell.dataset.baseHtml) {
+          cell.dataset.baseHtml = cell.innerHTML.trim();
+        }
+        return cell.dataset.baseHtml;
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function normalizeModelName(value) {
+        return String(value ?? "")
+          .toLowerCase()
+          .replace(/\s+/g, " ")
+          .replace(/[™®]/g, "")
+          .trim();
+      }
+
+      function setSyncStatus(type, text, meta) {
+        if (!syncPanel) return;
+        syncPanel.classList.toggle("is-ok", type === "ok");
+        syncPanel.classList.toggle("is-warn", type === "warn");
+        syncPanel.classList.toggle("is-error", type === "error");
+        syncStatusText.textContent = text;
+        syncStatusMeta.textContent = meta;
+      }
+
+      function resultSummary(item) {
+        const parts = [];
+        if (item["测试项"]) parts.push(item["测试项"]);
+        if (item["测试结果"]) parts.push(`结果：${item["测试结果"]}`);
+        if (item["结论"]) parts.push(`结论：${item["结论"]}`);
+        if (item["备注"]) parts.push(`备注：${item["备注"]}`);
+        if (item["维护人"]) parts.push(`维护人：${item["维护人"]}`);
+        if (item["更新时间"]) parts.push(`更新时间：${item["更新时间"]}`);
+        return parts;
+      }
+
+      function clearExternalResults() {
+        table.querySelectorAll(".external-test-result").forEach((node) => node.remove());
+        table.querySelectorAll("tbody tr").forEach((row) => {
+          delete row.dataset.externalResultCount;
+          delete row.dataset.externalResultSummary;
+        });
+      }
+
+      function applyExternalResults(payload) {
+        const rows = Array.from(table.querySelectorAll("tbody tr"));
+        const resultMap = new Map();
+        (payload.rows || []).forEach((item) => {
+          const model = item["型号"] || item.model || item.gpu || "";
+          const key = normalizeModelName(model);
+          if (!key) return;
+          if (!resultMap.has(key)) resultMap.set(key, []);
+          resultMap.get(key).push(item);
+        });
+
+        clearExternalResults();
+
+        let matched = 0;
+        rows.forEach((row) => {
+          const model = normalizeModelName(baseText(row.cells[2]));
+          const items = resultMap.get(model);
+          if (!items?.length) return;
+          matched += 1;
+          const adviceCell = row.cells[16];
+          row.dataset.externalResultCount = String(items.length);
+          row.dataset.externalResultSummary = items
+            .slice(0, 2)
+            .map((item) => `${item["测试项"] || "测试"}：${item["结论"] || "有测试记录"}`)
+            .join("；");
+          const blocks = items.map((item) => {
+            const summary = resultSummary(item).map(escapeHtml).join("<br>");
+            return `<div><strong>企业文档测试结果</strong><br>${summary}</div>`;
+          }).join("");
+          adviceCell.insertAdjacentHTML("beforeend", `<div class="external-test-result">${blocks}</div>`);
+        });
+
+        return matched;
+      }
+
+      async function loadExternalResults() {
+        try {
+          const response = await fetch(`${externalResultsUrl}?t=${Date.now()}`, { cache: "no-store" });
+          if (response.status === 404) {
+            setSyncStatus("warn", "企业文档同步未连接", "未找到 data/gpu-test-results.json，当前显示内置静态数据。");
+            return;
+          }
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const payload = await response.json();
+          if (payload.syncedAt && payload.syncedAt === lastExternalSyncAt) return;
+          lastExternalSyncAt = payload.syncedAt || new Date().toISOString();
+          const matched = applyExternalResults(payload);
+          setSyncStatus("ok", "企业文档同步已连接", `最后同步：${lastExternalSyncAt}，匹配 ${matched} 款型号。`);
+          renderHevcShelf();
+        } catch (error) {
+          setSyncStatus("error", "企业文档同步读取失败", `${error.message}。当前显示内置静态数据。`);
+        }
+      }
+
+      function parseYear(text) {
+        const years = (text.match(/20\d{2}/g) || []).map(Number);
+        return years.length ? Math.max(...years) : 0;
+      }
+
+      function parsePriceValue(text) {
+        if (/询价|公开价少|库存差异/.test(text)) return 999999;
+        const values = [];
+        const wanMatches = text.matchAll(/([\d.]+)\s*万/g);
+        for (const match of wanMatches) values.push(Number(match[1]) * 10000);
+        const yuanMatches = text.matchAll(/￥\s*([\d.]+)/g);
+        for (const match of yuanMatches) {
+          const value = Number(match[1]);
+          if (Number.isFinite(value)) values.push(value);
+        }
+        const plainMatches = text.matchAll(/(?:约|￥|-|到|\s)(\d{4,6})(?=\D|$)/g);
+        for (const match of plainMatches) values.push(Number(match[1]));
+        return values.length ? Math.min(...values) : 999999;
+      }
+
+      function parseGpu(row, index) {
+        const model = baseText(row.cells[2]).split(/\n/)[0].trim();
+        const generationText = textFromCell(row, 3);
+        const archText = textFromCell(row, 4);
+        const computeText = textFromCell(row, 5);
+        const memoryText = textFromCell(row, 6);
+        const bandwidthText = textFromCell(row, 7);
+        const powerText = textFromCell(row, 8);
+        const engineText = textFromCell(row, 9);
+        const hevcText = textFromCell(row, 10);
+        const av1Text = textFromCell(row, 11);
+        const formText = textFromCell(row, 13);
+        const priceText = textFromCell(row, 15);
+        const advice = textFromCell(row, 16);
+        const baseAdvice = advice.split(" 企业文档测试结果 ")[0].trim() || advice;
+        const externalResultCount = Number(row.dataset.externalResultCount || 0);
+        const externalResultSummary = row.dataset.externalResultSummary || "";
+        const image = row.cells[1]?.querySelector("img")?.getAttribute("src") || "";
+        const link = row.cells[14]?.querySelector("a")?.getAttribute("href") || "#";
+        const enc = Number((engineText.match(/(\d+)x\s*NVENC/i) || [])[1]) || 0;
+        const dec = Number((engineText.match(/(\d+)x\s*NVDEC/i) || [])[1]) || 0;
+        const jpeg = Number((engineText.match(/(\d+)x\s*JPEG/i) || [])[1]) || 0;
+        const memory = Number((memoryText.match(/(\d+)\s*GB/i) || [])[1]) || 0;
+        const bandwidth = Number((bandwidthText.match(/(\d+)\s*GB\/s/i) || [])[1]) || 0;
+        const power = Number((powerText.match(/(\d+)W/i) || [])[1]) || 0;
+        const cuda = Number((computeText.match(/(\d+)/) || [])[1]) || 0;
+        const supports422 = /4:2:2/.test(hevcText) && !/不支持/.test(hevcText);
+        const av1Encode = /AV1 输出：支持/.test(av1Text);
+        const isBlackwell = /Blackwell/i.test(archText + " " + model);
+        const isAda = /Ada/i.test(archText + " " + model);
+        const isAmpere = /Ampere/i.test(archText + " " + model);
+        const lowPower = power > 0 && power <= 75;
+        const compact = /SFF|半高|单槽/i.test(model + " " + formText);
+        const weakMain = /不建议做主力|A1000|A400|A2000/i.test(advice + " " + model);
+        const priceValue = parsePriceValue(priceText);
+        const year = parseYear(generationText);
+        const score = Math.round(
+          (isBlackwell ? 28 : isAda ? 17 : 7) +
+          enc * 9 +
+          dec * 10 +
+          (supports422 ? 18 : 0) +
+          (av1Encode ? 12 : 0) +
+          Math.min(memory, 96) * 0.35 +
+          Math.min(bandwidth, 1800) / 120 +
+          (jpeg ? 2 : 0) +
+          (lowPower ? 4 : 0) -
+          (power >= 300 ? 4 : 0) -
+          (weakMain ? 7 : 0)
+        );
+        return {
+          row,
+          index,
+          model,
+          generationText,
+          level: row.dataset.level || "",
+          arch: isBlackwell ? "Blackwell" : isAda ? "Ada" : isAmpere ? "Ampere" : "其他",
+          archText,
+          computeText,
+          memoryText,
+          memory,
+          bandwidthText,
+          bandwidth,
+          powerText,
+          power,
+          engineText,
+          enc,
+          dec,
+          jpeg,
+          hevcText,
+          av1Text,
+          formText,
+          priceText,
+          priceValue,
+          advice,
+          baseAdvice,
+          externalResultCount,
+          externalResultSummary,
+          image,
+          link,
+          supports422,
+          av1Encode,
+          lowPower,
+          compact,
+          weakMain,
+          year,
+          cuda,
+          score
+        };
+      }
+
+      function hevcData() {
+        return Array.from(table.querySelectorAll("tbody tr")).map(parseGpu);
+      }
+
+      function hevcState() {
+        return {
+          q: hevcSearch.value.trim().toLowerCase(),
+          sort: hevcSort.value,
+          level: hevcLevel.value,
+          arch: hevcArch.value,
+          minNvdec: Number(hevcMinNvdec.value),
+          minMemory: Number(hevcMinMemory.value),
+          maxPower: Number(hevcMaxPower.value),
+          need422: hevcNeed422.checked,
+          needAv1: hevcNeedAv1.checked,
+          lowPower: hevcLowPower.checked,
+          hideWeak: hevcHideWeak.checked
+        };
+      }
+
+      function filteredHevcItems() {
+        const state = hevcState();
+        const items = hevcData().filter((item) => {
+          const haystack = [
+            item.model,
+            item.archText,
+            item.memoryText,
+            item.engineText,
+            item.hevcText,
+            item.av1Text,
+            item.priceText,
+            item.advice
+          ].join(" ").toLowerCase();
+          if (state.q && !haystack.includes(state.q)) return false;
+          if (state.level !== "all" && item.level !== state.level) return false;
+          if (state.arch !== "all" && item.arch !== state.arch) return false;
+          if (item.dec < state.minNvdec) return false;
+          if (item.memory < state.minMemory) return false;
+          if (item.power && item.power > state.maxPower) return false;
+          if (state.need422 && !item.supports422) return false;
+          if (state.needAv1 && !item.av1Encode) return false;
+          if (state.lowPower && !(item.lowPower || item.compact)) return false;
+          if (state.hideWeak && item.weakMain) return false;
+          return true;
+        });
+        const sorters = {
+          score: (a, b) => b.score - a.score || b.dec - a.dec || b.enc - a.enc || b.memory - a.memory,
+          nvdec: (a, b) => b.dec - a.dec || b.score - a.score,
+          nvenc: (a, b) => b.enc - a.enc || b.score - a.score,
+          memory: (a, b) => b.memory - a.memory || b.score - a.score,
+          power: (a, b) => (a.power || 999) - (b.power || 999) || b.score - a.score,
+          price: (a, b) => a.priceValue - b.priceValue || b.score - a.score,
+          year: (a, b) => b.year - a.year || b.score - a.score
+        };
+        return items.sort(sorters[state.sort] || sorters.score);
+      }
+
+      function sortNote() {
+        const labels = {
+          score: "当前按视频服务器综合能力排序：4:2:2、AV1、NVENC/NVDEC、显存、带宽、功耗共同计分。",
+          nvdec: "当前按 NVDEC 解码引擎数量排序，适合多路拉流、解码和转码入口评估。",
+          nvenc: "当前按 NVENC 编码引擎数量排序，适合多路输出和转码并发评估。",
+          memory: "当前按显存容量排序，适合本地大模型、超大场景和多任务余量评估。",
+          power: "当前按低功耗排序，适合小机箱、边缘节点和多卡密度评估。",
+          price: "当前按预算价低优先排序，询价/公开价少的型号会排在后面。",
+          year: "当前按发布时间新优先排序，适合新采购和生命周期评估。"
+        };
+        return labels[hevcSort.value] || labels.score;
+      }
+
+      function cardTags(item) {
+        const tags = [];
+        if (item.supports422) tags.push(pill("H.265 4:2:2", "codec"));
+        if (item.av1Encode) tags.push(pill("AV1 输出", "codec"));
+        if (item.dec >= 3) tags.push(pill(`${item.dec}x NVDEC`, "engine"));
+        if (item.enc >= 3) tags.push(pill(`${item.enc}x NVENC`, "engine"));
+        if (item.memory >= 48) tags.push(pill(`${item.memory}GB 显存`, "memory"));
+        if (item.lowPower) tags.push(pill(`${item.power}W 低功耗`, "power"));
+        if (item.compact) tags.push(pill("部署友好", "form"));
+        if (item.weakMain) tags.push(pill("非主力", "warn"));
+        return tags.join("");
+      }
+
+      function cardAdviceHtml(item) {
+        const pieces = [
+          `<p class="cell-note hevc-card-advice">${escapeHtml(item.baseAdvice || item.advice)}</p>`
+        ];
+        if (item.externalResultCount) {
+          pieces.push(
+            `<p class="hevc-card-test-summary">企业测试：${item.externalResultCount} 条；${escapeHtml(item.externalResultSummary)}</p>`
+          );
+        }
+        return pieces.join("");
+      }
+
+      function renderHevcShelf() {
+        const items = filteredHevcItems();
+        hevcResultCount.textContent = items.length;
+        hevcSortNote.textContent = sortNote();
+        if (!items.length) {
+          hevcShelf.innerHTML = '<div class="hevc-empty">没有符合当前条件的型号。可以放宽 NVDEC、显存、功耗或 4:2:2 / AV1 条件。</div>';
+          return;
+        }
+        const maxScore = Math.max(...hevcData().map((item) => item.score), 1);
+        hevcShelf.innerHTML = items.map((item, idx) => {
+          const checked = item.row.querySelector(".compare-check")?.checked;
+          const scoreWidth = Math.max(8, Math.min(100, Math.round(item.score / maxScore * 100)));
+          const decodeText = item.supports422 ? "4:2:0 / 4:2:2 / 4:4:4" : "4:2:0 / 4:4:4";
+          const av1Text = item.av1Encode ? "编码+解码" : "仅解码/播放";
+          return `
+            <article class="hevc-card ${checked ? "is-compared" : ""}" data-row-index="${item.index}">
+              <span class="hevc-rank">#${idx + 1}</span>
+              <div>
+                <div class="hevc-media"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.model)}"></div>
+                <div class="hevc-card-tags">${cardTags(item)}</div>
+              </div>
+              <div>
+                <div class="hevc-title">${escapeHtml(item.model)}</div>
+                <div class="term-cn">${escapeHtml(item.arch)} · ${escapeHtml(item.generationText)}</div>
+                <div class="hevc-price">${escapeHtml(item.priceText)}</div>
+                <div class="hevc-score">
+                  <div class="hevc-score-top"><span>综合能力</span><strong>${item.score}</strong></div>
+                  <div class="hevc-score-bar"><span style="width:${scoreWidth}%"></span></div>
+                </div>
+                <div class="hevc-spec-grid">
+                  <div class="hevc-spec"><span>编解码引擎</span><strong>${item.enc}x NVENC / ${item.dec}x NVDEC</strong></div>
+                  <div class="hevc-spec"><span>H.265 硬解</span><strong>${decodeText}</strong></div>
+                  <div class="hevc-spec"><span>AV1</span><strong>${av1Text}</strong></div>
+                  <div class="hevc-spec"><span>显存 / 功耗</span><strong>${item.memory}GB / ${item.power || "-"}W</strong></div>
+                </div>
+                ${cardAdviceHtml(item)}
+                <div class="hevc-card-actions">
+                  <button type="button" class="hevc-compare-btn" data-row-index="${item.index}">${checked ? "取消对比" : "加入对比"}</button>
+                  <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">丽台官网</a>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      function highlightMemory(cell) {
+        const text = baseText(cell);
+        const match = text.match(/(\d+)\s*GB/i);
+        if (!match) return;
+
+        const gb = Number(match[1]);
+        const memoryClass = gb >= 48 ? "memory-xl" : gb >= 24 ? "memory-lg" : "memory-mid";
+        const tags = [];
+        if (gb >= 72) tags.push(pill("超大显存", "memory"));
+        else if (gb >= 48) tags.push(pill("大显存", "memory"));
+        else if (gb >= 24) tags.push(pill("视频服务器主流", "memory"));
+        else if (gb <= 8) tags.push(pill("轻量/多屏", "warn"));
+        if (/ECC/i.test(text)) tags.push(pill("ECC", "memory"));
+        if (/GDDR7/i.test(text)) tags.push(pill("GDDR7", "memory"));
+
+        cell.innerHTML = `
+          <div class="memory-cell">
+            <span class="memory-main ${memoryClass}">${text}</span>
+            ${tags.length ? `<div class="cell-highlights">${tags.join("")}</div>` : ""}
+          </div>
+        `;
+      }
+
+      function highlightBandwidth(cell) {
+        const text = baseText(cell);
+        const match = text.match(/(\d+)\s*GB\/s/i);
+        if (!match) return;
+        const bandwidth = Number(match[1]);
+        const tags = [];
+        if (bandwidth >= 1000) tags.push(pill("高带宽", "memory"));
+        else if (bandwidth >= 600) tags.push(pill("主流带宽", "memory"));
+        cell.innerHTML = `
+          <div class="bandwidth-cell">
+            <span class="bandwidth-main">${text}</span>
+            ${tags.length ? `<div class="cell-highlights">${tags.join("")}</div>` : ""}
+          </div>
+        `;
+      }
+
+      function highlightPower(cell) {
+        const text = baseText(cell);
+        const watts = Number((text.match(/(\d+)W/i) || [])[1]);
+        if (!watts) return;
+        const tags = [];
+        if (watts <= 75) tags.push(pill("低功耗", "power"));
+        else if (watts <= 150) tags.push(pill("易部署", "power"));
+        else if (watts >= 300) tags.push(pill("高供电/散热", "warn"));
+        cell.innerHTML = `
+          <div class="power-cell">
+            <span class="power-main">${text}</span>
+            ${tags.length ? `<div class="cell-highlights">${tags.join("")}</div>` : ""}
+          </div>
+        `;
+      }
+
+      function highlightArchitecture(cell) {
+        const text = baseText(cell);
+        const map = [
+          { re: /Blackwell/i, cn: "布莱克韦尔架构" },
+          { re: /Ada Lovelace/i, cn: "艾达·洛夫莱斯架构" },
+          { re: /Ampere/i, cn: "安培架构" }
+        ];
+        const hit = map.find((item) => item.re.test(text));
+        if (!hit) return;
+        cell.innerHTML = `<div class="term-cell"><div class="term-main">${text}</div><div class="term-cn">${hit.cn}</div></div>`;
+      }
+
+      function highlightCompute(cell) {
+        const text = baseText(cell);
+        if (!text) return;
+        cell.innerHTML = `
+          <div class="term-cell">
+            <div class="term-main">${text}</div>
+            <div class="term-cn">CUDA：通用计算核心 / Tensor：AI 矩阵核心 / RT：光追核心</div>
+          </div>
+        `;
+      }
+
+      function highlightEngine(cell) {
+        const text = baseText(cell);
+        const enc = Number((text.match(/(\d+)x\s*NVENC/i) || [])[1]);
+        const dec = Number((text.match(/(\d+)x\s*NVDEC/i) || [])[1]);
+        const tags = [];
+        if (enc >= 4) tags.push(pill("编码并发强", "engine"));
+        else if (enc >= 2) tags.push(pill("多路转码", "engine"));
+        else tags.push(pill("单路/轻量", "warn"));
+        if (dec >= 2) tags.push(pill("多路解码", "engine"));
+        if (/JPEG/i.test(text)) tags.push(pill("JPEG 引擎", "engine"));
+        cell.innerHTML = `
+          <div class="engine-cell">
+            <div class="engine-main">${text}</div>
+            <div class="term-cn">NVENC：硬件编码 / NVDEC：硬件解码 / JPEG：图片编解码引擎</div>
+            <div class="cell-highlights">${tags.join("")}</div>
+          </div>
+        `;
+      }
+
+      function highlightInterface(cell) {
+        const html = baseHtml(cell);
+        const text = baseText(cell);
+        const notes = [];
+        if (/PCIe/i.test(text)) notes.push("PCIe：主板扩展总线");
+        if (/\bmDP\b/i.test(text)) notes.push("mDP：Mini DisplayPort 小口显示接口");
+        else if (/\bDP\b/i.test(text)) notes.push("DP：DisplayPort 显示接口");
+        if (!notes.length) return;
+        cell.innerHTML = `<div class="term-cell"><div>${html}</div><div class="term-cn">${notes.join("；")}</div></div>`;
+      }
+
+      function highlightMemoryTerms(cell) {
+        const existing = cell.querySelector(".cell-highlights");
+        if (!existing) return;
+        const text = baseText(cell);
+        const notes = [];
+        if (/GDDR7/i.test(text)) notes.push("GDDR7：新一代显存");
+        else if (/GDDR6/i.test(text)) notes.push("GDDR6：专业卡常见显存");
+        if (!notes.length) return;
+        existing.insertAdjacentHTML("beforebegin", `<div class="term-cn">${notes.join("；")}</div>`);
+      }
+
+      function highlightModelTerms(cell) {
+        if (!cell || cell.querySelector(".model-term-note")) return;
+        const text = baseText(cell);
+        const notes = [];
+        if (/\bSFF\b/i.test(text)) notes.push("SFF：小机箱版");
+        if (/Max-Q/i.test(text)) notes.push("Max-Q：低功耗版本");
+        if (/Workstation/i.test(text)) notes.push("Workstation：工作站版");
+        if (/Generation/i.test(text)) notes.push("Generation：这一代型号命名");
+        if (!notes.length) return;
+        cell.insertAdjacentHTML("beforeend", `<div class="term-cn model-term-note">${notes.join("；")}</div>`);
+      }
+
+      function highlightForm(cell) {
+        if (!cell || cell.querySelector(".form-cell")) return;
+        const text = baseText(cell);
+        const tags = [];
+        const notes = [];
+        if (/\bH\s*x\b/i.test(text) || /\bL\b/i.test(text)) notes.push("H：高度 / L：长度");
+        if (/XHFL/i.test(text)) notes.push("XHFL：超高全长");
+        if (/\bSFF\b/i.test(text)) notes.push("SFF：小机箱版");
+        if (/单槽/.test(text)) tags.push(pill("单槽", "form"));
+        if (/半高|SFF/i.test(text)) tags.push(pill("小机箱", "form"));
+        if (/双槽|双宽/.test(text)) tags.push(pill("注意槽位", "form"));
+        if (!tags.length && !notes.length) return;
+        cell.innerHTML = `
+          <div class="form-cell">
+            <span>${baseHtml(cell)}</span>
+            ${notes.length ? `<div class="term-cn">${notes.join("；")}</div>` : ""}
+            ${tags.length ? `<div class="cell-highlights">${tags.join("")}</div>` : ""}
+          </div>
+        `;
+      }
+
+      function addModelHighlights(row) {
+        const modelCell = row.cells[2];
+        if (!modelCell || modelCell.querySelector(".feature-strip")) return;
+        const modelText = baseText(modelCell);
+        const rowText = row.innerText.replace(/\s+/g, " ");
+        const tags = [];
+        const memoryText = textFromCell(row, 6);
+        const memoryMatch = memoryText.match(/(\d+)\s*GB/i);
+        if (memoryMatch) {
+          const gb = Number(memoryMatch[1]);
+          if (/RTX PRO 5000|RTX A2000/.test(modelText)) tags.push(pill("显存版本", "memory"));
+          if (gb >= 48) tags.push(pill(`${gb}GB 大显存`, "memory"));
+          else if (gb >= 24) tags.push(pill(`${gb}GB 显存`, "memory"));
+        }
+        const engineText = textFromCell(row, 9);
+        const enc = Number((engineText.match(/(\d+)x\s*NVENC/i) || [])[1]);
+        if (enc >= 2) tags.push(pill(`${enc}x NVENC`, "engine"));
+        const hevcText = textFromCell(row, 10);
+        if (/4:2:2/.test(hevcText) && !/不支持/.test(hevcText)) tags.push(pill("H.265 4:2:2 硬解", "codec"));
+        if (/AV1 输出：支持/.test(rowText)) tags.push(pill("AV1 输出", "codec"));
+        const powerText = textFromCell(row, 8);
+        const watts = Number((powerText.match(/(\d+)W/i) || [])[1]);
+        if (watts && watts <= 75) tags.push(pill(`${watts}W 低功耗`, "power"));
+        const formText = textFromCell(row, 13);
+        if (/单槽|半高|SFF/i.test(formText)) tags.push(pill("部署友好", "form"));
+
+        if (tags.length) {
+          modelCell.insertAdjacentHTML("beforeend", `<div class="feature-strip">${tags.slice(0, 5).join("")}</div>`);
+        }
+      }
+
+      function applyHighlights(scope = table) {
+        const rows = Array.from(scope.querySelectorAll("tbody tr"));
+        rows.forEach((row) => {
+          addModelHighlights(row);
+          highlightModelTerms(row.cells[2]);
+          highlightMemory(row.cells[6]);
+          highlightMemoryTerms(row.cells[6]);
+          highlightBandwidth(row.cells[7]);
+          highlightPower(row.cells[8]);
+          highlightArchitecture(row.cells[4]);
+          highlightCompute(row.cells[5]);
+          highlightEngine(row.cells[9]);
+          highlightInterface(row.cells[12]);
+          highlightForm(row.cells[13]);
+        });
+      }
+
+      function updateState() {
+        const rows = selectedRows();
+        compareCount.textContent = `已选 ${rows.length} 款`;
+        buildCompare.disabled = rows.length < 2;
+        clearCompare.disabled = rows.length === 0;
+        toggleSelectedOnly.disabled = rows.length === 0;
+        checks.forEach((check) => {
+          const row = check.closest("tr");
+          const levelMatched = activeLevel === "all" || row.dataset.level === activeLevel;
+          row.classList.toggle("is-selected", check.checked);
+          row.classList.toggle("is-hidden-by-compare", selectedOnly && !check.checked);
+          row.classList.toggle("is-hidden-by-level", !levelMatched);
+        });
+        if (selectedOnly && rows.length === 0) {
+          selectedOnly = false;
+          toggleSelectedOnly.textContent = "仅显示已选";
+        }
+        if (hevcShelf) renderHevcShelf();
+      }
+
+      function buildComparisonTable() {
+        const rows = selectedRows();
+        if (rows.length < 2) {
+          comparePanel.classList.add("is-visible");
+          compareOutput.innerHTML = '<div class="empty-compare">请至少勾选 2 款型号后再生成对比。</div>';
+          return;
+        }
+
+        const header = rows.map((row) => `<th>${htmlFromCell(row, 2)}</th>`).join("");
+        const body = columns.slice(1).map((column) => {
+          const values = rows.map((row) => `<td>${htmlFromCell(row, column.index)}</td>`).join("");
+          return `<tr><th>${column.label}</th>${values}</tr>`;
+        }).join("");
+
+        compareOutput.innerHTML = `
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>项目</th>${header}</tr></thead>
+              <tbody>${body}</tbody>
+            </table>
+          </div>
+        `;
+        comparePanel.classList.add("is-visible");
+        comparePanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      checks.forEach((check) => {
+        check.addEventListener("change", updateState);
+      });
+
+      buildCompare.addEventListener("click", buildComparisonTable);
+
+      clearCompare.addEventListener("click", () => {
+        checks.forEach((check) => { check.checked = false; });
+        selectedOnly = false;
+        toggleSelectedOnly.textContent = "仅显示已选";
+        comparePanel.classList.remove("is-visible");
+        compareOutput.innerHTML = "";
+        updateState();
+      });
+
+      toggleSelectedOnly.addEventListener("click", () => {
+        selectedOnly = !selectedOnly;
+        toggleSelectedOnly.textContent = selectedOnly ? "显示全部" : "仅显示已选";
+        updateState();
+      });
+
+      levelButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeLevel = button.dataset.levelFilter;
+          levelButtons.forEach((item) => {
+            item.classList.toggle("is-active", item === button);
+          });
+          updateState();
+        });
+      });
+
+      [
+        hevcSearch,
+        hevcSort,
+        hevcLevel,
+        hevcArch,
+        hevcMinNvdec,
+        hevcMinMemory,
+        hevcMaxPower,
+        hevcNeed422,
+        hevcNeedAv1,
+        hevcLowPower,
+        hevcHideWeak
+      ].forEach((control) => {
+        control?.addEventListener("input", renderHevcShelf);
+        control?.addEventListener("change", renderHevcShelf);
+      });
+
+      hevcReset?.addEventListener("click", () => {
+        hevcSearch.value = "";
+        hevcSort.value = "score";
+        hevcLevel.value = "all";
+        hevcArch.value = "all";
+        hevcMinNvdec.value = "0";
+        hevcMinMemory.value = "0";
+        hevcMaxPower.value = "999";
+        hevcNeed422.checked = false;
+        hevcNeedAv1.checked = false;
+        hevcLowPower.checked = false;
+        hevcHideWeak.checked = false;
+        renderHevcShelf();
+      });
+
+      hevcShelf?.addEventListener("click", (event) => {
+        const button = event.target.closest(".hevc-compare-btn");
+        if (!button) return;
+        const row = table.querySelectorAll("tbody tr")[Number(button.dataset.rowIndex)];
+        const check = row?.querySelector(".compare-check");
+        if (!check) return;
+        check.checked = !check.checked;
+        updateState();
+      });
+
+      function setViewMode(mode) {
+        document.body.classList.toggle("compact-view", mode === "compact");
+        document.body.classList.toggle("full-view", mode === "full");
+        fullViewBtn.classList.toggle("is-active", mode === "full");
+        compactViewBtn.classList.toggle("is-active", mode === "compact");
+      }
+
+      fullViewBtn.addEventListener("click", () => setViewMode("full"));
+      compactViewBtn.addEventListener("click", () => setViewMode("compact"));
+
+      if (window.innerWidth < 1500) {
+        setViewMode("compact");
+      } else {
+        setViewMode("full");
+      }
+
+      table.addEventListener("click", (event) => {
+        const row = event.target.closest("tbody tr");
+        if (!row || event.target.closest("a, button, input")) return;
+        const check = row.querySelector(".compare-check");
+        if (!check) return;
+        check.checked = !check.checked;
+        updateState();
+      });
+
+      applyHighlights();
+      updateState();
+      renderHevcShelf();
+      loadExternalResults();
+      window.setInterval(loadExternalResults, 60000);
+    })();
+  </script>
+</body>
+</html>
