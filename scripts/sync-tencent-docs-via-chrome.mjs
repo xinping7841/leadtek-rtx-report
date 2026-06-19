@@ -174,16 +174,118 @@ function buildRows(matrix) {
   return rows;
 }
 
-function pageExtractionExpression(preferredSubId, maxRows, maxCols) {
-  return `(() => {
-    const app = window.SpreadsheetApp;
-    if (!app || !app.workbook) throw new Error("SpreadsheetApp is not ready");
+function splitList(value) {
+  return String(value || "")
+    .split(/[，,\s]+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function workbookExtractionExpression(preferredSubIds, maxRows, maxCols, syncAllSheets) {
+  return `(async () => {
+    function sleep(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    const deadline = Date.now() + 45000;
+    let app = window.SpreadsheetApp;
+    while ((!app || !app.workbook) && Date.now() < deadline) {
+      await sleep(1000);
+      app = window.SpreadsheetApp;
+    }
+    if (!app || !app.workbook) {
+      const bodyText = document.body ? document.body.innerText.slice(0, 300) : "";
+      if (/企业身份登录|个人身份登录|切换个人身份登录/.test(bodyText)) {
+        throw new Error("Tencent Docs login required: Chromium is on the login screen");
+      }
+      throw new Error("SpreadsheetApp is not ready; title=" + document.title + "; body=" + bodyText);
+    }
 
     const workbook = app.workbook;
-    const sheet = ${JSON.stringify(preferredSubId)}
-      ? workbook.worksheetManager.getSheetBySheetId(${JSON.stringify(preferredSubId)}) || workbook.activeSheet
-      : workbook.activeSheet;
-    if (!sheet) throw new Error("No active sheet");
+    const worksheetManager = workbook.worksheetManager;
+    const preferredSubIds = ${JSON.stringify(preferredSubIds)};
+    const syncAllSheets = ${JSON.stringify(syncAllSheets)};
+
+    function sheetIdOf(sheet) {
+      if (!sheet) return "";
+      try { if (typeof sheet.getSheetId === "function") return String(sheet.getSheetId()); } catch (error) {}
+      return String(sheet.id || sheet.sheetId || sheet.subId || "");
+    }
+
+    function sheetNameOf(sheet) {
+      if (!sheet) return "";
+      try { if (typeof sheet.getSheetName === "function") return String(sheet.getSheetName()); } catch (error) {}
+      return String(sheet.name || sheet.sheetName || "");
+    }
+
+    function resolveSheet(candidate) {
+      if (!candidate) return null;
+      if (
+        typeof candidate.getRowCount === "function" &&
+        typeof candidate.getColCount === "function" &&
+        typeof candidate.getCellDataAtPosition === "function"
+      ) {
+        return candidate;
+      }
+
+      const id = sheetIdOf(candidate);
+      if (!id || !worksheetManager || typeof worksheetManager.getSheetBySheetId !== "function") return null;
+      try {
+        const sheet = worksheetManager.getSheetBySheetId(id);
+        return sheet || null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function addSheet(target, sheet) {
+      sheet = resolveSheet(sheet);
+      if (!sheet) return;
+      const id = sheetIdOf(sheet);
+      if (id && target.some((item) => sheetIdOf(item) === id)) return;
+      if (target.includes(sheet)) return;
+      target.push(sheet);
+    }
+
+    function arrayFromMaybe(value) {
+      if (!value) return [];
+      if (Array.isArray(value)) return value;
+      if (value instanceof Map) return Array.from(value.values());
+      if (typeof value === "object") return Object.values(value);
+      return [];
+    }
+
+    function discoverSheets() {
+      const sheets = [];
+      const manager = worksheetManager || {};
+      for (const name of ["getSheets", "getSheetList", "getAllSheets", "getWorksheets", "getWorksheetList"]) {
+        try {
+          if (typeof manager[name] === "function") arrayFromMaybe(manager[name]()).forEach((sheet) => addSheet(sheets, sheet));
+        } catch (error) {}
+      }
+      for (const key of ["sheets", "sheetList", "worksheets", "worksheetList", "_sheets", "_sheetList", "sheetMap", "_sheetMap"]) {
+        try { arrayFromMaybe(manager[key]).forEach((sheet) => addSheet(sheets, sheet)); } catch (error) {}
+      }
+      addSheet(sheets, workbook.activeSheet);
+      return sheets;
+    }
+
+    const sheets = syncAllSheets ? discoverSheets() : [];
+    const preferredSheets = preferredSubIds
+      .map((subId) => {
+        try {
+          return worksheetManager && typeof worksheetManager.getSheetBySheetId === "function"
+            ? worksheetManager.getSheetBySheetId(subId)
+            : null;
+        } catch (error) {
+          return null;
+        }
+      })
+      .filter(Boolean);
+    if (!syncAllSheets && preferredSheets.length) preferredSheets.forEach((sheet) => addSheet(sheets, sheet));
+    if (!syncAllSheets && !sheets.length) addSheet(sheets, workbook.activeSheet);
+    if (syncAllSheets) preferredSheets.forEach((sheet) => addSheet(sheets, sheet));
+    if (!sheets.length) throw new Error("No active sheet");
 
     function textOf(cell) {
       if (!cell) return "";
@@ -218,26 +320,31 @@ function pageExtractionExpression(preferredSubId, maxRows, maxCols) {
       return "";
     }
 
-    const rowCount = Math.min(sheet.getRowCount(), ${Number(maxRows)});
-    const colCount = Math.min(sheet.getColCount(), ${Number(maxCols)});
-    const matrix = [];
-    for (let row = 0; row < rowCount; row += 1) {
-      const values = [];
-      for (let col = 0; col < colCount; col += 1) {
-        values.push(textOf(sheet.getCellDataAtPosition(row, col)).trim());
+    function extractSheet(sheet) {
+      const rowCount = Math.min(sheet.getRowCount(), ${Number(maxRows)});
+      const colCount = Math.min(sheet.getColCount(), ${Number(maxCols)});
+      const matrix = [];
+      for (let row = 0; row < rowCount; row += 1) {
+        const values = [];
+        for (let col = 0; col < colCount; col += 1) {
+          values.push(textOf(sheet.getCellDataAtPosition(row, col)).trim());
+        }
+        matrix.push(values);
       }
-      matrix.push(values);
+      return {
+        subId: sheetIdOf(sheet),
+        sheetName: sheetNameOf(sheet),
+        rowCount: sheet.getRowCount(),
+        colCount: sheet.getColCount(),
+        matrix,
+      };
     }
 
     return {
       title: document.title,
       url: location.href,
       padId: location.pathname.split("/").pop(),
-      subId: sheet.getSheetId(),
-      sheetName: sheet.getSheetName(),
-      rowCount: sheet.getRowCount(),
-      colCount: sheet.getColCount(),
-      matrix,
+      sheets: sheets.map(extractSheet),
     };
   })()`;
 }
@@ -248,24 +355,46 @@ async function main() {
   const debugUrl = option("chrome-debug-url", process.env.CHROME_DEBUG_URL || DEFAULT_CHROME_DEBUG_URL);
   const output = option("output", process.env.GPU_RESULTS_JSON || DEFAULT_OUTPUT);
   const preferredSubId = option("sub-id", process.env.TENCENT_DOC_SUB_ID || "");
+  const preferredSubIds = splitList(option("sub-ids", process.env.TENCENT_DOC_SUB_IDS || preferredSubId));
   const maxRows = Number(option("max-rows", process.env.TENCENT_DOC_MAX_ROWS || "260"));
   const maxCols = Number(option("max-cols", process.env.TENCENT_DOC_MAX_COLS || "40"));
+  const syncAllSheets = option("all-sheets", process.env.TENCENT_DOC_ALL_SHEETS || "1") !== "0";
 
   const page = await getTencentDocsPage(debugUrl);
-  const sheet = await cdpEvaluate(page, pageExtractionExpression(preferredSubId, maxRows, maxCols));
-  const matrix = sheet.matrix.map((row) => row.map(normalizeCellText));
-  const rows = buildRows(matrix);
+  const workbook = await cdpEvaluate(page, workbookExtractionExpression(preferredSubIds, maxRows, maxCols, syncAllSheets));
+  const extractedSheets = (workbook.sheets || []).map((sheet) => {
+    const matrix = sheet.matrix.map((row) => row.map(normalizeCellText));
+    const rows = buildRows(matrix);
+    return { ...sheet, matrix, rows };
+  });
+  const rows = extractedSheets.flatMap((sheet) => {
+    return sheet.rows.map((row) => ({
+      ...row,
+      "备注": [row["备注"], sheet.sheetName ? `Sheet：${sheet.sheetName}` : "", sheet.subId ? `Tab：${sheet.subId}` : ""]
+        .filter(Boolean)
+        .join("；"),
+    }));
+  });
 
   const payload = {
     source: {
       type: "tencent-docs-chrome",
-      title: sheet.title,
-      sheetName: sheet.sheetName,
-      padId: sheet.padId,
-      subId: sheet.subId,
-      url: sheet.url,
-      rowCount: sheet.rowCount,
-      colCount: sheet.colCount,
+      title: workbook.title,
+      sheetName: extractedSheets.length === 1 ? extractedSheets[0].sheetName : "multiple sheets",
+      padId: workbook.padId,
+      subId: extractedSheets.length === 1 ? extractedSheets[0].subId : "multiple",
+      url: workbook.url,
+      rowCount: extractedSheets.reduce((sum, sheet) => sum + Number(sheet.rowCount || 0), 0),
+      colCount: Math.max(0, ...extractedSheets.map((sheet) => Number(sheet.colCount || 0))),
+      sheetCount: extractedSheets.length,
+      sheets: extractedSheets.map((sheet) => ({
+        sheetName: sheet.sheetName,
+        subId: sheet.subId,
+        rowCount: sheet.rowCount,
+        colCount: sheet.colCount,
+        extractedRows: sheet.rows.length,
+        models: [...new Set(sheet.rows.map((row) => row["型号"]))],
+      })),
     },
     syncedAt: new Date().toISOString(),
     columns: ["型号", "测试项", "测试结果", "结论", "备注", "维护人", "更新时间"],
@@ -277,8 +406,13 @@ async function main() {
 
   console.log(JSON.stringify({
     output,
-    sheetName: sheet.sheetName,
-    subId: sheet.subId,
+    sheetCount: extractedSheets.length,
+    sheets: extractedSheets.map((sheet) => ({
+      sheetName: sheet.sheetName,
+      subId: sheet.subId,
+      rows: sheet.rows.length,
+      models: [...new Set(sheet.rows.map((row) => row["型号"]))],
+    })),
     rows: rows.length,
     models: [...new Set(rows.map((row) => row["型号"]))],
   }, null, 2));

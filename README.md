@@ -38,6 +38,10 @@ python3 -m http.server 18080 --bind 0.0.0.0
 2. 运行 `scripts/sync-tencent-docs-via-chrome.mjs` 抓取数据到 `data/gpu-test-results.json`
 3. 页面启动时自动加载该 JSON 文件，展示企业文档同步状态
 
+默认同步会枚举腾讯文档工作簿里的全部 sheet，并将每个 sheet 中符合“显卡/GPU + 编码格式/素材/测试结果”结构的测试行汇总到同一个 JSON。若腾讯文档内部 API 无法枚举全部 sheet，可用 `--sub-ids=<tab1,tab2>` 或环境变量 `TENCENT_DOC_SUB_IDS` 显式指定多个 tab；如需回到旧的单 sheet 行为，可加 `--all-sheets=0`。
+
+注意：node-121 的 Chromium profile 必须保持腾讯文档登录态。若同步日志出现 `SpreadsheetApp is not ready`，同时页面文本停在“企业身份登录”，需要先在 121 的 Chromium 会话中重新登录企业微信文档。
+
 ## 功能
 
 - **GPU 规格对比表**：涵盖 Blackwell、Ada、Ampere 三代架构的全部 RTX 专业卡

@@ -15,7 +15,7 @@ log() {
 while true; do
   log "syncing Tencent Docs from 121 Chromium..."
 
-  if /usr/bin/node scripts/sync-tencent-docs-via-chrome.mjs --output=data/gpu-test-results.json >>"$LOG_FILE" 2>&1; then
+  if /usr/bin/node scripts/sync-tencent-docs-via-chrome.mjs --output=data/gpu-test-results.json --all-sheets=1 >>"$LOG_FILE" 2>&1; then
     chmod 644 data/gpu-test-results.json
     log "sync ok: data/gpu-test-results.json"
   else
