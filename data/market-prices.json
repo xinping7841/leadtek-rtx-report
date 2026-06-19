@@ -1,0 +1,272 @@
+{
+  "updatedAt": "2026-06-19",
+  "fx": {
+    "usdCny": 7.25,
+    "note": "结构预留。美国市场价格补充后按固定汇率折算，仅作预算参考。"
+  },
+  "policy": {
+    "display": "页面仅展示后台计算后的国内、美国与综合参考区间，不展示逐来源价格。",
+    "method": "剔除二手/翻新/无库存/异常低价样本后，按可信渠道样本给出合理区间。"
+  },
+  "items": {
+    "rtx-pro-6000-blackwell-workstation-edition": {
+      "domestic": "约 ￥7.6万-9.3万",
+      "us": "待补充",
+      "reference": "约 ￥7.6万-9.3万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-pro-6000-blackwell-max-q-workstation-edition": {
+      "domestic": "需询价，通常接近旗舰款",
+      "us": "待补充",
+      "reference": "需询价，通常接近旗舰款",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "low"
+    },
+    "rtx-pro-5000-48gb-blackwell": {
+      "domestic": "约 ￥3.5万-4.0万",
+      "us": "待补充",
+      "reference": "约 ￥3.5万-4.0万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-pro-5000-72gb-blackwell": {
+      "domestic": "国内公开价少，建议询价",
+      "us": "待补充",
+      "reference": "国内公开价少，建议询价",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "low"
+    },
+    "rtx-pro-4500-blackwell": {
+      "domestic": "约 ￥1.75万-1.85万",
+      "us": "待补充",
+      "reference": "约 ￥1.75万-1.85万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-pro-4000-blackwell": {
+      "domestic": "约 ￥1.16万-1.5万",
+      "us": "待补充",
+      "reference": "约 ￥1.16万-1.5万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-pro-4000-blackwell-sff-edition": {
+      "domestic": "公开价少，需询价",
+      "us": "待补充",
+      "reference": "公开价少，需询价",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "low"
+    },
+    "rtx-pro-2000-blackwell": {
+      "domestic": "约 ￥4999-6800",
+      "us": "待补充",
+      "reference": "约 ￥4999-6800",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-6000-ada-generation": {
+      "domestic": "约 ￥5.6万-6.5万",
+      "us": "待补充",
+      "reference": "约 ￥5.6万-6.5万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-5880-ada-generation": {
+      "domestic": "约 ￥3.1万-4.2万",
+      "us": "待补充",
+      "reference": "约 ￥3.1万-4.2万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-5000-ada-generation": {
+      "domestic": "约 ￥2.45万-3.5万",
+      "us": "待补充",
+      "reference": "约 ￥2.45万-3.5万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-4500-ada-generation": {
+      "domestic": "约 ￥1.69万-2.0万",
+      "us": "待补充",
+      "reference": "约 ￥1.69万-2.0万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-4000-ada-generation": {
+      "domestic": "约 ￥9999-11100",
+      "us": "待补充",
+      "reference": "约 ￥9999-11100",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-4000-sff-ada-generation": {
+      "domestic": "约 ￥9999-10800",
+      "us": "待补充",
+      "reference": "约 ￥9999-10800",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-2000-ada-generation": {
+      "domestic": "约 ￥5099-5599",
+      "us": "待补充",
+      "reference": "约 ￥5099-5599",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a1000": {
+      "domestic": "约 ￥2999-3839",
+      "us": "待补充",
+      "reference": "约 ￥2999-3839",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a400": {
+      "domestic": "约 ￥1239-1389",
+      "us": "待补充",
+      "reference": "约 ￥1239-1389",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a5500": {
+      "domestic": "约 ￥1.8万-2.6万",
+      "us": "待补充",
+      "reference": "约 ￥1.8万-2.6万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a4500": {
+      "domestic": "约 ￥1.1万-1.7万",
+      "us": "待补充",
+      "reference": "约 ￥1.1万-1.7万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a5000": {
+      "domestic": "约 ￥1.5万-2.6万",
+      "us": "待补充",
+      "reference": "约 ￥1.5万-2.6万",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a4000": {
+      "domestic": "约 ￥5500-9000",
+      "us": "待补充",
+      "reference": "约 ￥5500-9000",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a2000-6gb": {
+      "domestic": "约 ￥2500-3300",
+      "us": "待补充",
+      "reference": "约 ￥2500-3300",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a2000-12gb": {
+      "domestic": "约 ￥3500-4500",
+      "us": "待补充",
+      "reference": "约 ￥3500-4500",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "rtx-a6000": {
+      "domestic": "约 ￥2.7万-4.5万，库存差异大",
+      "us": "待补充",
+      "reference": "约 ￥2.7万-4.5万，库存差异大",
+      "status": "现有公开价样本，待补充美国市场价",
+      "confidence": "medium"
+    },
+    "quadro-rtx-8000": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "quadro-rtx-6000": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "quadro-rtx-5000": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "quadro-rtx-4000": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-w7900": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-w7800": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-w7700": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-w7600": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-w7500": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-w6800": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-w6600": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-vii": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    },
+    "radeon-pro-wx-9100": {
+      "domestic": "待补充",
+      "us": "待补充",
+      "reference": "待补充",
+      "status": "价格待手工核验",
+      "confidence": "pending"
+    }
+  }
+}

@@ -1,8 +1,18 @@
-# 备份文件
+# Backup files
 *.bak-*
+index.html.bak-*
 
-# 环境变量
+# Local environment
 .env
+.env.*
+
+# Dependency/scratch output
+node_modules/
+outputs/
+tmp-*
+*.inspect.ndjson
+__pycache__/
+scripts/__pycache__/
 
 # IDE
 .vscode/

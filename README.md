@@ -1,73 +1,64 @@
-# 丽台 NVIDIA RTX 专业图形卡近五年对比
+# 专业图形卡选型与视频编解码能力对比
 
-静态 HTML 报告页面，提供 NVIDIA RTX 专业图形卡（Ampere / Ada / Blackwell）近五年的规格对比、采购判断和视频编解码能力评估。
+静态报告页面，用于比较 NVIDIA RTX / Quadro RTX 与 AMD Radeon PRO 专业图形卡。页面重点展示规格、视频编解码能力、价格参考区间和采购建议。
 
-## 项目结构
+## 结构
 
+```text
+index.html                         # 轻量入口页
+assets/css/report.css              # 页面样式
+assets/js/app.js                   # 数据加载、筛选、排序、对比渲染逻辑
+data/gpu-catalog.json              # 显卡规格、文案、分类和推荐口径
+data/market-prices.json            # 国内/美国/综合参考价区间，前台只展示计算结果
+data/gpu-test-results.json         # 腾讯文档同步的企业实测结果
+scripts/extract-gpu-catalog-from-html.py # 从旧 HTML 表格迁移生成数据文件
+scripts/sync-tencent-docs-via-chrome.mjs # 企业文档实测同步脚本
 ```
-├── index.html              # 主页面：GPU 对比表 + 筛选/排序/对比功能
-├── data/
-│   └── gpu-test-results.json   # 腾讯文档同步的 GPU 实测数据
-├── .edit-lock.json          # 编辑锁状态（通过 Git 同步，防止多终端冲突）
-└── scripts/
-    ├── edit-lock.sh                   # Linux/macOS 编辑锁管理
-    ├── edit-lock.ps1                  # Windows 编辑锁管理
-    ├── sync-tencent-docs-via-chrome.mjs   # 通过 Chrome DevTools 协议抓取腾讯文档表格
-    ├── start-121-doc-chromium.sh          # 在 node-121 上启动 Chromium（debug 端口 9222）
-    ├── watch-tencent-docs-sync-linux.sh   # Linux 环境同步守护脚本
-    └── watch-tencent-docs-sync.ps1        # Windows 环境同步守护脚本
+
+## 维护原则
+
+- 新增或修改显卡型号，优先编辑 `data/gpu-catalog.json`。
+- 价格只写入 `data/market-prices.json`，页面不展示逐来源报价。
+- 美国市场价格结构已预留，可后续由后台脚本采集 Amazon、B&H、Best Buy、Newegg、CDW/Provantage 等渠道并计算区间。
+- 页面会自动读取 `data/gpu-test-results.json`，把企业实测条目合并到对应型号卡片。
+- `index.html` 不再维护静态 GPU 表格，避免后续改动越来越重。
+
+## 价格口径
+
+价格数据建议按后台计算后的结果写入：
+
+```json
+{
+  "domestic": "约 ￥11000-15000",
+  "us": "$1199-1499",
+  "reference": "约 ￥9000-13000",
+  "status": "公开样本较充足，库存价波动中",
+  "confidence": "medium"
+}
+```
+
+计算时应剔除二手、翻新、无库存、明显异常低价和错误型号样本。美国价格和国内价格分开计算，再给出综合参考区间。
+
+## 本地预览
+
+静态文件需要通过 HTTP 服务访问，避免浏览器拦截本地 JSON：
+
+```powershell
+python -m http.server 18080
+```
+
+然后访问：
+
+```text
+http://127.0.0.1:18080/
 ```
 
 ## 部署
 
-当前运行在 node-121（`/opt/leadtek-rtx-report`），通过 Python HTTP 服务器暴露：
+当前项目运行在 node-121 的 `/opt/leadtek-rtx-report`，站点地址：
 
-```bash
-cd /opt/leadtek-rtx-report
-python3 -m http.server 18080 --bind 0.0.0.0
+```text
+https://nvidia.gaoxinping.top/
 ```
 
-访问：`http://node-121:18080/`
-
-## 数据同步
-
-页面内置的 GPU 测试数据来自腾讯文档在线表格 `C5&hecoos 硬件测试报告`。
-
-同步流程：
-1. 在 node-121 上启动 Chromium debug 模式（见 `scripts/start-121-doc-chromium.sh`）
-2. 运行 `scripts/sync-tencent-docs-via-chrome.mjs` 抓取数据到 `data/gpu-test-results.json`
-3. 页面启动时自动加载该 JSON 文件，展示企业文档同步状态
-
-默认同步会枚举腾讯文档工作簿里的全部 sheet，并将每个 sheet 中符合“显卡/GPU + 编码格式/素材/测试结果”结构的测试行汇总到同一个 JSON。若腾讯文档内部 API 无法枚举全部 sheet，可用 `--sub-ids=<tab1,tab2>` 或环境变量 `TENCENT_DOC_SUB_IDS` 显式指定多个 tab；如需回到旧的单 sheet 行为，可加 `--all-sheets=0`。
-
-注意：node-121 的 Chromium profile 必须保持腾讯文档登录态。若同步日志出现 `SpreadsheetApp is not ready`，同时页面文本停在“企业身份登录”，需要先在 121 的 Chromium 会话中重新登录企业微信文档。
-
-## 功能
-
-- **GPU 规格对比表**：涵盖 Blackwell、Ada、Ampere 三代架构的全部 RTX 专业卡
-- **筛选器**：按功耗、显存、NVDEC 数量、4:2:2 支持、AV1 能力等多维筛选
-- **多款对比**：勾选 2 款及以上 GPU 生成并排对比表
-- **视频服务器能力评分**：综合 4:2:2、AV1、NVENC/NVDEC、显存、带宽、功耗等维度
-- **全屏/紧凑双视图**：适配大屏展示和小窗口操作
-
-## 编辑锁
-
-多终端协作时，通过 `.edit-lock.json` + Git 同步防止同时修改造成冲突：
-
-```bash
-# 开始修改前 — 获取锁
-bash scripts/edit-lock.sh acquire "修改原因"
-
-# 查看当前锁状态
-bash scripts/edit-lock.sh status
-
-# 修改完成提交后 — 释放锁
-bash scripts/edit-lock.sh release
-
-# 紧急情况强制释放
-bash scripts/edit-lock.sh force-release
-```
-
-Windows 上使用 `powershell -File scripts/edit-lock.ps1 <命令>`。
-
-锁默认 4 小时过期，过期后自动失效。所有终端通过 `git pull` 即可看到最新锁状态。
+部署前确认分支、diff 和静态页面预览均正常，再同步到服务器。
