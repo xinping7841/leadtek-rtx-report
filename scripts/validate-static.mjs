@@ -41,6 +41,33 @@ function assertNumber(value, label) {
   if (typeof value !== "number" || !Number.isFinite(value)) fail(`${label} must be a finite number`);
 }
 
+function assertHttpUrl(value, label) {
+  assertString(value, label);
+  if (typeof value !== "string") return;
+  try {
+    const url = new URL(value);
+    if (!/^https?:$/.test(url.protocol)) fail(`${label} must be an HTTP(S) URL`);
+  } catch {
+    fail(`${label} must be a valid URL`);
+  }
+}
+
+function assertLocalAsset(value, label) {
+  assertString(value, label);
+  if (typeof value !== "string" || !value.trim()) return;
+  if (/^https?:\/\//i.test(value)) fail(`${label} must use a local cached asset path`);
+  if (value.includes("..") || value.startsWith("/") || value.startsWith("\\")) {
+    fail(`${label} must be a relative path inside the project`);
+    return;
+  }
+  if (!fs.existsSync(value)) {
+    fail(`${label} references missing file: ${value}`);
+    return;
+  }
+  const stats = fs.statSync(value);
+  if (!stats.isFile() || stats.size === 0) fail(`${label} references an empty or invalid file: ${value}`);
+}
+
 for (const file of requiredFiles) readText(file);
 
 const html = readText("index.html");
@@ -66,8 +93,9 @@ if (!Array.isArray(catalog?.gpus)) {
     assertString(gpu.level, `${label}.level`);
     assertString(gpu.model, `${label}.model`);
     assertString(gpu.architecture, `${label}.architecture`);
-    assertString(gpu.image?.src, `${label}.image.src`);
+    assertLocalAsset(gpu.image?.src, `${label}.image.src`);
     assertString(gpu.image?.alt, `${label}.image.alt`);
+    if (gpu.image?.sourceUrl !== undefined) assertHttpUrl(gpu.image.sourceUrl, `${label}.image.sourceUrl`);
     assertString(gpu.compute?.text, `${label}.compute.text`);
     assertNumber(gpu.compute?.cuda, `${label}.compute.cuda`);
     assertString(gpu.memory?.text, `${label}.memory.text`);

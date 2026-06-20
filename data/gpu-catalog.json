@@ -12,8 +12,9 @@
       },
       "architecture": "NVIDIA Blackwell",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51028_1M.jpg?V=0",
-        "alt": "RTX PRO 6000 Blackwell Workstation"
+        "src": "assets/images/rtx-pro-6000-blackwell-workstation-edition.jpg",
+        "alt": "RTX PRO 6000 Blackwell Workstation",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51028_1M.jpg?V=0"
       },
       "compute": {
         "text": "24064 / 752 / 188",
@@ -74,8 +75,9 @@
       },
       "architecture": "NVIDIA Blackwell",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51029_1M.jpg?V=0",
-        "alt": "RTX PRO 6000 Blackwell Max-Q"
+        "src": "assets/images/rtx-pro-6000-blackwell-max-q-workstation-edition.jpg",
+        "alt": "RTX PRO 6000 Blackwell Max-Q",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51029_1M.jpg?V=0"
       },
       "compute": {
         "text": "24064 / 752 / 188",
@@ -136,8 +138,9 @@
       },
       "architecture": "NVIDIA Blackwell",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51049_1M.jpg?V=0",
-        "alt": "RTX PRO 5000 48GB Blackwell"
+        "src": "assets/images/rtx-pro-5000-48gb-blackwell.jpg",
+        "alt": "RTX PRO 5000 48GB Blackwell",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51049_1M.jpg?V=0"
       },
       "compute": {
         "text": "14080 / 440 / 110",
@@ -198,8 +201,9 @@
       },
       "architecture": "NVIDIA Blackwell",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51049_1M.jpg?V=0",
-        "alt": "RTX PRO 5000 72GB Blackwell"
+        "src": "assets/images/rtx-pro-5000-72gb-blackwell.jpg",
+        "alt": "RTX PRO 5000 72GB Blackwell",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51049_1M.jpg?V=0"
       },
       "compute": {
         "text": "14080 / 440 / 110",
@@ -260,8 +264,9 @@
       },
       "architecture": "NVIDIA Blackwell",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51031_1M.jpg?V=0",
-        "alt": "RTX PRO 4500 Blackwell"
+        "src": "assets/images/rtx-pro-4500-blackwell.jpg",
+        "alt": "RTX PRO 4500 Blackwell",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51031_1M.jpg?V=0"
       },
       "compute": {
         "text": "10496 / 328 / 82",
@@ -322,8 +327,9 @@
       },
       "architecture": "NVIDIA Blackwell",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51032_1M.jpg?V=0",
-        "alt": "RTX PRO 4000 Blackwell"
+        "src": "assets/images/rtx-pro-4000-blackwell.jpg",
+        "alt": "RTX PRO 4000 Blackwell",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51032_1M.jpg?V=0"
       },
       "compute": {
         "text": "8960 / 280 / 70",
@@ -384,8 +390,9 @@
       },
       "architecture": "NVIDIA Blackwell",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51043_1M.jpg?V=0",
-        "alt": "RTX PRO 4000 Blackwell SFF"
+        "src": "assets/images/rtx-pro-4000-blackwell-sff-edition.jpg",
+        "alt": "RTX PRO 4000 Blackwell SFF",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51043_1M.jpg?V=0"
       },
       "compute": {
         "text": "8960 / 280 / 70",
@@ -446,8 +453,9 @@
       },
       "architecture": "NVIDIA Blackwell",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51042_1M.jpg?V=0",
-        "alt": "RTX PRO 2000 Blackwell"
+        "src": "assets/images/rtx-pro-2000-blackwell.jpg",
+        "alt": "RTX PRO 2000 Blackwell",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51042_1M.jpg?V=0"
       },
       "compute": {
         "text": "4352 / 136 / 34",
@@ -508,8 +516,9 @@
       },
       "architecture": "NVIDIA Ada Lovelace",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40949_1M.jpg?V=0",
-        "alt": "RTX 6000 Ada"
+        "src": "assets/images/rtx-6000-ada-generation.jpg",
+        "alt": "RTX 6000 Ada",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40949_1M.jpg?V=0"
       },
       "compute": {
         "text": "18176 / 568 / 142",
@@ -570,8 +579,9 @@
       },
       "architecture": "NVIDIA Ada Lovelace",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51003_1M.jpg?V=0",
-        "alt": "RTX 5880 Ada"
+        "src": "assets/images/rtx-5880-ada-generation.jpg",
+        "alt": "RTX 5880 Ada",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51003_1M.jpg?V=0"
       },
       "compute": {
         "text": "14080 / 440 / 110",
@@ -632,8 +642,9 @@
       },
       "architecture": "NVIDIA Ada Lovelace",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40989_1M.jpg?V=0",
-        "alt": "RTX 5000 Ada"
+        "src": "assets/images/rtx-5000-ada-generation.jpg",
+        "alt": "RTX 5000 Ada",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40989_1M.jpg?V=0"
       },
       "compute": {
         "text": "12800 / 400 / 100",
@@ -694,8 +705,9 @@
       },
       "architecture": "NVIDIA Ada Lovelace",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40990_1M.jpg?V=0",
-        "alt": "RTX 4500 Ada"
+        "src": "assets/images/rtx-4500-ada-generation.jpg",
+        "alt": "RTX 4500 Ada",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40990_1M.jpg?V=0"
       },
       "compute": {
         "text": "7680 / 240 / 60",
@@ -756,8 +768,9 @@
       },
       "architecture": "NVIDIA Ada Lovelace",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40988_1M.jpg?V=0",
-        "alt": "RTX 4000 Ada"
+        "src": "assets/images/rtx-4000-ada-generation.jpg",
+        "alt": "RTX 4000 Ada",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40988_1M.jpg?V=0"
       },
       "compute": {
         "text": "6144 / 192 / 48",
@@ -818,8 +831,9 @@
       },
       "architecture": "NVIDIA Ada Lovelace",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40974_1M.jpg?V=0",
-        "alt": "RTX 4000 SFF Ada"
+        "src": "assets/images/rtx-4000-sff-ada-generation.jpg",
+        "alt": "RTX 4000 SFF Ada",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40974_1M.jpg?V=0"
       },
       "compute": {
         "text": "6144 / 192 / 48",
@@ -880,8 +894,9 @@
       },
       "architecture": "NVIDIA Ada Lovelace",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51006_1M.jpg?V=0",
-        "alt": "RTX 2000 Ada"
+        "src": "assets/images/rtx-2000-ada-generation.jpg",
+        "alt": "RTX 2000 Ada",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51006_1M.jpg?V=0"
       },
       "compute": {
         "text": "2816 / 88 / 22",
@@ -942,8 +957,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51012_1M.jpg?V=0",
-        "alt": "RTX A1000"
+        "src": "assets/images/rtx-a1000.jpg",
+        "alt": "RTX A1000",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51012_1M.jpg?V=0"
       },
       "compute": {
         "text": "2304 / 72 / 18",
@@ -1004,8 +1020,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/51013_1M.jpg?V=0",
-        "alt": "RTX A400"
+        "src": "assets/images/rtx-a400.jpg",
+        "alt": "RTX A400",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/51013_1M.jpg?V=0"
       },
       "compute": {
         "text": "768 / 24 / 6",
@@ -1066,8 +1083,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40943_1M.jpg?V=0",
-        "alt": "RTX A5500"
+        "src": "assets/images/rtx-a5500.jpg",
+        "alt": "RTX A5500",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40943_1M.jpg?V=0"
       },
       "compute": {
         "text": "10240 / 320 / 80",
@@ -1128,8 +1146,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40937_1M.jpg?V=0",
-        "alt": "RTX A4500"
+        "src": "assets/images/rtx-a4500.jpg",
+        "alt": "RTX A4500",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40937_1M.jpg?V=0"
       },
       "compute": {
         "text": "7168 / 224 / 56",
@@ -1190,8 +1209,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40914_1M.jpg?V=0",
-        "alt": "RTX A5000"
+        "src": "assets/images/rtx-a5000.jpg",
+        "alt": "RTX A5000",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40914_1M.jpg?V=0"
       },
       "compute": {
         "text": "8192 / 256 / 64",
@@ -1252,8 +1272,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40915_1M.jpg?V=0",
-        "alt": "RTX A4000"
+        "src": "assets/images/rtx-a4000.jpg",
+        "alt": "RTX A4000",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40915_1M.jpg?V=0"
       },
       "compute": {
         "text": "6144 / 192 / 48",
@@ -1314,8 +1335,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40931_1M.jpg?V=0",
-        "alt": "RTX A2000 6GB"
+        "src": "assets/images/rtx-a2000-6gb.jpg",
+        "alt": "RTX A2000 6GB",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40931_1M.jpg?V=0"
       },
       "compute": {
         "text": "3328 / 104 / 26",
@@ -1376,8 +1398,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/40931_1M.jpg?V=0",
-        "alt": "RTX A2000 12GB"
+        "src": "assets/images/rtx-a2000-12gb.jpg",
+        "alt": "RTX A2000 12GB",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/40931_1M.jpg?V=0"
       },
       "compute": {
         "text": "3328 / 104 / 26",
@@ -1438,8 +1461,9 @@
       },
       "architecture": "NVIDIA Ampere",
       "image": {
-        "src": "https://www.leadtek.com.cn/p_images/zoom/30893_1M.jpg?V=0",
-        "alt": "RTX A6000"
+        "src": "assets/images/rtx-a6000.jpg",
+        "alt": "RTX A6000",
+        "sourceUrl": "https://www.leadtek.com.cn/p_images/zoom/30893_1M.jpg?V=0"
       },
       "compute": {
         "text": "10752 / 336 / 84",
