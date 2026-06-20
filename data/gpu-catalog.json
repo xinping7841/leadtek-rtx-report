@@ -1,0 +1,1494 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "index.html#gpuTable",
+  "gpus": [
+    {
+      "id": "rtx-pro-6000-blackwell-workstation-edition",
+      "level": "6000",
+      "model": "RTX PRO 6000 Blackwell Workstation Edition",
+      "generation": {
+        "label": "Blackwell",
+        "text": "2025"
+      },
+      "architecture": "NVIDIA Blackwell",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51028_1M.jpg?V=0",
+        "alt": "RTX PRO 6000 Blackwell Workstation"
+      },
+      "compute": {
+        "text": "24064 / 752 / 188",
+        "cuda": 24064,
+        "tensor": 752,
+        "rt": 188
+      },
+      "memory": {
+        "text": "96GB GDDR7 ECC",
+        "gb": 96,
+        "type": "GDDR7",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "512-bit / 1792GB/s",
+        "bus": "512-bit",
+        "gbps": 1792
+      },
+      "power": {
+        "text": "600W",
+        "watts": 600
+      },
+      "codecs": {
+        "engine": {
+          "text": "4x NVENC / 4x NVDEC / 4x JPEG",
+          "nvenc": 4,
+          "nvdec": 4,
+          "jpeg": 4
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4",
+          "detail": "HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。",
+          "note": "多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。",
+          "limited": false
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 9 代 NVENC，支持硬件编码+解码。",
+          "note": "适合新建低码率分发和高质量转码。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 5.0 x16\n4x DP 2.1",
+      "formFactor": "5.4\" H x 12\" L，XHFL 双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_6000_Blackwell_Workstation_Edition%2851028%29/detail"
+      },
+      "positioning": "旗舰工作站、本地大模型、超大场景渲染。"
+    },
+    {
+      "id": "rtx-pro-6000-blackwell-max-q-workstation-edition",
+      "level": "6000",
+      "model": "RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+      "generation": {
+        "label": "Blackwell",
+        "text": "2025"
+      },
+      "architecture": "NVIDIA Blackwell",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51029_1M.jpg?V=0",
+        "alt": "RTX PRO 6000 Blackwell Max-Q"
+      },
+      "compute": {
+        "text": "24064 / 752 / 188",
+        "cuda": 24064,
+        "tensor": 752,
+        "rt": 188
+      },
+      "memory": {
+        "text": "96GB GDDR7 ECC",
+        "gb": 96,
+        "type": "GDDR7",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "512-bit / 1792GB/s",
+        "bus": "512-bit",
+        "gbps": 1792
+      },
+      "power": {
+        "text": "300W",
+        "watts": 300
+      },
+      "codecs": {
+        "engine": {
+          "text": "4x NVENC / 4x NVDEC / 4x JPEG",
+          "nvenc": 4,
+          "nvdec": 4,
+          "jpeg": 4
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4",
+          "detail": "HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。",
+          "note": "多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。",
+          "limited": false
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 9 代 NVENC，支持硬件编码+解码。",
+          "note": "适合新建低码率分发和高质量转码。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 5.0 x16\n4x DP 2.1",
+      "formFactor": "4.4\" H x 10.5\" L，全高全长双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_6000_Blackwell_Max_Q_Workstation_Edition%2851029%29/detail"
+      },
+      "positioning": "96GB 显存但功耗受限，更适合多卡/供电受限工作站。"
+    },
+    {
+      "id": "rtx-pro-5000-48gb-blackwell",
+      "level": "5000",
+      "model": "RTX PRO 5000 48GB Blackwell",
+      "generation": {
+        "label": "Blackwell",
+        "text": "2025"
+      },
+      "architecture": "NVIDIA Blackwell",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51049_1M.jpg?V=0",
+        "alt": "RTX PRO 5000 48GB Blackwell"
+      },
+      "compute": {
+        "text": "14080 / 440 / 110",
+        "cuda": 14080,
+        "tensor": 440,
+        "rt": 110
+      },
+      "memory": {
+        "text": "48GB GDDR7 ECC",
+        "gb": 48,
+        "type": "GDDR7",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "384-bit / 1344GB/s",
+        "bus": "384-bit",
+        "gbps": 1344
+      },
+      "power": {
+        "text": "300W",
+        "watts": 300
+      },
+      "codecs": {
+        "engine": {
+          "text": "3x NVENC / 3x NVDEC / 1x JPEG",
+          "nvenc": 3,
+          "nvdec": 3,
+          "jpeg": 1
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4",
+          "detail": "HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。",
+          "note": "多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。",
+          "limited": false
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 9 代 NVENC，支持硬件编码+解码。",
+          "note": "适合新建低码率分发和高质量转码。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 5.0 x16\n4x DP 2.1",
+      "formFactor": "4.4\" H x 10.5\" L，全高全长双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_5000_Blackwell%2851030%29/detail"
+      },
+      "positioning": "48GB 标准版，视频服务器/云剪辑/AV1 输出更均衡；显存不够再看 72GB。"
+    },
+    {
+      "id": "rtx-pro-5000-72gb-blackwell",
+      "level": "5000",
+      "model": "RTX PRO 5000 72GB Blackwell",
+      "generation": {
+        "label": "Blackwell",
+        "text": "2025-2026"
+      },
+      "architecture": "NVIDIA Blackwell",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51049_1M.jpg?V=0",
+        "alt": "RTX PRO 5000 72GB Blackwell"
+      },
+      "compute": {
+        "text": "14080 / 440 / 110",
+        "cuda": 14080,
+        "tensor": 440,
+        "rt": 110
+      },
+      "memory": {
+        "text": "72GB GDDR7 ECC",
+        "gb": 72,
+        "type": "GDDR7",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "384-bit / 1344GB/s",
+        "bus": "384-bit",
+        "gbps": 1344
+      },
+      "power": {
+        "text": "300W",
+        "watts": 300
+      },
+      "codecs": {
+        "engine": {
+          "text": "3x NVENC / 3x NVDEC / 1x JPEG",
+          "nvenc": 3,
+          "nvdec": 3,
+          "jpeg": 1
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4",
+          "detail": "HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。",
+          "note": "多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。",
+          "limited": false
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 9 代 NVENC，支持硬件编码+解码。",
+          "note": "适合新建低码率分发和高质量转码。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 5.0 x16\n4x DP 2.1",
+      "formFactor": "4.4\" H x 10.5\" L，全高全长双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_5000_Blackwell%2851030%29/detail"
+      },
+      "positioning": "比 48GB 更偏本地大模型和大数据集，需看实际到货价。"
+    },
+    {
+      "id": "rtx-pro-4500-blackwell",
+      "level": "4000",
+      "model": "RTX PRO 4500 Blackwell",
+      "generation": {
+        "label": "Blackwell",
+        "text": "2025"
+      },
+      "architecture": "NVIDIA Blackwell",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51031_1M.jpg?V=0",
+        "alt": "RTX PRO 4500 Blackwell"
+      },
+      "compute": {
+        "text": "10496 / 328 / 82",
+        "cuda": 10496,
+        "tensor": 328,
+        "rt": 82
+      },
+      "memory": {
+        "text": "32GB GDDR7 ECC",
+        "gb": 32,
+        "type": "GDDR7",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "256-bit / 896GB/s",
+        "bus": "256-bit",
+        "gbps": 896
+      },
+      "power": {
+        "text": "200W",
+        "watts": 200
+      },
+      "codecs": {
+        "engine": {
+          "text": "2x NVENC / 2x NVDEC / 1x JPEG",
+          "nvenc": 2,
+          "nvdec": 2,
+          "jpeg": 1
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4",
+          "detail": "HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。",
+          "note": "多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。",
+          "limited": false
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 9 代 NVENC，支持硬件编码+解码。",
+          "note": "适合新建低码率分发和高质量转码。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 5.0 x16\n4x DP 2.1",
+      "formFactor": "4.4\" H x 10.5\" L，全高全长双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_4500_Blackwell%2851031%29/detail"
+      },
+      "positioning": "32GB 显存价位甜点，适合设计/渲染/中型 AI。"
+    },
+    {
+      "id": "rtx-pro-4000-blackwell",
+      "level": "4000",
+      "model": "RTX PRO 4000 Blackwell",
+      "generation": {
+        "label": "Blackwell",
+        "text": "2025"
+      },
+      "architecture": "NVIDIA Blackwell",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51032_1M.jpg?V=0",
+        "alt": "RTX PRO 4000 Blackwell"
+      },
+      "compute": {
+        "text": "8960 / 280 / 70",
+        "cuda": 8960,
+        "tensor": 280,
+        "rt": 70
+      },
+      "memory": {
+        "text": "24GB GDDR7 ECC",
+        "gb": 24,
+        "type": "GDDR7",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "192-bit / 672GB/s",
+        "bus": "192-bit",
+        "gbps": 672
+      },
+      "power": {
+        "text": "140W",
+        "watts": 140
+      },
+      "codecs": {
+        "engine": {
+          "text": "2x NVENC / 2x NVDEC / 1x JPEG",
+          "nvenc": 2,
+          "nvdec": 2,
+          "jpeg": 1
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4",
+          "detail": "HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。",
+          "note": "多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。",
+          "limited": false
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 9 代 NVENC，支持硬件编码+解码。",
+          "note": "适合新建低码率分发和高质量转码。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 5.0 x16\n4x DP 2.1",
+      "formFactor": "4.4\" H x 9.5\" L，全高中长单槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_4000_Blackwell%2851032%29/detail"
+      },
+      "positioning": "单槽高性能工作站，兼顾 24GB 显存和装机兼容性。"
+    },
+    {
+      "id": "rtx-pro-4000-blackwell-sff-edition",
+      "level": "4000",
+      "model": "RTX PRO 4000 Blackwell SFF Edition",
+      "generation": {
+        "label": "Blackwell",
+        "text": "2025"
+      },
+      "architecture": "NVIDIA Blackwell",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51043_1M.jpg?V=0",
+        "alt": "RTX PRO 4000 Blackwell SFF"
+      },
+      "compute": {
+        "text": "8960 / 280 / 70",
+        "cuda": 8960,
+        "tensor": 280,
+        "rt": 70
+      },
+      "memory": {
+        "text": "24GB GDDR7 ECC",
+        "gb": 24,
+        "type": "GDDR7",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "192-bit / 432GB/s",
+        "bus": "192-bit",
+        "gbps": 432
+      },
+      "power": {
+        "text": "70W",
+        "watts": 70
+      },
+      "codecs": {
+        "engine": {
+          "text": "2x NVENC / 2x NVDEC / 1x JPEG",
+          "nvenc": 2,
+          "nvdec": 2,
+          "jpeg": 1
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4",
+          "detail": "HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。",
+          "note": "多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。",
+          "limited": false
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 9 代 NVENC，支持硬件编码+解码。",
+          "note": "适合新建低码率分发和高质量转码。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 5.0 x8\n4x mDP 2.1b",
+      "formFactor": "2.7\" H x 6.6\" L，半高半长双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com/eng/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_4000_Blackwell_SFF_Edition%2851043%29/detail"
+      },
+      "positioning": "小机箱、低功耗、24GB 显存刚需。"
+    },
+    {
+      "id": "rtx-pro-2000-blackwell",
+      "level": "2000",
+      "model": "RTX PRO 2000 Blackwell",
+      "generation": {
+        "label": "Blackwell",
+        "text": "2025"
+      },
+      "architecture": "NVIDIA Blackwell",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51042_1M.jpg?V=0",
+        "alt": "RTX PRO 2000 Blackwell"
+      },
+      "compute": {
+        "text": "4352 / 136 / 34",
+        "cuda": 4352,
+        "tensor": 136,
+        "rt": 34
+      },
+      "memory": {
+        "text": "16GB GDDR7 ECC",
+        "gb": 16,
+        "type": "GDDR7",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "128-bit / 288GB/s",
+        "bus": "128-bit",
+        "gbps": 288
+      },
+      "power": {
+        "text": "70W",
+        "watts": 70
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 1x NVDEC / 1x JPEG*",
+          "nvenc": 1,
+          "nvdec": 1,
+          "jpeg": 1
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 6 代 NVDEC，支持 4:2:0 / 4:2:2 / 4:4:4",
+          "detail": "HEVC 4:2:0、4:2:2、4:4:4 均支持 8/10/12-bit 硬解；最大分辨率按 8192x8192 看。",
+          "note": "多路并发看左侧 NVDEC 数量；10-bit/12-bit 4:2:2 源优先此代。",
+          "limited": false
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 9 代 NVENC，支持硬件编码+解码。",
+          "note": "适合新建低码率分发和高质量转码。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 5.0 x8\n4x mDP 2.1b",
+      "formFactor": "2.7\" H x 6.6\" L，半高半长双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_PRO_2000_Blackwell%2851042%29/detail"
+      },
+      "positioning": "入门 Blackwell 专业卡，适合 CAD、多屏、轻 AI。"
+    },
+    {
+      "id": "rtx-6000-ada-generation",
+      "level": "6000",
+      "model": "RTX 6000 Ada Generation",
+      "generation": {
+        "label": "Ada",
+        "text": "2022"
+      },
+      "architecture": "NVIDIA Ada Lovelace",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40949_1M.jpg?V=0",
+        "alt": "RTX 6000 Ada"
+      },
+      "compute": {
+        "text": "18176 / 568 / 142",
+        "cuda": 18176,
+        "tensor": 568,
+        "rt": 142
+      },
+      "memory": {
+        "text": "48GB GDDR6 ECC",
+        "gb": 48,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "384-bit / 960GB/s",
+        "bus": "384-bit",
+        "gbps": 960
+      },
+      "power": {
+        "text": "300W",
+        "watts": 300
+      },
+      "codecs": {
+        "engine": {
+          "text": "3x NVENC / 3x NVDEC",
+          "nvenc": 3,
+          "nvdec": 3,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 8 代 NVENC，支持硬件编码+解码。",
+          "note": "适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 10.5\" L，双宽度",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/nvidia_rtx_6000_ada_generation%2840949%29/detail/search"
+      },
+      "positioning": "上代旗舰，传统图形/渲染稳定，AI 新特性不如 Blackwell。"
+    },
+    {
+      "id": "rtx-5880-ada-generation",
+      "level": "5000",
+      "model": "RTX 5880 Ada Generation",
+      "generation": {
+        "label": "Ada",
+        "text": "2024"
+      },
+      "architecture": "NVIDIA Ada Lovelace",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51003_1M.jpg?V=0",
+        "alt": "RTX 5880 Ada"
+      },
+      "compute": {
+        "text": "14080 / 440 / 110",
+        "cuda": 14080,
+        "tensor": 440,
+        "rt": 110
+      },
+      "memory": {
+        "text": "48GB GDDR6 ECC",
+        "gb": 48,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "384-bit / 960GB/s",
+        "bus": "384-bit",
+        "gbps": 960
+      },
+      "power": {
+        "text": "285W",
+        "watts": 285
+      },
+      "codecs": {
+        "engine": {
+          "text": "3x NVENC / 3x NVDEC",
+          "nvenc": 3,
+          "nvdec": 3,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 8 代 NVENC，支持硬件编码+解码。",
+          "note": "适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 10.5\" L，双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_5880_Ada_Generation%2851003%29/detail"
+      },
+      "positioning": "48GB 显存预算位，适合不追 Blackwell 的大显存需求。"
+    },
+    {
+      "id": "rtx-5000-ada-generation",
+      "level": "5000",
+      "model": "RTX 5000 Ada Generation",
+      "generation": {
+        "label": "Ada",
+        "text": "2023"
+      },
+      "architecture": "NVIDIA Ada Lovelace",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40989_1M.jpg?V=0",
+        "alt": "RTX 5000 Ada"
+      },
+      "compute": {
+        "text": "12800 / 400 / 100",
+        "cuda": 12800,
+        "tensor": 400,
+        "rt": 100
+      },
+      "memory": {
+        "text": "32GB GDDR6 ECC",
+        "gb": 32,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "256-bit / 576GB/s",
+        "bus": "256-bit",
+        "gbps": 576
+      },
+      "power": {
+        "text": "250W",
+        "watts": 250
+      },
+      "codecs": {
+        "engine": {
+          "text": "2x NVENC / 2x NVDEC",
+          "nvenc": 2,
+          "nvdec": 2,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 8 代 NVENC，支持硬件编码+解码。",
+          "note": "适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 10.5\" L，双宽度",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_5000_Ada_Generation%2840989%29/detail"
+      },
+      "positioning": "32GB Ada 高端卡，适合成熟软件生态和渲染流程。"
+    },
+    {
+      "id": "rtx-4500-ada-generation",
+      "level": "4000",
+      "model": "RTX 4500 Ada Generation",
+      "generation": {
+        "label": "Ada",
+        "text": "2023"
+      },
+      "architecture": "NVIDIA Ada Lovelace",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40990_1M.jpg?V=0",
+        "alt": "RTX 4500 Ada"
+      },
+      "compute": {
+        "text": "7680 / 240 / 60",
+        "cuda": 7680,
+        "tensor": 240,
+        "rt": 60
+      },
+      "memory": {
+        "text": "24GB GDDR6 ECC",
+        "gb": 24,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "192-bit / 432GB/s",
+        "bus": "192-bit",
+        "gbps": 432
+      },
+      "power": {
+        "text": "210W",
+        "watts": 210
+      },
+      "codecs": {
+        "engine": {
+          "text": "2x NVENC / 2x NVDEC",
+          "nvenc": 2,
+          "nvdec": 2,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 8 代 NVENC，支持硬件编码+解码。",
+          "note": "适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 10.5\" L，双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_4500_Ada_Generation%2840990%29/detail"
+      },
+      "positioning": "24GB 显存的专业设计/渲染卡。"
+    },
+    {
+      "id": "rtx-4000-ada-generation",
+      "level": "4000",
+      "model": "RTX 4000 Ada Generation",
+      "generation": {
+        "label": "Ada",
+        "text": "2023"
+      },
+      "architecture": "NVIDIA Ada Lovelace",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40988_1M.jpg?V=0",
+        "alt": "RTX 4000 Ada"
+      },
+      "compute": {
+        "text": "6144 / 192 / 48",
+        "cuda": 6144,
+        "tensor": 192,
+        "rt": 48
+      },
+      "memory": {
+        "text": "20GB GDDR6 ECC",
+        "gb": 20,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "160-bit / 360GB/s",
+        "bus": "160-bit",
+        "gbps": 360
+      },
+      "power": {
+        "text": "130W",
+        "watts": 130
+      },
+      "codecs": {
+        "engine": {
+          "text": "2x NVENC / 2x NVDEC",
+          "nvenc": 2,
+          "nvdec": 2,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 8 代 NVENC，支持硬件编码+解码。",
+          "note": "适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 9.5\" L，单槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_4000_Ada_Generation%2840988%29/detail"
+      },
+      "positioning": "单槽设计工作站，兼顾 20GB 显存和装机密度。"
+    },
+    {
+      "id": "rtx-4000-sff-ada-generation",
+      "level": "4000",
+      "model": "RTX 4000 SFF Ada Generation",
+      "generation": {
+        "label": "Ada",
+        "text": "2023"
+      },
+      "architecture": "NVIDIA Ada Lovelace",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40974_1M.jpg?V=0",
+        "alt": "RTX 4000 SFF Ada"
+      },
+      "compute": {
+        "text": "6144 / 192 / 48",
+        "cuda": 6144,
+        "tensor": 192,
+        "rt": 48
+      },
+      "memory": {
+        "text": "20GB GDDR6 ECC",
+        "gb": 20,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "160-bit / 280GB/s",
+        "bus": "160-bit",
+        "gbps": 280
+      },
+      "power": {
+        "text": "70W",
+        "watts": 70
+      },
+      "codecs": {
+        "engine": {
+          "text": "2x NVENC / 2x NVDEC",
+          "nvenc": 2,
+          "nvdec": 2,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 8 代 NVENC，支持硬件编码+解码。",
+          "note": "适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x mDP 1.4",
+      "formFactor": "2.7\" H x 6.6\" L，双宽度",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_4000_SFF_Ada_Generation%2840974%29/detail"
+      },
+      "positioning": "SFF 机箱、70W 低功耗、多屏设计工作流。"
+    },
+    {
+      "id": "rtx-2000-ada-generation",
+      "level": "2000",
+      "model": "RTX 2000 Ada Generation",
+      "generation": {
+        "label": "Ada",
+        "text": "2024"
+      },
+      "architecture": "NVIDIA Ada Lovelace",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51006_1M.jpg?V=0",
+        "alt": "RTX 2000 Ada"
+      },
+      "compute": {
+        "text": "2816 / 88 / 22",
+        "cuda": 2816,
+        "tensor": 88,
+        "rt": 22
+      },
+      "memory": {
+        "text": "16GB GDDR6 ECC",
+        "gb": 16,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "128-bit / 224GB/s",
+        "bus": "128-bit",
+        "gbps": 224
+      },
+      "power": {
+        "text": "70W",
+        "watts": 70
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 1x NVDEC",
+          "nvenc": 1,
+          "nvdec": 1,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "适合常规 H.265 4:2:0 视频服务器；4:2:2 源优先 Blackwell。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：支持",
+          "detail": "第 8 代 NVENC，支持硬件编码+解码。",
+          "note": "适合 AV1 转码；4:2:2 工作流仍优先 Blackwell。",
+          "limited": false
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x8\n4x mDP 1.4",
+      "formFactor": "2.7\" H x 6.6\" L，双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_2000_Ada_Generation%2851006%29/detail"
+      },
+      "positioning": "入门到主流专业卡，16GB 显存比 A1000/A400 余量更好。"
+    },
+    {
+      "id": "rtx-a1000",
+      "level": "1000",
+      "model": "RTX A1000",
+      "generation": {
+        "label": "Ampere",
+        "text": "2024"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51012_1M.jpg?V=0",
+        "alt": "RTX A1000"
+      },
+      "compute": {
+        "text": "2304 / 72 / 18",
+        "cuda": 2304,
+        "tensor": 72,
+        "rt": 18
+      },
+      "memory": {
+        "text": "8GB GDDR6",
+        "gb": 8,
+        "type": "GDDR6",
+        "ecc": false
+      },
+      "bandwidth": {
+        "text": "128-bit / 192GB/s",
+        "bus": "128-bit",
+        "gbps": 192
+      },
+      "power": {
+        "text": "50W",
+        "watts": 50
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 2x NVDEC",
+          "nvenc": 1,
+          "nvdec": 2,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x8\n4x mDP 1.4",
+      "formFactor": "2.7\" H x 6.4\" L，单槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A1000%2851012%29/detail"
+      },
+      "positioning": "低功耗入门 RTX 专业卡，多屏/CAD/轻 3D。"
+    },
+    {
+      "id": "rtx-a400",
+      "level": "1000",
+      "model": "RTX A400",
+      "generation": {
+        "label": "Ampere",
+        "text": "2024"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/51013_1M.jpg?V=0",
+        "alt": "RTX A400"
+      },
+      "compute": {
+        "text": "768 / 24 / 6",
+        "cuda": 768,
+        "tensor": 24,
+        "rt": 6
+      },
+      "memory": {
+        "text": "4GB GDDR6",
+        "gb": 4,
+        "type": "GDDR6",
+        "ecc": false
+      },
+      "bandwidth": {
+        "text": "64-bit / 96GB/s",
+        "bus": "64-bit",
+        "gbps": 96
+      },
+      "power": {
+        "text": "50W",
+        "watts": 50
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 1x NVDEC",
+          "nvenc": 1,
+          "nvdec": 1,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x8\n4x mDP 1.4",
+      "formFactor": "2.7\" H x 6.4\" L，单槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A400%2851013%29/detail"
+      },
+      "positioning": "基础多屏、2D/CAD 入门，不建议承担重 3D 或 AI。"
+    },
+    {
+      "id": "rtx-a5500",
+      "level": "5000",
+      "model": "RTX A5500",
+      "generation": {
+        "label": "Ampere",
+        "text": "2022"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40943_1M.jpg?V=0",
+        "alt": "RTX A5500"
+      },
+      "compute": {
+        "text": "10240 / 320 / 80",
+        "cuda": 10240,
+        "tensor": 320,
+        "rt": 80
+      },
+      "memory": {
+        "text": "24GB GDDR6 ECC",
+        "gb": 24,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "384-bit / 768GB/s",
+        "bus": "384-bit",
+        "gbps": 768
+      },
+      "power": {
+        "text": "230W",
+        "watts": 230
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 2x NVDEC",
+          "nvenc": 1,
+          "nvdec": 2,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 10.5\" L，双槽宽度",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A5500%2840943%29/detail"
+      },
+      "positioning": "老款高端 Ampere，除非价格明显低，否则优先看 Ada/Blackwell。"
+    },
+    {
+      "id": "rtx-a4500",
+      "level": "4000",
+      "model": "RTX A4500",
+      "generation": {
+        "label": "Ampere",
+        "text": "2021"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40937_1M.jpg?V=0",
+        "alt": "RTX A4500"
+      },
+      "compute": {
+        "text": "7168 / 224 / 56",
+        "cuda": 7168,
+        "tensor": 224,
+        "rt": 56
+      },
+      "memory": {
+        "text": "20GB GDDR6 ECC",
+        "gb": 20,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "320-bit / 640GB/s",
+        "bus": "320-bit",
+        "gbps": 640
+      },
+      "power": {
+        "text": "200W",
+        "watts": 200
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 1x NVDEC",
+          "nvenc": 1,
+          "nvdec": 1,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 10.5\" L，双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A4500%2840937%29/detail"
+      },
+      "positioning": "20GB Ampere，适合低价库存项目。"
+    },
+    {
+      "id": "rtx-a5000",
+      "level": "5000",
+      "model": "RTX A5000",
+      "generation": {
+        "label": "Ampere",
+        "text": "2021"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40914_1M.jpg?V=0",
+        "alt": "RTX A5000"
+      },
+      "compute": {
+        "text": "8192 / 256 / 64",
+        "cuda": 8192,
+        "tensor": 256,
+        "rt": 64
+      },
+      "memory": {
+        "text": "24GB GDDR6 ECC",
+        "gb": 24,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "384-bit / 768GB/s",
+        "bus": "384-bit",
+        "gbps": 768
+      },
+      "power": {
+        "text": "230W",
+        "watts": 230
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 2x NVDEC",
+          "nvenc": 1,
+          "nvdec": 2,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 10.5\" L",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A5000%2840914%29/detail"
+      },
+      "positioning": "老款 24GB，高价时不如 RTX 4500/5000 Ada。"
+    },
+    {
+      "id": "rtx-a4000",
+      "level": "4000",
+      "model": "RTX A4000",
+      "generation": {
+        "label": "Ampere",
+        "text": "2021"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40915_1M.jpg?V=0",
+        "alt": "RTX A4000"
+      },
+      "compute": {
+        "text": "6144 / 192 / 48",
+        "cuda": 6144,
+        "tensor": 192,
+        "rt": 48
+      },
+      "memory": {
+        "text": "16GB GDDR6 ECC",
+        "gb": 16,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "256-bit / 448GB/s",
+        "bus": "256-bit",
+        "gbps": 448
+      },
+      "power": {
+        "text": "140W",
+        "watts": 140
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 1x NVDEC",
+          "nvenc": 1,
+          "nvdec": 1,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 9.5\" L，单槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A4000%2840915%29/detail"
+      },
+      "positioning": "16GB 单槽老款，预算项目可考虑。"
+    },
+    {
+      "id": "rtx-a2000-6gb",
+      "level": "2000",
+      "model": "RTX A2000 6GB",
+      "generation": {
+        "label": "Ampere",
+        "text": "2021"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40931_1M.jpg?V=0",
+        "alt": "RTX A2000 6GB"
+      },
+      "compute": {
+        "text": "3328 / 104 / 26",
+        "cuda": 3328,
+        "tensor": 104,
+        "rt": 26
+      },
+      "memory": {
+        "text": "6GB GDDR6 ECC",
+        "gb": 6,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "192-bit / 288GB/s",
+        "bus": "192-bit",
+        "gbps": 288
+      },
+      "power": {
+        "text": "70W",
+        "watts": 70
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 1x NVDEC",
+          "nvenc": 1,
+          "nvdec": 1,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "与 12GB 版硬解规格相同；差异主要在显存余量。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x mDP 1.4",
+      "formFactor": "2.713\" H x 6.6\" L，双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A2000%EF%B8%B1A2000_12GB%2840931%29/detail"
+      },
+      "positioning": "低成本小卡；少路数 H.265 解码/显示可用，不建议承担较重云剪辑或多任务。"
+    },
+    {
+      "id": "rtx-a2000-12gb",
+      "level": "2000",
+      "model": "RTX A2000 12GB",
+      "generation": {
+        "label": "Ampere",
+        "text": "2021"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/40931_1M.jpg?V=0",
+        "alt": "RTX A2000 12GB"
+      },
+      "compute": {
+        "text": "3328 / 104 / 26",
+        "cuda": 3328,
+        "tensor": 104,
+        "rt": 26
+      },
+      "memory": {
+        "text": "12GB GDDR6 ECC",
+        "gb": 12,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "192-bit / 288GB/s",
+        "bus": "192-bit",
+        "gbps": 288
+      },
+      "power": {
+        "text": "70W",
+        "watts": 70
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 1x NVDEC",
+          "nvenc": 1,
+          "nvdec": 1,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "与 6GB 版硬解规格相同；12GB 更适合多应用和较大帧缓存。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x mDP 1.4",
+      "formFactor": "2.713\" H x 6.6\" L，双槽",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A2000%EF%B8%B1A2000_12GB%2840931%29/detail"
+      },
+      "positioning": "小卡里更推荐的版本；12GB 显存余量更好，适合轻量专业工作流和存量节点。"
+    },
+    {
+      "id": "rtx-a6000",
+      "level": "6000",
+      "model": "RTX A6000",
+      "generation": {
+        "label": "RTX A 起点参考",
+        "text": "2020/2021 周期"
+      },
+      "architecture": "NVIDIA Ampere",
+      "image": {
+        "src": "https://www.leadtek.com.cn/p_images/zoom/30893_1M.jpg?V=0",
+        "alt": "RTX A6000"
+      },
+      "compute": {
+        "text": "10752 / 336 / 84",
+        "cuda": 10752,
+        "tensor": 336,
+        "rt": 84
+      },
+      "memory": {
+        "text": "48GB GDDR6 ECC",
+        "gb": 48,
+        "type": "GDDR6",
+        "ecc": true
+      },
+      "bandwidth": {
+        "text": "384-bit / 768GB/s",
+        "bus": "384-bit",
+        "gbps": 768
+      },
+      "power": {
+        "text": "300W",
+        "watts": 300
+      },
+      "codecs": {
+        "engine": {
+          "text": "1x NVENC / 2x NVDEC",
+          "nvenc": 1,
+          "nvdec": 2,
+          "jpeg": 0
+        },
+        "hevc": {
+          "title": "H.265 硬解：第 5 代 NVDEC，4:2:0 / 4:4:4 为主",
+          "detail": "HEVC 4:2:0 与 4:4:4 支持 8/10/12-bit 硬解，最大分辨率按 8192x8192 看；HEVC 4:2:2 不支持硬解。",
+          "note": "可做存量/轻量 H.265 解码；高并发按 NVDEC 数量和实测码流评估。",
+          "limited": true
+        },
+        "av1": {
+          "title": "AV1 输出：不支持",
+          "detail": "可做 AV1 硬件解码/播放，不能硬件编码 AV1。",
+          "note": "若要 AV1 转码输出，优先 Ada 或 Blackwell。",
+          "limited": true
+        }
+      },
+      "busAndDisplay": "PCIe 4.0 x16\n4x DP 1.4",
+      "formFactor": "4.4\" H x 10.5\" L，双宽度",
+      "official": {
+        "label": "官网页",
+        "url": "https://www.leadtek.com.cn/chs/products/workstation_graphics%282%29/NVIDIA_RTX_A6000%2830893%29/detail"
+      },
+      "positioning": "48GB 老旗舰；除非价格合适，否则优先 RTX 5880 Ada / RTX PRO 5000。"
+    }
+  ]
+}

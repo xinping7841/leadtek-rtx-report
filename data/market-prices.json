@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "currency": "CNY",
+  "sourceNote": "Public market quote samples for budget reference only.",
+  "prices": [
+    {
+      "gpuId": "rtx-pro-6000-blackwell-workstation-edition",
+      "text": "约 ￥7.6万-9.3万",
+      "status": "available",
+      "minCny": 76000,
+      "maxCny": 93000
+    },
+    {
+      "gpuId": "rtx-pro-6000-blackwell-max-q-workstation-edition",
+      "text": "需询价，通常接近旗舰款",
+      "status": "quote",
+      "minCny": null,
+      "maxCny": null
+    },
+    {
+      "gpuId": "rtx-pro-5000-48gb-blackwell",
+      "text": "约 ￥3.5万-4.0万",
+      "status": "available",
+      "minCny": 35000,
+      "maxCny": 40000
+    },
+    {
+      "gpuId": "rtx-pro-5000-72gb-blackwell",
+      "text": "国内公开价少，建议询价",
+      "status": "quote",
+      "minCny": null,
+      "maxCny": null
+    },
+    {
+      "gpuId": "rtx-pro-4500-blackwell",
+      "text": "约 ￥1.75万-1.85万",
+      "status": "available",
+      "minCny": 17500,
+      "maxCny": 18500
+    },
+    {
+      "gpuId": "rtx-pro-4000-blackwell",
+      "text": "约 ￥1.16万-1.5万",
+      "status": "available",
+      "minCny": 11600,
+      "maxCny": 15000
+    },
+    {
+      "gpuId": "rtx-pro-4000-blackwell-sff-edition",
+      "text": "公开价少，需询价",
+      "status": "quote",
+      "minCny": null,
+      "maxCny": null
+    },
+    {
+      "gpuId": "rtx-pro-2000-blackwell",
+      "text": "约 ￥4999-6800",
+      "status": "available",
+      "minCny": 4999,
+      "maxCny": 6800
+    },
+    {
+      "gpuId": "rtx-6000-ada-generation",
+      "text": "约 ￥5.6万-6.5万",
+      "status": "available",
+      "minCny": 56000,
+      "maxCny": 65000
+    },
+    {
+      "gpuId": "rtx-5880-ada-generation",
+      "text": "约 ￥3.1万-4.2万",
+      "status": "available",
+      "minCny": 31000,
+      "maxCny": 42000
+    },
+    {
+      "gpuId": "rtx-5000-ada-generation",
+      "text": "约 ￥2.45万-3.5万",
+      "status": "available",
+      "minCny": 24500,
+      "maxCny": 35000
+    },
+    {
+      "gpuId": "rtx-4500-ada-generation",
+      "text": "约 ￥1.69万-2.0万",
+      "status": "available",
+      "minCny": 16900,
+      "maxCny": 20000
+    },
+    {
+      "gpuId": "rtx-4000-ada-generation",
+      "text": "约 ￥9999-11100",
+      "status": "available",
+      "minCny": 9999,
+      "maxCny": 11100
+    },
+    {
+      "gpuId": "rtx-4000-sff-ada-generation",
+      "text": "约 ￥9999-10800",
+      "status": "available",
+      "minCny": 9999,
+      "maxCny": 10800
+    },
+    {
+      "gpuId": "rtx-2000-ada-generation",
+      "text": "约 ￥5099-5599",
+      "status": "available",
+      "minCny": 5099,
+      "maxCny": 5599
+    },
+    {
+      "gpuId": "rtx-a1000",
+      "text": "约 ￥2999-3839",
+      "status": "available",
+      "minCny": 2999,
+      "maxCny": 3839
+    },
+    {
+      "gpuId": "rtx-a400",
+      "text": "约 ￥1239-1389",
+      "status": "available",
+      "minCny": 1239,
+      "maxCny": 1389
+    },
+    {
+      "gpuId": "rtx-a5500",
+      "text": "约 ￥1.8万-2.6万",
+      "status": "available",
+      "minCny": 18000,
+      "maxCny": 26000
+    },
+    {
+      "gpuId": "rtx-a4500",
+      "text": "约 ￥1.1万-1.7万",
+      "status": "available",
+      "minCny": 11000,
+      "maxCny": 17000
+    },
+    {
+      "gpuId": "rtx-a5000",
+      "text": "约 ￥1.5万-2.6万",
+      "status": "available",
+      "minCny": 15000,
+      "maxCny": 26000
+    },
+    {
+      "gpuId": "rtx-a4000",
+      "text": "约 ￥5500-9000",
+      "status": "available",
+      "minCny": 5500,
+      "maxCny": 9000
+    },
+    {
+      "gpuId": "rtx-a2000-6gb",
+      "text": "约 ￥2500-3300",
+      "status": "available",
+      "minCny": 2500,
+      "maxCny": 3300
+    },
+    {
+      "gpuId": "rtx-a2000-12gb",
+      "text": "约 ￥3500-4500",
+      "status": "available",
+      "minCny": 3500,
+      "maxCny": 4500
+    },
+    {
+      "gpuId": "rtx-a6000",
+      "text": "约 ￥2.7万-4.5万，库存差异大",
+      "status": "available",
+      "minCny": 27000,
+      "maxCny": 45000
+    }
+  ]
+}
