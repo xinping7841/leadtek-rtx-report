@@ -1,0 +1,14 @@
+{
+  "name": "leadtek-rtx-report",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve-static.mjs 18080",
+    "validate": "node scripts/validate-static.mjs",
+    "test:e2e": "playwright test tests/smoke.spec.mjs --browser=chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.0"
+  }
+}

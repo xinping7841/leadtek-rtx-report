@@ -8,6 +8,11 @@
 .vscode/
 .idea/
 
+# Node / test runtime
+node_modules/
+test-results/
+playwright-report/
+
 # OS
 .DS_Store
 Thumbs.db
