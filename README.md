@@ -7,23 +7,31 @@
 ## 项目结构
 
 ```text
-├── index.html                    # 页面骨架、筛选控件、表格表头和渲染容器
-├── assets/
-│   ├── app.css                   # 全部页面样式
-│   └── app.js                    # JSON 加载、筛选、排序、卡片/表格渲染、对比和企业测试合并
-├── data/
-│   ├── gpu-catalog.json          # GPU 主体规格数据
-│   ├── market-prices.json        # 市场参考价，按 gpuId 关联
-│   └── gpu-test-results.json     # 腾讯文档同步的企业实测数据
-├── scripts/
-│   ├── validate-static.mjs       # 静态结构和数据完整性校验
-│   ├── serve-static.mjs          # 本地预览静态服务器
-│   ├── edit-lock.sh / .ps1       # 多终端编辑锁
-│   └── sync-tencent-docs-via-chrome.mjs
-├── tests/
-│   └── smoke.spec.mjs            # Playwright 冒烟测试
-├── package.json
-└── playwright.config.mjs
+??? index.html                    # Page skeleton, controls, table header, render containers
+??? assets/
+?   ??? app.css                   # All page styles
+?   ??? app.js                    # ES module entry point
+?   ??? images/                   # Locally cached product images
+?   ??? js/
+?       ??? app-controller.js     # State, events, filtering, sorting, comparison, external result merge
+?       ??? elements.js           # DOM lookup and required container checks
+?       ??? renderers.js          # Table, cards, comparison table, and error-state HTML rendering
+?       ??? schema.js             # Browser-side JSON validation
+?       ??? utils.js              # escapeHtml, loadJson, and small shared helpers
+?       ??? view-model.js         # GPU normalization, derived fields, score, price sort value
+??? data/
+?   ??? gpu-catalog.json          # GPU catalog data
+?   ??? market-prices.json        # Market prices keyed by gpuId
+?   ??? gpu-test-results.json     # Enterprise test results synced from Tencent Docs
+??? scripts/
+?   ??? validate-static.mjs       # Static structure and data integrity validation
+?   ??? serve-static.mjs          # Local static preview server
+?   ??? edit-lock.sh / .ps1       # Multi-agent edit lock
+?   ??? sync-tencent-docs-via-chrome.mjs
+??? tests/
+?   ??? smoke.spec.mjs            # Playwright smoke tests
+??? package.json
+??? playwright.config.mjs
 ```
 
 ## 本地启动
@@ -184,3 +192,24 @@ bash scripts/edit-lock.sh release
 ## 安全渲染约定
 
 `assets/app.js` 对来自 JSON 或企业文档的数据统一先通过 `escapeHtml` 再拼接渲染。维护数据时不要在 JSON 中写 HTML 片段；如需换行，使用普通文本换行符。
+
+
+## Static Data Maintenance Notes
+
+Product images are cached locally under `assets/images/` so the report does not depend on Leadtek image hotlinks at runtime. In `data/gpu-catalog.json`, `image.src` must point to the local cached file and `image.sourceUrl` should keep the original Leadtek URL for traceability.
+
+All JSON or external document values must be escaped before rendering. Runtime data validation lives in `assets/js/schema.js`, GPU derived fields live in `assets/js/view-model.js`, and HTML string rendering lives in `assets/js/renderers.js`.
+
+`npm run validate` checks HTML references, module syntax for `assets/app.js` and `assets/js/*.js`, JSON validity, unique GPU ids, required fields, local image file existence, and market price id matching.
+
+On node-121, install the Playwright browser once when e2e testing is needed. This only writes Playwright browser binaries and does not affect the 18080 service:
+
+```bash
+npx playwright install chromium
+```
+
+After deployment, a quick static check should include a cached image URL:
+
+```bash
+curl -I http://127.0.0.1:18080/assets/images/rtx-pro-4000-blackwell.jpg
+```

@@ -72,7 +72,9 @@ for (const file of requiredFiles) readText(file);
 
 const html = readText("index.html");
 if (!html.includes('href="assets/app.css"')) fail("index.html must reference assets/app.css");
-if (!html.includes('src="assets/app.js"')) fail("index.html must reference assets/app.js");
+if (!/<script\s+type="module"\s+src="assets\/app\.js"><\/script>/i.test(html)) {
+  fail("index.html must reference assets/app.js as a module script");
+}
 if (/<style[\s>]/i.test(html)) fail("index.html should not contain inline <style> blocks");
 if (!/<table id="gpuTable">[\s\S]*<tbody>[\s\S]*data-loading-row[\s\S]*<\/tbody>/i.test(html)) {
   fail("index.html should keep only the gpuTable skeleton/loading row");
@@ -138,8 +140,11 @@ for (const id of gpuIds) {
   if (!priceIds.has(id)) fail(`Missing market price for gpuId: ${id}`);
 }
 
-const syntax = spawnSync(process.execPath, ["--check", "assets/app.js"], { encoding: "utf8" });
-if (syntax.status !== 0) fail(`assets/app.js syntax check failed:\n${syntax.stderr || syntax.stdout}`);
+const scriptFiles = ["assets/app.js", ...fs.readdirSync("assets/js").filter((file) => file.endsWith(".js")).map((file) => `assets/js/${file}`)];
+for (const scriptFile of scriptFiles) {
+  const syntax = spawnSync(process.execPath, ["--check", scriptFile], { encoding: "utf8" });
+  if (syntax.status !== 0) fail(`${scriptFile} syntax check failed:\n${syntax.stderr || syntax.stdout}`);
+}
 
 if (errors.length) {
   console.error("Static validation failed:");
