@@ -5,7 +5,10 @@
 ## 项目结构
 
 ```
-├── index.html              # 主页面：GPU 对比表 + 筛选/排序/对比功能
+├── index.html              # 主页面结构：GPU 对比表 + 筛选/排序/对比功能
+├── assets/
+│   ├── app.css             # 页面样式
+│   └── app.js              # 筛选、排序、对比和企业文档结果加载逻辑
 ├── data/
 │   └── gpu-test-results.json   # 腾讯文档同步的 GPU 实测数据
 ├── .edit-lock.json          # 编辑锁状态（通过 Git 同步，防止多终端冲突）
