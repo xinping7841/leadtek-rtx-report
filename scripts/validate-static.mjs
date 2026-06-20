@@ -7,7 +7,6 @@ const requiredFiles = [
   "assets/app.js",
   "data/gpu-catalog.json",
   "data/market-prices.json",
-  "data/gpu-test-results.json",
 ];
 
 const errors = [];
@@ -83,7 +82,6 @@ if (/<tr data-level="/i.test(html)) fail("GPU catalog rows must live in data/gpu
 
 const catalog = readJson("data/gpu-catalog.json");
 const prices = readJson("data/market-prices.json");
-readJson("data/gpu-test-results.json");
 
 const gpuIds = new Set();
 if (!Array.isArray(catalog?.gpus)) {

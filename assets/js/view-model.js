@@ -35,7 +35,6 @@ export function normalizeGpu(raw, price) {
     weakMain,
     year,
     score,
-    externalResults: [],
   };
 }
 
@@ -50,11 +49,4 @@ export function priceValue(gpu) {
 
 export function generationText(gpu) {
   return [gpu.generation?.label, gpu.generation?.text].filter(Boolean).join("\n");
-}
-
-export function externalSummary(gpu) {
-  return gpu.externalResults
-    .slice(0, 2)
-    .map((item) => `${item["测试项"] || "测试"}：${item["结论"] || "有测试记录"}`)
-    .join("；");
 }

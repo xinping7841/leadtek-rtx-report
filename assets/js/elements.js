@@ -36,8 +36,5 @@ export function collectElements(documentRef = document) {
     hevcHideWeak: requireElement(documentRef, "hevcHideWeak"),
     hevcReset: requireElement(documentRef, "hevcReset"),
     hevcSortNote: requireElement(documentRef, "hevcSortNote"),
-    syncPanel: requireElement(documentRef, "syncPanel"),
-    syncStatusText: requireElement(documentRef, "syncStatusText"),
-    syncStatusMeta: requireElement(documentRef, "syncStatusMeta"),
   };
 }

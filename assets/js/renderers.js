@@ -1,5 +1,5 @@
 import { escapeHtml, htmlLines, pill } from "./utils.js";
-import { externalSummary, generationText } from "./view-model.js";
+import { generationText } from "./view-model.js";
 
 const compareColumns = [
   { label: "代际/时间", render: (gpu) => generationText(gpu) },
@@ -126,28 +126,8 @@ function formHtml(gpu) {
   return `<div class="form-cell"><span>${escapeHtml(gpu.formFactor)}</span>${notes.length ? `<div class="term-cn">${escapeHtml(notes.join("；"))}</div>` : ""}${tags.length ? `<div class="cell-highlights">${tags.join("")}</div>` : ""}</div>`;
 }
 
-function resultSummary(item) {
-  const parts = [];
-  if (item["测试项"]) parts.push(item["测试项"]);
-  if (item["测试结果"]) parts.push(`结果：${item["测试结果"]}`);
-  if (item["结论"]) parts.push(`结论：${item["结论"]}`);
-  if (item["备注"]) parts.push(`备注：${item["备注"]}`);
-  if (item["维护人"]) parts.push(`维护人：${item["维护人"]}`);
-  if (item["更新时间"]) parts.push(`更新时间：${item["更新时间"]}`);
-  return parts;
-}
-
-function externalResultHtml(gpu) {
-  if (!gpu.externalResults?.length) return "";
-  const blocks = gpu.externalResults.map((item) => {
-    const summary = resultSummary(item).map(escapeHtml).join("<br>");
-    return `<div><strong>企业文档测试结果</strong><br>${summary}</div>`;
-  }).join("");
-  return `<div class="external-test-result">${blocks}</div>`;
-}
-
 function adviceHtml(gpu) {
-  return `${escapeHtml(gpu.positioning)}${externalResultHtml(gpu)}`;
+  return escapeHtml(gpu.positioning);
 }
 
 export function renderTable(tableBody, gpus, selectedGpuIds) {
@@ -193,11 +173,7 @@ function cardTags(gpu) {
 }
 
 function cardAdviceHtml(gpu) {
-  const pieces = [`<p class="cell-note hevc-card-advice">${escapeHtml(gpu.positioning)}</p>`];
-  if (gpu.externalResults.length) {
-    pieces.push(`<p class="hevc-card-test-summary">企业测试：${gpu.externalResults.length} 条；${escapeHtml(externalSummary(gpu))}</p>`);
-  }
-  return pieces.join("");
+  return `<p class="cell-note hevc-card-advice">${escapeHtml(gpu.positioning)}</p>`;
 }
 
 export function renderHevcShelf({ elements, gpus, items, selectedGpuIds, sortNoteText }) {

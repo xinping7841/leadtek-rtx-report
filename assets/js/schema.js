@@ -118,13 +118,3 @@ export function validateMarketPrices(payload, gpuIds) {
   failIfNeeded(errors, "data/market-prices.json");
   return new Map(payload.prices.map((price) => [price.gpuId, price]));
 }
-
-export function validateExternalResults(payload) {
-  if (!payload) return null;
-  const errors = [];
-  requireObject(errors, payload, "gpu-test-results");
-  if (payload.rows !== undefined && !Array.isArray(payload.rows)) push(errors, "gpu-test-results.rows 必须是数组");
-  if (payload.syncedAt !== undefined && typeof payload.syncedAt !== "string") push(errors, "gpu-test-results.syncedAt 必须是字符串");
-  failIfNeeded(errors, "data/gpu-test-results.json");
-  return { ...payload, rows: payload.rows || [] };
-}

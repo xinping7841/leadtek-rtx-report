@@ -1,20 +1,11 @@
 import { collectElements } from "./elements.js";
-import { validateCatalog, validateExternalResults, validateMarketPrices } from "./schema.js";
-import { loadJson, normalizeModelName } from "./utils.js";
-import { externalSummary, normalizeGpu, priceValue } from "./view-model.js";
+import { validateCatalog, validateMarketPrices } from "./schema.js";
+import { loadJson } from "./utils.js";
+import { normalizeGpu, priceValue } from "./view-model.js";
 import { renderComparison, renderHevcShelf, renderLoadError, renderTable } from "./renderers.js";
 
 const catalogUrl = "data/gpu-catalog.json";
 const pricesUrl = "data/market-prices.json";
-const externalResultsUrl = "data/gpu-test-results.json";
-
-function setSyncStatus(elements, type, text, meta) {
-  elements.syncPanel.classList.toggle("is-ok", type === "ok");
-  elements.syncPanel.classList.toggle("is-warn", type === "warn");
-  elements.syncPanel.classList.toggle("is-error", type === "error");
-  elements.syncStatusText.textContent = text;
-  elements.syncStatusMeta.textContent = meta;
-}
 
 function selectedGpus(state) {
   return state.gpus.filter((gpu) => state.selectedGpuIds.has(gpu.id));
@@ -50,7 +41,6 @@ function filteredHevcItems(elements, gpus) {
       gpu.codecs.av1.detail,
       gpu.price.text,
       gpu.positioning,
-      externalSummary(gpu),
     ].join(" ").toLowerCase();
     if (state.q && !haystack.includes(state.q)) return false;
     if (state.level !== "all" && gpu.level !== state.level) return false;
@@ -117,42 +107,6 @@ function updateState(elements, state) {
     selectedGpuIds: state.selectedGpuIds,
     sortNoteText: sortNote(elements.hevcSort.value),
   });
-}
-
-function mergeExternalResults(state, payload) {
-  const resultMap = new Map();
-  payload.rows.forEach((item) => {
-    const model = item["型号"] || item.model || item.gpu || "";
-    const key = normalizeModelName(model);
-    if (!key) return;
-    if (!resultMap.has(key)) resultMap.set(key, []);
-    resultMap.get(key).push(item);
-  });
-  let matched = 0;
-  state.gpus = state.gpus.map((gpu) => {
-    const items = resultMap.get(normalizeModelName(gpu.model)) || [];
-    if (items.length) matched += 1;
-    return { ...gpu, externalResults: items };
-  });
-  return matched;
-}
-
-async function loadExternalResults(elements, state) {
-  try {
-    const payload = validateExternalResults(await loadJson(externalResultsUrl, { optional: true }));
-    if (!payload) {
-      setSyncStatus(elements, "warn", "企业文档同步未连接", "未找到 data/gpu-test-results.json，当前显示内置静态数据。");
-      return;
-    }
-    if (payload.syncedAt && payload.syncedAt === state.lastExternalSyncAt) return;
-    state.lastExternalSyncAt = payload.syncedAt || new Date().toISOString();
-    const matched = mergeExternalResults(state, payload);
-    setSyncStatus(elements, "ok", "企业文档同步已连接", `最后同步：${state.lastExternalSyncAt}，匹配 ${matched} 款型号。`);
-    renderTable(elements.tableBody, state.gpus, state.selectedGpuIds);
-    updateState(elements, state);
-  } catch (error) {
-    setSyncStatus(elements, "error", "企业文档同步读取失败", `${error.message}。当前显示内置静态数据。`);
-  }
 }
 
 function toggleGpuSelection(elements, state, gpuId) {
@@ -242,11 +196,8 @@ async function initData(elements, state) {
     state.gpus = catalog.gpus.map((gpu) => normalizeGpu(gpu, priceMap.get(gpu.id)));
     renderTable(elements.tableBody, state.gpus, state.selectedGpuIds);
     updateState(elements, state);
-    await loadExternalResults(elements, state);
-    window.setInterval(() => loadExternalResults(elements, state), 60000);
   } catch (error) {
     renderLoadError(elements, error);
-    setSyncStatus(elements, "error", "GPU 数据加载失败", error.message);
   }
 }
 
@@ -257,7 +208,6 @@ export function initLeadtekReport() {
     selectedGpuIds: new Set(),
     selectedOnly: false,
     activeLevel: "all",
-    lastExternalSyncAt: "",
   };
   bindEvents(elements, state);
   setViewMode(elements, window.innerWidth < 1500 ? "compact" : "full");
