@@ -2,9 +2,9 @@ import { escapeHtml, htmlLines, pill } from "./utils.js";
 import { generationText } from "./view-model.js";
 
 const compareColumns = [
-  { label: "代际/时间", render: (gpu) => generationText(gpu) },
-  { label: "架构", render: (gpu) => gpu.architecture },
-  { label: "CUDA / Tensor / RT", render: (gpu) => gpu.compute.text },
+  { label: "代际/时间", render: (gpu) => htmlLines(generationText(gpu)) },
+  { label: "架构", render: (gpu) => escapeHtml(gpu.architecture) },
+  { label: "CUDA / Tensor / RT", render: (gpu) => escapeHtml(gpu.compute.text) },
   { label: "显存", render: (gpu) => memoryHtml(gpu) },
   { label: "位宽 / 带宽", render: (gpu) => bandwidthHtml(gpu) },
   { label: "功耗", render: (gpu) => powerHtml(gpu) },
@@ -13,7 +13,7 @@ const compareColumns = [
   { label: "AV1 输出能力", render: (gpu) => codecHtml(gpu.codecs.av1, "codec-av1") },
   { label: "总线 / 显示接口", render: (gpu) => interfaceHtml(gpu) },
   { label: "外形规格", render: (gpu) => formHtml(gpu) },
-  { label: "市场参考价", render: (gpu) => gpu.price.text },
+  { label: "市场参考价", render: (gpu) => escapeHtml(gpu.price.text) },
   { label: "定位建议", render: (gpu) => adviceHtml(gpu) },
 ];
 

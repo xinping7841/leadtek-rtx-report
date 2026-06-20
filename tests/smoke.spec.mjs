@@ -37,8 +37,28 @@ test.describe("Leadtek RTX report", () => {
     await expect(page.locator("#gpuTable tbody tr[data-gpu-id]")).toHaveCount(24);
     await expect(page.locator("#hevcSearch")).toBeVisible();
     await page.locator("#hevcSearch").fill("Blackwell");
-    await expect(page.locator("#hevcShelf .hevc-card").first()).toBeVisible();
-    const bodyWidth = await page.evaluate(() => document.body.scrollWidth);
-    expect(bodyWidth).toBeGreaterThan(0);
+    const firstCard = page.locator("#hevcShelf .hevc-card").first();
+    await expect(firstCard).toBeVisible();
+    await expect(page.locator("#hevcResultCount")).not.toHaveText("0");
+
+    const layout = await page.evaluate(() => {
+      const viewportWidth = window.innerWidth;
+      const selectors = [".hevc-shop", "#hevcSearch", "#hevcShelf .hevc-card"];
+      return selectors.map((selector) => {
+        const element = document.querySelector(selector);
+        const rect = element?.getBoundingClientRect();
+        return {
+          selector,
+          fitsViewport: Boolean(rect && rect.left >= 0 && rect.right <= viewportWidth + 1),
+          width: rect?.width || 0,
+        };
+      });
+    });
+
+    expect(layout).toEqual(expect.arrayContaining([
+      expect.objectContaining({ selector: ".hevc-shop", fitsViewport: true }),
+      expect.objectContaining({ selector: "#hevcSearch", fitsViewport: true }),
+      expect.objectContaining({ selector: "#hevcShelf .hevc-card", fitsViewport: true }),
+    ]));
   });
 });
