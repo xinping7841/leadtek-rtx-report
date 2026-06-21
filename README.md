@@ -76,6 +76,12 @@ Run static validation:
 npm run validate
 ```
 
+Run the full static checks:
+
+```bash
+npm run check
+```
+
 The validator checks:
 
 - `index.html` references `assets/app.css` and module `assets/app.js`
@@ -86,6 +92,8 @@ The validator checks:
 - product images are local files and non-empty
 - price `gpuId` values match catalog GPU ids
 - `assets/app.js` and `assets/js/*.js` pass syntax checks
+
+`npm run check` additionally runs ESLint and TypeScript `checkJs` type checking. ESLint blocks direct `innerHTML`, `outerHTML`, and `insertAdjacentHTML` usage in browser code so JSON data stays on the safer DOM/textContent rendering path.
 
 Run Playwright smoke tests:
 

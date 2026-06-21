@@ -6,9 +6,16 @@
   "scripts": {
     "start": "node scripts/serve-static.mjs 18080",
     "validate": "node scripts/validate-static.mjs",
+    "lint": "eslint .",
+    "check:types": "tsc --noEmit",
+    "check": "npm run validate && npm run lint && npm run check:types",
     "test:e2e": "playwright test tests/smoke.spec.mjs --browser=chromium"
   },
   "devDependencies": {
-    "@playwright/test": "1.61.0"
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.61.0",
+    "@types/node": "^26.0.0",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3"
   }
 }

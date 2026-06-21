@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM"],
+    "types": ["node"],
+    "strict": false,
+    "skipLibCheck": true
+  },
+  "include": [
+    "assets/**/*.js",
+    "scripts/**/*.mjs",
+    "tests/**/*.mjs",
+    "playwright.config.mjs",
+    "eslint.config.js"
+  ],
+  "exclude": ["node_modules", "playwright-report", "test-results"]
+}

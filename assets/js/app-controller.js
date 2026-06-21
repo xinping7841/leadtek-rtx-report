@@ -155,7 +155,7 @@ function bindEvents(elements, state) {
     state.selectedOnly = false;
     elements.toggleSelectedOnly.textContent = "仅显示已选";
     elements.comparePanel.classList.remove("is-visible");
-    elements.compareOutput.innerHTML = "";
+    elements.compareOutput.replaceChildren();
     updateState(elements, state);
   });
   elements.toggleSelectedOnly.addEventListener("click", () => {
