@@ -79,6 +79,7 @@ npm run validate
 The validator checks:
 
 - `index.html` references `assets/app.css` and module `assets/app.js`
+- required runtime containers and controls exist in `index.html`
 - JSON parses correctly
 - GPU ids are unique
 - required GPU fields are present

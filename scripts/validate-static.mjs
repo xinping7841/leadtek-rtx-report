@@ -9,6 +9,42 @@ const requiredFiles = [
   "data/market-prices.json",
 ];
 
+const requiredHtmlIds = [
+  "gpuTable",
+  "compareCount",
+  "buildCompare",
+  "clearCompare",
+  "toggleSelectedOnly",
+  "comparePanel",
+  "compareOutput",
+  "fullViewBtn",
+  "compactViewBtn",
+  "hevcShelf",
+  "hevcResultCount",
+  "hevcSearch",
+  "hevcSort",
+  "hevcLevel",
+  "hevcArch",
+  "hevcMinNvdec",
+  "hevcMinMemory",
+  "hevcMaxPower",
+  "hevcNeed422",
+  "hevcNeedAv1",
+  "hevcLowPower",
+  "hevcHideWeak",
+  "hevcReset",
+  "hevcSortNote",
+];
+
+const requiredHtmlClasses = [
+  "hevc-shop",
+  "compare-bar",
+  "compare-actions",
+  "level-panel",
+  "level-actions",
+  "level-btn",
+];
+
 const errors = [];
 
 function fail(message) {
@@ -79,6 +115,15 @@ if (!/<table id="gpuTable">[\s\S]*<tbody>[\s\S]*data-loading-row[\s\S]*<\/tbody>
   fail("index.html should keep only the gpuTable skeleton/loading row");
 }
 if (/<tr data-level="/i.test(html)) fail("GPU catalog rows must live in data/gpu-catalog.json, not index.html");
+
+for (const id of requiredHtmlIds) {
+  if (!new RegExp(`\\bid=["']${id}["']`).test(html)) fail(`index.html is missing required container/control: #${id}`);
+}
+for (const className of requiredHtmlClasses) {
+  if (!new RegExp(`\\bclass=["'][^"']*\\b${className}\\b`).test(html)) {
+    fail(`index.html is missing required structural class: .${className}`);
+  }
+}
 
 const catalog = readJson("data/gpu-catalog.json");
 const prices = readJson("data/market-prices.json");
