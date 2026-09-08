@@ -24,6 +24,7 @@ data/
   market-prices.json          # Market prices keyed by gpuId
 scripts/
   validate-static.mjs         # Static structure and data integrity validation
+  build-static.mjs            # Build a minimal public release directory
   serve-static.mjs            # Local static preview server
   edit-lock.sh / .ps1         # Multi-agent edit lock
 tests/
@@ -75,6 +76,14 @@ Run static validation:
 ```bash
 npm run validate
 ```
+
+Build the minimal public release used by Nginx:
+
+```bash
+npm run build
+```
+
+Only `index.html`, `assets/`, and `data/` are copied into `dist/`; source control, dependencies, scripts, tests, and backups are excluded.
 
 Run the full static checks:
 
@@ -130,33 +139,27 @@ Acquire the edit lock before changing production files:
 bash scripts/edit-lock.sh acquire "reason"
 ```
 
-Deploy GitHub `master`:
+Install the locked dependencies and validate the source:
 
 ```bash
-git pull --ff-only
-npm install
-npm run validate
+npm ci
+npm run check
+npm run test:e2e
 ```
 
-The 18080 service is managed by systemd:
+The 18080 site is served by Nginx from the versioned `dist/` release:
 
 ```bash
-systemctl status leadtek-report.service --no-pager
+curl -I http://192.168.50.121:18080/
 ```
 
-It currently serves static files with:
+Static file updates are deployed by building a new root-owned release and switching the `current` symlink. Nginx only needs a reload when its configuration changes. Quick checks:
 
 ```bash
-python3 -m http.server 18080 --bind 0.0.0.0
-```
-
-Static file updates normally do not require a restart. Quick checks:
-
-```bash
-curl -I http://127.0.0.1:18080/
-curl -I http://127.0.0.1:18080/data/gpu-catalog.json
-curl -I http://127.0.0.1:18080/assets/app.js
-curl -I http://127.0.0.1:18080/assets/images/rtx-pro-4000-blackwell.jpg
+curl -I http://192.168.50.121:18080/
+curl -I http://192.168.50.121:18080/data/gpu-catalog.json
+curl -I http://192.168.50.121:18080/assets/app.js
+curl -I http://192.168.50.121:18080/assets/images/rtx-pro-4000-blackwell.jpg
 ```
 
 Release the edit lock after finishing:

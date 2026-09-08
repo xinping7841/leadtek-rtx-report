@@ -79,6 +79,16 @@ function sortNote(value) {
   return labels[value] || labels.score;
 }
 
+function updatePriceFreshness(elements, asOfDate) {
+  const date = new Date(`${asOfDate}T00:00:00`);
+  const ageDays = Number.isNaN(date.getTime()) ? null : Math.floor((Date.now() - date.getTime()) / 86400000);
+  const stale = ageDays === null || ageDays > 90;
+  const label = ageDays === null ? "价格日期无效" : `价格数据截至 ${asOfDate}`;
+  elements.priceFreshness.textContent = stale ? `${label}，建议重新询价` : label;
+  elements.priceFreshness.classList.toggle("stale", stale);
+  elements.priceFreshnessDetail.textContent = stale ? `（已超过 ${ageDays ?? "未知"} 天，仅作预算参考）` : `（${ageDays} 天前采集）`;
+}
+
 function updateState(elements, state) {
   const selected = selectedGpus(state);
   elements.compareCount.textContent = `已选 ${selected.length} 款`;
@@ -135,6 +145,8 @@ function setViewMode(elements, mode) {
   document.body.classList.toggle("full-view", mode === "full");
   elements.fullViewBtn.classList.toggle("is-active", mode === "full");
   elements.compactViewBtn.classList.toggle("is-active", mode === "compact");
+  elements.fullViewBtn.setAttribute("aria-pressed", String(mode === "full"));
+  elements.compactViewBtn.setAttribute("aria-pressed", String(mode === "compact"));
 }
 
 function bindEvents(elements, state) {
@@ -167,6 +179,7 @@ function bindEvents(elements, state) {
     button.addEventListener("click", () => {
       state.activeLevel = button.dataset.levelFilter;
       elements.levelButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+      elements.levelButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
       updateState(elements, state);
     });
   });
@@ -192,7 +205,8 @@ async function initData(elements, state) {
     const [catalogPayload, pricesPayload] = await Promise.all([loadJson(catalogUrl), loadJson(pricesUrl)]);
     const catalog = validateCatalog(catalogPayload);
     const gpuIds = new Set(catalog.gpus.map((gpu) => gpu.id));
-    const priceMap = validateMarketPrices(pricesPayload, gpuIds);
+    const { priceMap, asOfDate } = validateMarketPrices(pricesPayload, gpuIds);
+    updatePriceFreshness(elements, asOfDate);
     state.gpus = catalog.gpus.map((gpu) => normalizeGpu(gpu, priceMap.get(gpu.id)));
     renderTable(elements.tableBody, state.gpus, state.selectedGpuIds);
     updateState(elements, state);

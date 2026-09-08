@@ -14,10 +14,10 @@
 
   <main>
     <section class="note">
-      <p><strong>口径说明：</strong>型号参数只读取丽台官网产品页，包括 CUDA / Tensor / RT、显存、带宽、功耗、总线、显示接口和外形规格。市场价格来自 2026-04-29 前后公开电商与报价站样本，丽台官网不公开零售价，因此价格仅作预算参考。</p>
+      <p><strong>口径说明：</strong>型号参数只读取丽台官网产品页，包括 CUDA / Tensor / RT、显存、带宽、功耗、总线、显示接口和外形规格。市场价格来自公开电商与报价站样本，丽台官网不公开零售价，因此价格仅作预算参考。</p>
       <div class="chips">
         <span class="chip">规格来源：Leadtek / Leadtek 中国官网</span>
-        <span class="chip">价格口径：公开市场参考价</span>
+        <span class="chip" id="priceFreshness">价格口径：公开市场参考价，正在读取日期</span>
         <span class="chip">货源差异：行货/工包/含税/保修会明显影响成交价</span>
       </div>
     </section>
@@ -592,7 +592,7 @@
     </ul>
 
     <h2>价格来源说明</h2>
-    <p>市场价为公开报价样本的人工整理，主要参考京东公开商品/搜索页、ZOL 中关村在线报价页、IT 中国/中国数码网等公开渠道。由于这些页面会随库存、地区和活动动态变化，本报告只保留预算区间，不把第三方页面中的硬件参数作为规格依据。</p>
+    <p>市场价为公开报价样本的人工整理，主要参考京东公开商品/搜索页、ZOL 中关村在线报价页、IT 中国/中国数码网等公开渠道。由于这些页面会随库存、地区和活动动态变化，本报告只保留预算区间，不把第三方页面中的硬件参数作为规格依据。<span id="priceFreshnessDetail" class="muted"></span></p>
   </main>
   <script type="module" src="assets/app.js"></script>
 </body>

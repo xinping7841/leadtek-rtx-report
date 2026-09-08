@@ -17,10 +17,16 @@ const types = {
 };
 
 http.createServer((request, response) => {
+  if (request.method !== "GET" && request.method !== "HEAD") {
+    response.writeHead(405, { allow: "GET, HEAD", "content-type": "text/plain; charset=utf-8" });
+    response.end("method not allowed");
+    return;
+  }
   const url = new URL(request.url, `http://${host}:${port}`);
   const pathname = url.pathname === "/" ? "/index.html" : decodeURIComponent(url.pathname);
   const filePath = path.normalize(path.join(root, pathname));
-  if (!filePath.startsWith(root)) {
+  const relativePath = path.relative(root, filePath);
+  if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
     response.writeHead(403, { "content-type": "text/plain; charset=utf-8" });
     response.end("forbidden");
     return;
@@ -32,7 +38,8 @@ http.createServer((request, response) => {
       return;
     }
     response.writeHead(200, { "content-type": types[path.extname(filePath).toLowerCase()] || "application/octet-stream" });
-    response.end(data);
+    if (request.method === "HEAD") response.end();
+    else response.end(data);
   });
 }).listen(port, host, () => {
   console.log(`Leadtek report preview: http://${host}:${port}/`);

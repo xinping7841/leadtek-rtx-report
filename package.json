@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "start": "node scripts/serve-static.mjs 18080",
+    "build": "node scripts/build-static.mjs",
     "validate": "node scripts/validate-static.mjs",
     "lint": "eslint .",
     "check:types": "tsc --noEmit",
-    "check": "npm run validate && npm run lint && npm run check:types",
+    "check": "npm run validate && npm run lint && npm run check:types && npm run build",
     "test:e2e": "playwright test tests/smoke.spec.mjs --browser=chromium"
   },
   "devDependencies": {

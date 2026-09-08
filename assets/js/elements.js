@@ -36,5 +36,7 @@ export function collectElements(documentRef = document) {
     hevcHideWeak: requireElement(documentRef, "hevcHideWeak"),
     hevcReset: requireElement(documentRef, "hevcReset"),
     hevcSortNote: requireElement(documentRef, "hevcSortNote"),
+    priceFreshness: requireElement(documentRef, "priceFreshness"),
+    priceFreshnessDetail: requireElement(documentRef, "priceFreshnessDetail"),
   };
 }

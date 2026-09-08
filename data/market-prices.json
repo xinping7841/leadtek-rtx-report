@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "currency": "CNY",
+  "asOfDate": "2026-04-29",
   "sourceNote": "Public market quote samples for budget reference only.",
   "prices": [
     {

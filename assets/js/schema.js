@@ -101,6 +101,9 @@ export function validateMarketPrices(payload, gpuIds) {
   if (!Array.isArray(payload?.prices)) {
     throw new Error("data/market-prices.json 校验失败：prices 必须是数组");
   }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(payload?.asOfDate || "") || Number.isNaN(Date.parse(`${payload?.asOfDate}T00:00:00Z`))) {
+    push(errors, "data/market-prices.json.asOfDate 必须是 YYYY-MM-DD 日期");
+  }
   const priceIds = new Set();
   payload.prices.forEach((price, index) => {
     const label = `prices[${index}]`;
@@ -116,5 +119,5 @@ export function validateMarketPrices(payload, gpuIds) {
     if (!priceIds.has(id)) push(errors, `缺少价格记录：${id}`);
   }
   failIfNeeded(errors, "data/market-prices.json");
-  return new Map(payload.prices.map((price) => [price.gpuId, price]));
+  return { priceMap: new Map(payload.prices.map((price) => [price.gpuId, price])), asOfDate: payload.asOfDate };
 }

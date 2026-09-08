@@ -285,7 +285,7 @@ function hevcCard(gpu, idx, maxScore, selectedGpuIds) {
   const scoreBar = el("span");
   scoreBar.style.width = `${scoreWidth}%`;
 
-  const button = el("button", { className: "hevc-compare-btn", text: checked ? "取消对比" : "加入对比", attrs: { type: "button" } });
+  const button = el("button", { className: "hevc-compare-btn", text: checked ? "取消对比" : "加入对比", attrs: { type: "button", "aria-pressed": String(checked) } });
   button.dataset.gpuId = gpu.id;
 
   append(article, [

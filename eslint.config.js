@@ -24,7 +24,7 @@ const nodeGlobals = {
 
 export default [
   {
-    ignores: ["node_modules/", "playwright-report/", "test-results/"],
+    ignores: ["node_modules/", "playwright-report/", "test-results/", "dist/"],
   },
   js.configs.recommended,
   {

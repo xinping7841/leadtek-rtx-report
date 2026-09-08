@@ -34,6 +34,8 @@ const requiredHtmlIds = [
   "hevcHideWeak",
   "hevcReset",
   "hevcSortNote",
+  "priceFreshness",
+  "priceFreshnessDetail",
 ];
 
 const requiredHtmlClasses = [
@@ -168,6 +170,9 @@ const priceIds = new Set();
 if (!Array.isArray(prices?.prices)) {
   fail("data/market-prices.json must contain a prices array");
 } else {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(prices.asOfDate || "") || Number.isNaN(Date.parse(`${prices.asOfDate}T00:00:00Z`))) {
+    fail("data/market-prices.json.asOfDate must be a valid YYYY-MM-DD date");
+  }
   prices.prices.forEach((price, index) => {
     const label = `price[${index}]`;
     assertString(price.gpuId, `${label}.gpuId`);

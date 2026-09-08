@@ -1,7 +1,5 @@
 import { test, expect } from "@playwright/test";
 
-const baseUrl = process.env.LEADTEK_TEST_URL || "http://127.0.0.1:18080/";
-
 test.describe("Leadtek RTX report", () => {
   test("loads, filters, and compares models on desktop", async ({ page }) => {
     const badResponses = [];
@@ -13,16 +11,21 @@ test.describe("Leadtek RTX report", () => {
       }
     });
 
-    await page.goto(baseUrl, { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "networkidle" });
     await expect(page).toHaveTitle(/NVIDIA RTX/);
     await expect(page.locator("#gpuTable tbody tr[data-gpu-id]")).toHaveCount(24);
     await expect(page.locator("#hevcShelf .hevc-card").first()).toBeVisible();
+    await expect(page.locator("#priceFreshness")).toContainText("价格数据截至 2026-04-29");
 
     await page.locator("#hevcSearch").fill("4000");
     await expect(page.locator("#hevcResultCount")).not.toHaveText("0");
+    await page.locator('[data-level-filter="4000"]').click();
+    await expect(page.locator('[data-level-filter="4000"]')).toHaveAttribute("aria-pressed", "true");
 
-    await page.locator("#gpuTable .compare-check").nth(0).check();
-    await page.locator("#gpuTable .compare-check").nth(1).check();
+    const visibleCompareChecks = page.locator("#gpuTable .compare-check:visible");
+    await expect(visibleCompareChecks).toHaveCount(8);
+    await visibleCompareChecks.nth(0).check();
+    await visibleCompareChecks.nth(1).check();
     await expect(page.locator("#buildCompare")).toBeEnabled();
     await page.locator("#buildCompare").click();
     await expect(page.locator("#compareOutput table")).toBeVisible();
@@ -33,7 +36,7 @@ test.describe("Leadtek RTX report", () => {
 
   test("keeps the primary workflow usable on mobile", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(baseUrl, { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "networkidle" });
     await expect(page.locator("#gpuTable tbody tr[data-gpu-id]")).toHaveCount(24);
     await expect(page.locator("#hevcSearch")).toBeVisible();
     await page.locator("#hevcSearch").fill("Blackwell");

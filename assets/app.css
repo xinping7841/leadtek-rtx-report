@@ -261,6 +261,11 @@
       font-size: 13px;
     }
     button:hover { background: #f1f4f8; }
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible { outline: 3px solid #80b9f0; outline-offset: 2px; }
+    #priceFreshness.stale { color: #9b3c00; font-weight: 700; }
     button.primary {
       background: var(--accent);
       border-color: var(--accent);
